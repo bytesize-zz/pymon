@@ -96,7 +96,7 @@ def generate_token():
     rand = random.SystemRandom()
     random_string = ''.join(rand.choice(chars) for _ in range(40))
     return hmac.new(
-        service.config.SECRET_KEY,
+        service.config.SECRET_KEY.encode(),
         random_string,
         hashlib.sha256
     ).hexdigest()
@@ -104,14 +104,11 @@ def generate_token():
 
 def login():
     """ this redirects the user to the EVE SSO login """
-    token = generate_token()
+    # token = generate_token()
     # requests.session['token'] = token
     server = esi()
     server.startServer()
-    return webbrowser.open(esisecurity.get_auth_uri(
-        scopes=['esi-characters.read_standings.v1'],
-        state=token,
-    ))
+    return webbrowser.open(esisecurity.get_auth_uri(scopes=['esi-characters.read_standings.v1']))
 
 
 
@@ -165,8 +162,7 @@ class esi():
         self.serverThread.name = "ESIServer"
         self.serverThread.daemon = True
         self.serverThread.start()
-
-        return self.eve.auth_uri(scopes=self.scopes, state=self.state)
+        return
 
     def callback(self, parts):
         """ This is where the user comes after he logged in SSO """

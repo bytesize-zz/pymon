@@ -19,7 +19,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
 # -----------------------------------------------------
 ESI_DATASOURCE = 'tranquility'  # Change it to 'singularity' to use the test server
 ESI_SWAGGER_JSON = 'https://esi.tech.ccp.is/latest/swagger.json?datasource=%s' % ESI_DATASOURCE
-ESI_SECRET_KEY = 'f7xMYMqSSvO9EpmS2FZtW9ZPKnQHvRhUQVkGfsBS'  # your secret key
+ESI_SECRET_KEY = "f7xMYMqSSvO9EpmS2FZtW9ZPKnQHvRhUQVkGfsBS"  # your secret key
 ESI_CLIENT_ID = '2e3ccffa023e4c9685ab8d549ffab9c8'  # your client ID
 ESI_CALLBACK = 'http://%s:%d/sso/callback' % (HOST, PORT)  # the callback URI you gave CCP
 ESI_USER_AGENT = 'pymon'

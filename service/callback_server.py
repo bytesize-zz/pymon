@@ -11,7 +11,7 @@ HTML = '''
 
 <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-    <title> Local Server</title>
+    <title>pymon Local Server</title>
     <style type="text/css">
         body {{ text-align: center; padding: 150px; }}
         h1 {{ font-size: 40px; }}
@@ -27,7 +27,7 @@ HTML = '''
 
 <!-- Layout from Short Circuit's CREST login. Shout out! https://github.com/farshield/shortcircuit -->
 <div id="article">
-    <h1>pyfa</h1>
+    <h1>pymon</h1>
     {0}
 </div>
 
@@ -79,8 +79,8 @@ class AuthHandler(http.server.BaseHTTPRequestHandler):
             if step2:
                 #self.server.callback(parts)
                 token = str(parts['code'][0])
-                print("Successfully logged into CREST.")
-                msg = "If you see this message then it means you should be logged into CREST. You may close this window and return to the application."
+                print("Successfully logged into ESI.")
+                msg = "If you see this message then it means you should be logged into ESI. You may close this window and return to the application."
             else:
                 # For implicit mode, we have to serve up the page which will take the hash and redirect useing a querystring
                 print("Processing response from EVE Online.")
