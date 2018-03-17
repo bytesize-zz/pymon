@@ -25,7 +25,7 @@ def getAlliance():
         print("Exception when calling AllianceApi->get_alliances: %s\n" % e)
 
 
-def getInfos():
+def getStandings():
     with open('user.txt') as f:
         lines = f.readlines()
     character_id = int(lines[0])
@@ -43,7 +43,24 @@ def getInfos():
     except ApiException as e:
         print("Exception when calling CharacterApi->get_characters_character_id_standings: %s\n" % e)
 
+def getWallet():
+    with open('user.txt') as f:
+        lines = f.readlines()
+    character_id = int(lines[0])
+    access_token = lines[1]
 
+    wallet_api = swagger_client.WalletApi()
+
+    wallet_api.api_client.set_default_header(service.config.ESI_USER_AGENT,
+                'https://github.com/Kyria/EsiPy')  # Set a relevant user agent so we know which software is actually using ESI
+    wallet_api.api_client.host = "esi.evetech.net"
+    wallet_api.api_client.configuration.access_token = access_token  # fill in your access token here
+
+    try:
+        wallet = wallet_api.get_characters_character_id_wallet(character_id)
+        print("Balance: "+str(wallet))
+    except ApiException as e:
+        print("Exception when calling WalletApi->get_characters_character_id_wallet: %s\n" % e)
 
 
 if __name__ == "__main__":
@@ -57,12 +74,14 @@ if __name__ == "__main__":
             print("Available Commands:\n"
                   "help: see this help\n"
                   "login: Login to your Eve Account to get rights\n"
-                  "get: get some infos after login\n"
+                  "standings: get list of standings after login\n"
                   "exit: Exit Program")
         elif command == "login":
             service.esi.login()
 
-        elif command == "get":
-            getInfos()
+        elif command == "standings":
+            getStandings()
+        elif command == "wallet":
+            getWallet()
         elif command == "exit":
             break
