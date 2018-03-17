@@ -5,6 +5,7 @@ import urllib.parse
 
 import threading
 import service
+import config
 
 HTML = '''
 <!DOCTYPE html>
@@ -12,7 +13,7 @@ HTML = '''
 
 <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-    <title>pymon Local Server</title>
+    <title>''' + config.APP_NAME + ''' Local Server</title>
     <style type="text/css">
         body {{ text-align: center; padding: 150px; }}
         h1 {{ font-size: 40px; }}
@@ -28,7 +29,7 @@ HTML = '''
 
 <!-- Layout from Short Circuit's CREST login. Shout out! https://github.com/farshield/shortcircuit -->
 <div id="article">
-    <h1>pymon</h1>
+    <h1>''' + config.APP_NAME + '''</h1>
     {0}
 </div>
 

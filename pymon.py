@@ -1,12 +1,10 @@
 from __future__ import print_function
 
 import service.esi
-import service.config
+import config
 import swagger_client
 from swagger_client.rest import ApiException
-from swagger_client import Configuration
 
-import time
 from pprint import pprint
 
 def getAlliance():
@@ -32,7 +30,7 @@ def getStandings():
     access_token = lines[1]
 
     api = swagger_client.CharacterApi()
-    api.api_client.set_default_header(service.config.ESI_USER_AGENT,
+    api.api_client.set_default_header(config.ESI_USER_AGENT,
                 'https://github.com/Kyria/EsiPy')  # Set a relevant user agent so we know which software is actually using ESI
     api.api_client.host = "esi.evetech.net"
     api.api_client.configuration.access_token = access_token  # fill in your access token here
@@ -51,7 +49,7 @@ def getWallet():
 
     wallet_api = swagger_client.WalletApi()
 
-    wallet_api.api_client.set_default_header(service.config.ESI_USER_AGENT,
+    wallet_api.api_client.set_default_header(config.ESI_USER_AGENT,
                 'https://github.com/Kyria/EsiPy')  # Set a relevant user agent so we know which software is actually using ESI
     wallet_api.api_client.host = "esi.evetech.net"
     wallet_api.api_client.configuration.access_token = access_token  # fill in your access token here

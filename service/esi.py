@@ -2,18 +2,13 @@ from service.callback_server import StoppableHTTPServer, AuthHandler
 
 from datetime import datetime
 
-from service.esipy import App
-from service.esipy import EsiClient
-from service.esipy import EsiSecurity
+from service.esipy.app import App
+from service.esipy.client import EsiClient
+from service.esipy.security import EsiSecurity
 from service.esipy.exceptions import APIException
 
-import swagger_client
-from swagger_client.rest import ApiException
-from swagger_client import Configuration
-from pprint import pprint
-
 import webbrowser
-import service.config
+import config
 import hashlib
 import hmac
 import logging
@@ -74,21 +69,21 @@ class User():
 # ESIPY Init
 # -----------------------------------------------------------------------
 # create the app
-esiapp = App.create(service.config.ESI_SWAGGER_JSON)
+esiapp = App.create(config.ESI_SWAGGER_JSON)
 
 # init the security object
 esisecurity = EsiSecurity(
     app=esiapp,
-    redirect_uri=service.config.ESI_CALLBACK,
-    client_id=service.config.ESI_CLIENT_ID,
-    secret_key=service.config.ESI_SECRET_KEY,
+    redirect_uri=config.ESI_CALLBACK,
+    client_id=config.ESI_CLIENT_ID,
+    secret_key=config.ESI_SECRET_KEY,
 )
 
 # init the client
 esiclient = EsiClient(
     security=esisecurity,
     cache=None,
-    headers={'User-Agent': service.config.ESI_USER_AGENT}
+    headers={'User-Agent': config.ESI_USER_AGENT}
 )
 
 
@@ -101,7 +96,7 @@ def generate_token():
     rand = random.SystemRandom()
     random_string = ''.join(rand.choice(chars) for _ in range(40))
     return hmac.new(
-        service.config.SECRET_KEY.encode(),
+        config.SECRET_KEY.encode(),
         random_string,
         hashlib.sha256
     ).hexdigest()
@@ -162,7 +157,7 @@ class esi():
             self.stopServer()
             time.sleep(1)
             # we need this to ensure that the previous get_request finishes, and then the socket will close
-        self.httpd = StoppableHTTPServer((service.config.HOST, service.config.PORT), AuthHandler)
+        self.httpd = StoppableHTTPServer((config.HOST, config.PORT), AuthHandler)
 
         self.serverThread = threading.Thread(target=self.httpd.serve, args=(self.callback,))
         self.serverThread.name = "ESIServer"
