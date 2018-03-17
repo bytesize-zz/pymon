@@ -187,6 +187,8 @@ class esi():
         # we get the character informations
         cdata = esisecurity.verify()
         print(cdata)
+        print("\n")
+        print(auth_response)
         # if the user is already authed, we log him out
 
         # now we check in database, if the user exists
