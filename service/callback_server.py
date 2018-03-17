@@ -1,3 +1,4 @@
+#https://github.com/pyfa-org/Pyfa/tree/master/service/server.py
 import http.server
 import socket
 import urllib.parse
@@ -79,7 +80,6 @@ class AuthHandler(http.server.BaseHTTPRequestHandler):
         try:
             if step2:
                 self.server.callback(parts)
-                token = str(parts['code'][0])
                 print("Successfully logged into ESI.\n")
                 msg = "If you see this message then it means you should be logged into ESI. You may close this window and return to the application."
             else:

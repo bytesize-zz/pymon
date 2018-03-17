@@ -10,9 +10,9 @@ from service.esipy.exceptions import APIException
 import swagger_client
 from swagger_client.rest import ApiException
 from swagger_client import Configuration
+from pprint import pprint
 
 import webbrowser
-import requests
 import service.config
 import hashlib
 import hmac
@@ -63,12 +63,12 @@ class User():
     def update_token(self, token_response):
         """ helper function to update token data from SSO response """
         self.access_token = token_response['access_token']
-        Configuration().access_token = token_response['access_token']
         self.access_token_expires = datetime.fromtimestamp(
             time.time() + token_response['expires_in'],
         )
         if 'refresh_token' in token_response:
             self.refresh_token = token_response['refresh_token']
+
 
 # -----------------------------------------------------------------------
 # ESIPY Init
@@ -113,7 +113,8 @@ def login():
     # requests.session['token'] = token
     server = esi()
     server.startServer()
-    return webbrowser.open(esisecurity.get_auth_uri(scopes=['esi-characters.read_standings.v1']))
+    return webbrowser.open(esisecurity.get_auth_uri(scopes=['esi-characters.read_standings.v1',
+                                                            'esi-wallet.read_character_wallet.v1']))
 
 
 
@@ -186,9 +187,7 @@ class esi():
 
         # we get the character informations
         cdata = esisecurity.verify()
-        print(cdata)
-        print("\n")
-        print(auth_response)
+
         # if the user is already authed, we log him out
 
         # now we check in database, if the user exists
@@ -202,5 +201,11 @@ class esi():
         user.character_name = cdata['CharacterName']
         user.update_token(auth_response)
 
+       # getInfos(user)
+
+        file = open("user.txt", "w")
+        file.truncate()
+        file.write(str(cdata['CharacterID'])+"\n")
+        file.write(str(auth_response['access_token']))
         # now the user is ready, so update/create it and log the user
 

@@ -51,6 +51,7 @@ class CharacterApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
+
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
             return self.get_characters_character_id_with_http_info(character_id, **kwargs)  # noqa: E501
@@ -1321,6 +1322,7 @@ class CharacterApi(object):
         all_params.append('_request_timeout')
 
         params = locals()
+
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
