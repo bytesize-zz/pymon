@@ -74,12 +74,13 @@ class AuthHandler(http.server.BaseHTTPRequestHandler):
         parts = urllib.parse.parse_qs(parsed_path.query)
         msg = ""
 
+        # print(parts)
         step2 = 'step' in parts
         try:
             if step2:
-                #self.server.callback(parts)
+                self.server.callback(parts)
                 token = str(parts['code'][0])
-                print("Successfully logged into ESI.")
+                print("Successfully logged into ESI.\n")
                 msg = "If you see this message then it means you should be logged into ESI. You may close this window and return to the application."
             else:
                 # For implicit mode, we have to serve up the page which will take the hash and redirect useing a querystring
@@ -128,7 +129,7 @@ class StoppableHTTPServer(http.server.HTTPServer):
                 pass
 
     def stop(self):
-        print("Setting CREST server to stop.")
+        print("Setting ESI server to stop.")
         self.run = False
 
     def handle_timeout(self):

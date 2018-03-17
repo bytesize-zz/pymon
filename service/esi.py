@@ -7,6 +7,10 @@ from service.esipy import EsiClient
 from service.esipy import EsiSecurity
 from service.esipy.exceptions import APIException
 
+import swagger_client
+from swagger_client.rest import ApiException
+from swagger_client import Configuration
+
 import webbrowser
 import requests
 import service.config
@@ -59,6 +63,7 @@ class User():
     def update_token(self, token_response):
         """ helper function to update token data from SSO response """
         self.access_token = token_response['access_token']
+        Configuration().access_token = token_response['access_token']
         self.access_token_expires = datetime.fromtimestamp(
             time.time() + token_response['expires_in'],
         )
@@ -167,23 +172,21 @@ class esi():
     def callback(self, parts):
         """ This is where the user comes after he logged in SSO """
         # get the code from the login process
-        code = parts.args.get('code')
-        token = parts.args.get('state')
+        code = str(parts['code'][0])
+        # token = str(parts['code'][0])
 
         # compare the state with the saved token for CSRF check
-        sess_token = requests.session.pop('token', None)
-        if sess_token is None or token is None or token != sess_token:
-            return 'Login EVE Online SSO failed: Session Token Mismatch', 403
 
         # now we try to get tokens
         try:
             auth_response = esisecurity.auth(code)
+            # print(auth_response)
         except APIException as e:
-            return 'Login EVE Online SSO failed: %s' % e, 403
+            return print('Login EVE Online SSO failed: %s' % e)
 
         # we get the character informations
         cdata = esisecurity.verify()
-
+        print(cdata)
         # if the user is already authed, we log him out
 
         # now we check in database, if the user exists
