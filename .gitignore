@@ -1,2 +1,4 @@
 user.txt
 *.xml
+*.xml
+*.pyc

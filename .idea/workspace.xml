@@ -2,595 +2,395 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb943282-7a5b-4ba5-aaa7-c1568789f559" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/gui/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/gui/mainframe.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pymon_app.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/gui/ui_files/pymon.ui" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/gui/widgets/characterFrame.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/gui/widgets/mainMenuBar.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/gui/widgets/overviewFrame.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/gui/widgets/progressbar.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/gui/widgets/tabwidget.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test.py" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/pymon.iml" afterPath="$PROJECT_DIR$/.idea/pymon.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
+      <change beforePath="$PROJECT_DIR$/gui/mainframe.py" afterPath="$PROJECT_DIR$/gui/mainwindow.py" />
+      <change beforePath="$PROJECT_DIR$/gui/pymon.ui" afterPath="" />
       <change beforePath="$PROJECT_DIR$/pymon.py" afterPath="$PROJECT_DIR$/pymon.py" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/service/callback_server.py" afterPath="$PROJECT_DIR$/service/callback_server.py" />
-      <change beforePath="$PROJECT_DIR$/service/config.py" afterPath="$PROJECT_DIR$/config.py" />
-      <change beforePath="$PROJECT_DIR$/service/esi.py" afterPath="$PROJECT_DIR$/service/esi.py" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Logbook-1.3.0.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Logbook-1.3.0.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Logbook-1.3.0.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Logbook-1.3.0.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Logbook-1.3.0.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Logbook-1.3.0.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Logbook-1.3.0.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/beautifulsoup4-4.6.0.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/beautifulsoup4-4.6.0.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/beautifulsoup4-4.6.0.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/beautifulsoup4-4.6.0.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/beautifulsoup4-4.6.0.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/beautifulsoup4-4.6.0.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/beautifulsoup4-4.6.0.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/builder/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/builder/_html5lib.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/builder/_htmlparser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/builder/_lxml.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/dammit.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/diagnose.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/element.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/testing.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/test_builder_registry.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/test_docs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/test_html5lib.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/test_htmlparser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/test_lxml.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/test_soup.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/bs4/tests/test_tree.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/chardet-3.0.4.dist-info/RECORD" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/chardet-3.0.4.dist-info/RECORD" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/easy-install.pth" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/easy-install.pth" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/__version__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/_fallback.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/_speedups.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/_termcolors.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/base.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/concurrency.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/handlers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/helpers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/more.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/notifiers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/queues.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/ticketing.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/logbook/utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2-2.3.5.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2-2.3.5.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2-2.3.5.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2-2.3.5.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2-2.3.5.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2-2.3.5.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2-2.3.5.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/markdown2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman-2.0.0.dist-info/zip-safe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/roman.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools-28.8.0-py3.6.egg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools.pth" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/__version__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_adv.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_aui.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_core.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_dataview.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_glcanvas.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_grid.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_html.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_html2.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_media.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_msw.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_propgrid.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_ribbon.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_richtext.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_stc.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_xml.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/_xrc.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/adv.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/adv.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/aui.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/aui.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/core.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/core.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/dataview.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/dataview.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/glcanvas.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/glcanvas.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/grid.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/grid.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/html.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/html.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/html2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/html2.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/iconv.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/CDate.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ClickableHtmlWindow.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/activex.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/activexwrapper.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/advancedsplash.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aquabutton.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/artmanager.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/aui_constants.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/aui_switcherdialog.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/aui_utilities.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/auibar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/auibook.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/dockart.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/framemanager.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/tabart.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/aui/tabmdi.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/balloontip.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/buttonpanel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/cubecolourdialog.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/customtreectrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_1_thumb.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_2_thumb.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_3_thumb.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_4.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/ShortcutEditor_4_thumb.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/data/default_help_text.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/flatmenu.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/flatnotebook.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/floatspin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/fmcustomizedlg.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/fmresources.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/foldpanelbar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/fourwaysplitter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/genericmessagedialog.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/gradientbutton.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/hyperlink.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/hypertreelist.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/infobar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/knobctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/labelbook.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/multidirdialog.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/peakmeter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/persist/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/persist/persist_constants.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/persist/persist_handlers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/persist/persistencemanager.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/piectrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/pybusyinfo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/pycollapsiblepane.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/pygauge.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/pyprogress.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/art.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/art_aui.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/art_default.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/art_internal.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/art_msw.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/art_osx.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/bar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/buttonbar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/control.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/gallery.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/page.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/panel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ribbon/toolbar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/rulerctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/shapedbutton.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/shortcuteditor.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/speedmeter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/supertooltip.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/thumbnailctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/toasterbox.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/ultimatelistctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/xlsgrid.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/agw/zoombar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/analogclock.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/helpers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/lib_setup/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/lib_setup/buttontreectrlpanel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/lib_setup/fontselect.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/setup.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/analogclock/styles.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/anchors.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/art/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/art/flagart.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/art/img2pyartprov.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/busy.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/buttons.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/calendar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourchooser/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourchooser/canvas.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourchooser/intl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourchooser/pycolourbox.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourchooser/pycolourchooser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourchooser/pycolourslider.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourchooser/pypalette.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourdb.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourselect.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/colourutils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/combotreebox.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/delayedresult.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/dialogs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/docview.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/dragscroller.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/editor/README.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/editor/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/editor/editor.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/editor/images.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/editor/selection.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/embeddedimage.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/eventStack.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/eventwatcher.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/evtmgr.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/expando.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/fancytext.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/filebrowsebutton.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/flashwin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/flashwin_old.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatbar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/FCEvents.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/FCObjects.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/FloatCanvas.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/GUIMode.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/NavCanvas.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/Resources.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/ScreenShot.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/Utilities/BBox.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/Utilities/Colors.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/Utilities/GUI.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/Utilities/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/floatcanvas/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/foldmenu.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/gestures.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/graphics.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/gridmovers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/iewin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/iewin_old.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/imagebrowser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/imageutils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/infoframe.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/inspection.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/intctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/itemspicker.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/langlistctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/layoutf.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/combobox.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/ctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/ipaddrctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/maskededit.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/numctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/textctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/masked/timectrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/grid.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/gridlabelrenderer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/imagelist.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/inspection.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/listctrl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/rubberband.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/mixins/treemixin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/msgpanel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/multisash.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/myole4ax.idl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/myole4ax.tlb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/newevent.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/nvdlg.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/basic.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/bmpshape.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/canvas.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/composit.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/diagram.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/divided.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/drawn.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/lines.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ogl/oglmisc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/ArrowLeft.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/ArrowRight.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/DirectionH.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/DirectionV.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/PlayerFirst.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/PlayerLast.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/PlayerNext.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/PlayerPrev.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/Printer.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/ReadMe.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/Save.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/ZoomIn.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/ZoomOut.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/bitmaps/encode_bitmaps.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/buttonpanel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/images.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfviewer/viewer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfwin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pdfwin_old.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/platebtn.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/CHANGELOG.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/__main__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/examples/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/examples/demo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/examples/simple_example.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/plotcanvas.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/polyobjects.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/plot/utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/popupctl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/printout.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/progressindicator.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/LICENSE_BSD_Simple.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/README.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/README_WxPython.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/RELEASE_NOTES.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/arg1/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/arg1/listenerimpl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/arg1/publisher.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/arg1/publishermixin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/arg1/topicargspecimpl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/arg1/topicmgrimpl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/callables.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/imp2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/itopicdefnprovider.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/kwargs/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/kwargs/datamsg.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/kwargs/listenerimpl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/kwargs/publisher.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/kwargs/publishermixin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/kwargs/topicargspecimpl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/kwargs/topicmgrimpl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/listener.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/listenerbase.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/notificationmgr.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/publisherbase.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/topicargspec.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/topicdefnprovider.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/topicexc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/topicmgr.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/topicobj.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/topictreetraverser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/topicutils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/treeconfig.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/validatedefnargs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/core/weakmethod.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/README.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/arg1_listeners.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/arg1_senders.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/arg1_topics.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/arg1_topics_out.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/exchandle.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/kwargs_listeners.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/kwargs_senders.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/kwargs_topics.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/kwargs_topics_out.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/main_arg1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/main_kwargs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/advanced/notifhandle.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_arg1/README.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_arg1/console_listeners.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_arg1/console_main.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_arg1/console_senders.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_arg1/wx_main.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_kwargs/README.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_kwargs/console_listeners.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_kwargs/console_main.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_kwargs/console_senders.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_kwargs/wx_main.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_kwargs/wx_win1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/basic_kwargs/wx_win2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/multithreadloop.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/runall.bat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/examples/runall_regression.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/policies.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/pub.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/py2and3.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/setuparg1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/setupkwargs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/utils/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/utils/exchandling.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/utils/misc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/utils/notification.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/utils/topictreeprinter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pubsub/utils/xmltopicdefnprovider.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/pydocview.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/rcsizer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/resizewidget.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/scrolledpanel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/sheet.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/sized_controls.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/softwareupdate.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/splitter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/statbmp.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/stattext.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/throbber.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ticker.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/ticker_xrc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/wordwrap.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/wxcairo/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/wxcairo/wx_cairocffi.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/wxcairo/wx_pycairo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/lib/wxpTag.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/libcairo-2.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/libfontconfig-1.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/libfreetype-6.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/libpixman-1-0.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/libpng16-16.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/libxml2-2.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/af/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/an/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ar/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ca/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ca@valencia/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/cs/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/da/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/de/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/el/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/es/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/eu/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/fi/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/fr/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/gl_ES/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/hi/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/hu/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/id/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/it/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ja/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ko_KR/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/lt/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/lv/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ms/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/nb/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ne/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/nl/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/pl/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/pt/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/pt_BR/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ro/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ru/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/sk/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/sl/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/sq/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/sv/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/ta/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/tr/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/uk/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/vi/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/zh_CN/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/locale/zh_TW/LC_MESSAGES/wxstd.mo" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/media.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/media.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/msvcp140.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/msw.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/msw.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/propgrid.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/propgrid.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/CHANGES.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/Py.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyAlaCarte.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyAlaMode.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyAlaModeTest.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyCrust.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyCrust.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyCrust_16.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyCrust_32.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyFilling.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyShell.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PySlices.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PySlices.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PySlicesShell.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PySlices_16.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PySlices_32.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/PyWrap.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/README.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/buffer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/crust.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/crustslices.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/dispatcher.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/document.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/editor.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/editwindow.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/filling.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/frame.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/images.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/interpreter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/introspect.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/magic.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/parse.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/path.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/pseudo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/shell.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/sliceshell.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/tests/test_interpreter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/tests/test_introspect.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/tests/test_pseudo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/tests/test_version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/tests/testall.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/py/version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/ribbon.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/ribbon.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/richtext.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/richtext.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/siplib.cp36-win_amd64.pyd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/stc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/stc.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/dbg.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/genaxmodule.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/helpviewer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/img2img.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/img2png.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/img2py.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/img2xpm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/pywxrc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/wxget.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/tools/wxget_docs_demo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/vcruntime140.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/webkit.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/webkit.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxbase30u_net_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxbase30u_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxbase30u_xml_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_adv_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_aui_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_core_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_gl_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_html_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_media_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_propgrid_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_qa_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_ribbon_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_richtext_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_stc_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_webview_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/wxmsw30u_xrc_vc140_x64.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/xml.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/xml.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/xrc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/xrc.pyi" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wx/zlib1.dll" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/entry_points.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/wxPython-4.0.0b2.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/chardetect.exe" afterPath="$PROJECT_DIR$/venv/Scripts/chardetect.exe" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-3.6-script.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-3.6.exe" afterPath="$PROJECT_DIR$/venv/Scripts/easy_install-3.6.exe" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-script.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install.exe" afterPath="$PROJECT_DIR$/venv/Scripts/easy_install.exe" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/helpviewer.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/img2png.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/img2py.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/img2xpm.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/markdown2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pycrust.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pyshell.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pyslices.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pyslicesshell.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pywxrc.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/wxdemo.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/wxdocs.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/wxget.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/alliance_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/assets_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/bookmarks_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/calendar_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/character_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/clones_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/contacts_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/contracts_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/corporation_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/dogma_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/faction_warfare_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/fittings_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/fleets_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/incursions_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/industry_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/insurance_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/killmails_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/location_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/loyalty_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/mail_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/market_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/opportunities_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/planetary_interaction_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/routes_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/search_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/skills_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/sovereignty_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/status_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/universe_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/user_interface_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/wallet_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api/wars_api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/api_client.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/configuration.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/delete_characters_character_id_mail_labels_label_id_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/delete_fleets_fleet_id_members_member_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/delete_fleets_fleet_id_squads_squad_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/delete_fleets_fleet_id_wings_wing_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/forbidden.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_alliances_alliance_id_contacts_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_alliances_alliance_id_icons_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_alliances_alliance_id_icons_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_alliances_alliance_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_alliances_alliance_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_alliances_names_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_agents_research_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_assets_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_attributes_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_blueprints_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_bookmarks_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_bookmarks_coordinates.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_bookmarks_folders_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_bookmarks_item.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_calendar_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_calendar_event_id_attendees_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_calendar_event_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_chat_channels_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_chat_channels_allowed.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_chat_channels_blocked.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_chat_channels_muted.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_chat_channels_operator.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_clones_home_location.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_clones_jump_clone.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_clones_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_contacts_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_contacts_labels_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_contracts_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_contracts_contract_id_bids_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_contracts_contract_id_items_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_corporationhistory_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fatigue_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fittings_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fittings_item.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fleet_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fleet_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fw_stats_kills.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fw_stats_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_fw_stats_victory_points.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_industry_jobs_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_killmails_recent_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_location_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_loyalty_points_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_labels_label.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_labels_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_lists_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_mail_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_mail_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_mail_id_recipient.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mail_recipient.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_medals_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_medals_graphic.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_mining_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_notifications_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_notifications_contacts_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_online_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_opportunities_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_orders_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_orders_history_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_content.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_extractor_details.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_factory_details.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_head.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_link.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_pin.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_planets_planet_id_route.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_portrait_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_portrait_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_roles_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_search_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_ship_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_skillqueue_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_skills_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_skills_skill.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_standings_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_character.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_combat.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_industry.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_inventory.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_isk.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_market.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_mining.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_module.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_orbital.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_pve.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_social.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_stats_travel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_titles_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_wallet_journal_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_wallet_journal_extra_info.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_character_id_wallet_transactions_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_characters_names_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporation_corporation_id_mining_extractions_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporation_corporation_id_mining_observers_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporation_corporation_id_mining_observers_observer_id_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_alliancehistory_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_assets_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_blueprints_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_bookmarks_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_bookmarks_coordinates.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_bookmarks_folders_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_bookmarks_item.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_contacts_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_containers_logs_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_contracts_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_contracts_contract_id_bids_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_contracts_contract_id_items_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_customs_offices_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_divisions_hangar.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_divisions_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_divisions_wallet.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_facilities_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_fw_stats_kills.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_fw_stats_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_fw_stats_victory_points.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_icons_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_icons_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_industry_jobs_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_killmails_recent_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_medals_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_medals_issued_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_members_titles_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_membertracking_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_orders_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_orders_history_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_outposts_outpost_id_coordinates.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_outposts_outpost_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_outposts_outpost_id_service.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_roles_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_roles_history_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_shareholders_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_standings_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_starbases_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_starbases_starbase_id_fuel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_starbases_starbase_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_structures_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_structures_service.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_titles_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_wallets_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_wallets_division_journal_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_wallets_division_journal_extra_info.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_corporation_id_wallets_division_transactions_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_corporations_names_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_dogma_attributes_attribute_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_dogma_attributes_attribute_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_dogma_effects_effect_id_modifier.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_dogma_effects_effect_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_dogma_effects_effect_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fleets_fleet_id_members_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fleets_fleet_id_members_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fleets_fleet_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fleets_fleet_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fleets_fleet_id_wings_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fleets_fleet_id_wings_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fleets_fleet_id_wings_squad.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_active_total.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_active_total_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_active_total.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_active_total_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_kills.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_last_week.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_last_week_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_victory_points.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_yesterday.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_characters_yesterday_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_active_total.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_active_total_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_kills.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_last_week.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_last_week_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_victory_points.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_yesterday.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_corporations_yesterday_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_kills.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_last_week.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_last_week_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_victory_points.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_yesterday.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_leaderboards_yesterday_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_stats_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_stats_kills.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_stats_victory_points.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_systems_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_fw_wars_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_incursions_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_industry_facilities_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_industry_systems_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_industry_systems_cost_indice.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_insurance_prices_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_insurance_prices_level.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_killmails_killmail_id_killmail_hash_attacker.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_killmails_killmail_id_killmail_hash_item.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_killmails_killmail_id_killmail_hash_item_1.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_killmails_killmail_id_killmail_hash_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_killmails_killmail_id_killmail_hash_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_killmails_killmail_id_killmail_hash_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_killmails_killmail_id_killmail_hash_victim.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_loyalty_stores_corporation_id_offers_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_loyalty_stores_corporation_id_offers_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_loyalty_stores_corporation_id_offers_required_item.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_groups_market_group_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_groups_market_group_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_prices_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_region_id_history_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_region_id_history_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_region_id_orders_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_region_id_orders_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_markets_structures_structure_id_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_opportunities_groups_group_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_opportunities_tasks_task_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_route_origin_destination_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_search_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_sovereignty_campaigns_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_sovereignty_campaigns_participant.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_sovereignty_map_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_sovereignty_structures_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_status_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_ancestries_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_bloodlines_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_categories_category_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_categories_category_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_constellations_constellation_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_constellations_constellation_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_constellations_constellation_id_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_factions_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_graphics_graphic_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_graphics_graphic_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_groups_group_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_groups_group_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_moons_moon_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_moons_moon_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_moons_moon_id_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_planets_planet_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_planets_planet_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_planets_planet_id_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_races_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_regions_region_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_regions_region_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_schematics_schematic_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_schematics_schematic_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stargates_stargate_id_destination.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stargates_stargate_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stargates_stargate_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stargates_stargate_id_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stars_star_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stations_station_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stations_station_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_stations_station_id_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_structures_structure_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_structures_structure_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_structures_structure_id_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_system_jumps_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_system_kills_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_systems_system_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_systems_system_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_systems_system_id_planet.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_systems_system_id_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_types_type_id_dogma_attribute.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_types_type_id_dogma_effect.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_types_type_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_universe_types_type_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_wars_war_id_aggressor.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_wars_war_id_ally.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_wars_war_id_defender.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_wars_war_id_killmails_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_wars_war_id_killmails_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_wars_war_id_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/get_wars_war_id_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/internal_server_error.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_affiliation_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_affiliation_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_assets_locations_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_assets_locations_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_assets_names_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_fittings_created.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_fittings_fitting.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_fittings_item.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_mail_bad_request.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_mail_labels_label.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_mail_mail.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_characters_character_id_mail_recipient.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_corporations_corporation_id_assets_locations_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_corporations_corporation_id_assets_locations_position.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_corporations_corporation_id_assets_names_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_fleets_fleet_id_members_invitation.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_fleets_fleet_id_members_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_fleets_fleet_id_members_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_fleets_fleet_id_wings_created.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_fleets_fleet_id_wings_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_fleets_fleet_id_wings_wing_id_squads_created.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_fleets_fleet_id_wings_wing_id_squads_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_ui_openwindow_newmail_new_mail.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_ui_openwindow_newmail_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_agent.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_alliance.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_character.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_constellation.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_corporation.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_faction.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_inventory_type.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_region.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_service_unavailable.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_station.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_ids_system.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_names_200_ok.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/post_universe_names_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_characters_character_id_calendar_event_id_response.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_characters_character_id_mail_mail_id_bad_request.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_characters_character_id_mail_mail_id_contents.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_bad_request.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_members_member_id_movement.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_members_member_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_members_member_id_unprocessable_entity.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_new_settings.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_squads_squad_id_naming.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_squads_squad_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_wings_wing_id_naming.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/models/put_fleets_fleet_id_wings_wing_id_not_found.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/swagger_client/rest.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -601,10 +401,13 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/pymon$pymon_app.coverage" NAME="pymon_app Coverage Results" MODIFIED="1521313485373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pymon$mainframe.coverage" NAME="mainframe Coverage Results" MODIFIED="1521310405626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/pymon$mainWindow.coverage" NAME="mainWindow Coverage Results" MODIFIED="1521402304356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/pymon$mainframe.coverage" NAME="mainframe Coverage Results" MODIFIED="1521374860426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/pymon$output.coverage" NAME="output Coverage Results" MODIFIED="1521374896453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
     <SUITE FILE_PATH="coverage/pymon$setup.coverage" NAME="setup Coverage Results" MODIFIED="1521232227650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/service" />
     <SUITE FILE_PATH="coverage/pymon$kivytest.coverage" NAME="kivytest Coverage Results" MODIFIED="1521296761251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
-    <SUITE FILE_PATH="coverage/pymon$pymon.coverage" NAME="pymon Coverage Results" MODIFIED="1521312400020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pymon$pymon.coverage" NAME="pymon Coverage Results" MODIFIED="1521498663974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pymon$test.coverage" NAME="test Coverage Results" MODIFIED="1521390208873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/pymon$pymon_wxapp.coverage" NAME="pymon_wxapp Coverage Results" MODIFIED="1521310504144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
@@ -622,7 +425,54 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="tabwidget.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/widgets/tabwidget.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overviewFrame.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/widgets/overviewFrame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="characterFrame.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/widgets/characterFrame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainwindow.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gui/mainwindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="545">
+              <caret line="156" column="44" lean-forward="true" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
+              <folding>
+                <element signature="e#86#95#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -650,19 +500,33 @@
         <option value="$PROJECT_DIR$/swagger_client/api/character_api.py" />
         <option value="$PROJECT_DIR$/swagger_client/api_client.py" />
         <option value="$PROJECT_DIR$/venv/pymon_app.py" />
-        <option value="$PROJECT_DIR$/pymon.py" />
         <option value="$PROJECT_DIR$/GUI/mainframe.py" />
         <option value="$PROJECT_DIR$/gui/__init__.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/gui/pivytest.py" />
         <option value="$PROJECT_DIR$/gui/kivytest.py" />
-        <option value="$PROJECT_DIR$/gui/mainframe.py" />
         <option value="$PROJECT_DIR$/pymon_wxapp.py" />
         <option value="$PROJECT_DIR$/service/config.py" />
         <option value="$PROJECT_DIR$/service/esi.py" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/service/callback_server.py" />
         <option value="$PROJECT_DIR$/pymon_app.py" />
+        <option value="$PROJECT_DIR$/gui/mainframe.py" />
+        <option value="$PROJECT_DIR$/venv/test.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/dockwidget.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/progressbar.py" />
+        <option value="$PROJECT_DIR$/gui/mainWindow.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/mainwindow.py" />
+        <option value="$PROJECT_DIR$/pymon.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/mainmenu.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/mainMenuBar.py" />
+        <option value="$PROJECT_DIR$/gui/output.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/overviewTab.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/characterTab.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/overviewFrame.py" />
+        <option value="$PROJECT_DIR$/gui/widgets/tabwidget.py" />
+        <option value="$PROJECT_DIR$/gui/mainwindow.py" />
       </list>
     </option>
   </component>
@@ -673,8 +537,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="210" />
-    <option name="y" value="19" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
@@ -716,6 +580,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -732,7 +597,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -744,6 +608,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bytesize.Masochist\PycharmProjects\pymon\gui\ui_files" />
+      <recent name="C:\Users\Bytesize.Masochist\PycharmProjects\pymon\gui" />
       <recent name="C:\Users\Bytesize.Masochist\PycharmProjects\pymon" />
     </key>
   </component>
@@ -759,8 +625,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pymon_app">
-    <configuration name="kivytest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.pymon">
+    <configuration name="mainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -773,7 +639,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="pymon" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui/kivytest.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui/mainWindow.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -798,6 +664,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="output" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/gui" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pymon" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui/output.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="pymon" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -817,39 +702,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="pymon_app" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="pymon" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pymon_app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="pymon_wxapp" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymon" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\Bytesize.Masochist\PycharmProjects\pymon\pymon_app.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Bytesize.Masochist\PycharmProjects\pymon\test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -857,18 +723,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.pymon" />
-      <item index="1" class="java.lang.String" itemvalue="Python.pymon_wxapp" />
-      <item index="2" class="java.lang.String" itemvalue="Python.kivytest" />
+      <item index="1" class="java.lang.String" itemvalue="Python.output" />
+      <item index="2" class="java.lang.String" itemvalue="Python.mainWindow" />
       <item index="3" class="java.lang.String" itemvalue="Python.mainframe" />
-      <item index="4" class="java.lang.String" itemvalue="Python.pymon_app" />
+      <item index="4" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.pymon_app" />
-        <item index="1" class="java.lang.String" itemvalue="Python.pymon" />
-        <item index="2" class="java.lang.String" itemvalue="Python.pymon_wxapp" />
-        <item index="3" class="java.lang.String" itemvalue="Python.mainframe" />
-        <item index="4" class="java.lang.String" itemvalue="Python.kivytest" />
+        <item index="0" class="java.lang.String" itemvalue="Python.pymon" />
+        <item index="1" class="java.lang.String" itemvalue="Python.mainWindow" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.output" />
+        <item index="4" class="java.lang.String" itemvalue="Python.mainframe" />
       </list>
     </recent_temporary>
   </component>
@@ -901,15 +767,14 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.49573562" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344086" sideWeight="0.52771854" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344086" sideWeight="0.53411514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.48933902" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344086" sideWeight="0.47228146" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344086" sideWeight="0.46588486" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.48081023" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14818764" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15458423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -919,6 +784,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
     </layout>
@@ -942,163 +808,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/service/esi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/esipy/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-          <folding>
-            <element signature="e#47#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/callback_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="146" column="37" lean-forward="true" selection-start-line="146" selection-start-column="37" selection-end-line="146" selection-end-column="37" />
-          <folding>
-            <element signature="e#64#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pymon_app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pymon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" column="49" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pymon_app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/mainframe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="50" lean-forward="false" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pymon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="60" lean-forward="false" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt" />
-    <entry file="file://$PROJECT_DIR$/service/esipy/security.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3842">
-          <caret line="237" column="29" lean-forward="true" selection-start-line="237" selection-start-column="29" selection-end-line="237" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/callback_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="76" column="10" lean-forward="false" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
-          <folding>
-            <element signature="e#64#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/esi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2873">
-          <caret line="190" column="27" lean-forward="false" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/service/requirements.txt" />
-    <entry file="file://$PROJECT_DIR$/service/esipy/cache.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/esipy/events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/service/setup.py" />
-    <entry file="file://$PROJECT_DIR$/service/esipy/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python36/Lib/hmac.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-555164436/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1113,22 +822,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/swagger_client/api/alliance_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/swagger_client/rest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="142" column="76" lean-forward="false" selection-start-line="142" selection-start-column="76" selection-end-line="142" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/api/alliance_api.py" />
+    <entry file="file://$PROJECT_DIR$/swagger_client/rest.py" />
     <entry file="file://$PROJECT_DIR$/service/esipy/security.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="949">
@@ -1136,13 +831,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/swagger_client/configuration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3604">
-          <caret line="221" column="30" lean-forward="false" selection-start-line="221" selection-start-column="30" selection-end-line="221" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/configuration.py" />
     <entry file="file://$PROJECT_DIR$/gui/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1150,31 +839,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/swagger_client/api/character_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#205#243#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/swagger_client/api/wallet_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/swagger_client/api_client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="497" column="0" lean-forward="false" selection-start-line="497" selection-start-column="0" selection-end-line="497" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/swagger_client/api/character_api.py" />
+    <entry file="file://$PROJECT_DIR$/swagger_client/api/wallet_api.py" />
+    <entry file="file://$PROJECT_DIR$/swagger_client/api_client.py" />
     <entry file="file://$PROJECT_DIR$/requirements.txt" />
     <entry file="file://$PROJECT_DIR$/../PyQt4_gpl_win-4.12.1/configure.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1239,17 +906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pymon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1257,33 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/mainframe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/esi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1291,21 +920,235 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="30" column="28" lean-forward="false" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa126188.37220/__init__.py" />
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/qtpy/uic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pyfa/pyfa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="36" />
           <folding>
-            <element signature="e#47#85#0" expanded="true" />
+            <element signature="e#86#95#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/widgets/progressbar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-555164436/PyQt5/QtWidgets/QMainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="174" column="18" lean-forward="false" selection-start-line="174" selection-start-column="18" selection-end-line="174" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-555164436/PyQt5/QtWidgets/QMenuBar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-555164436/PyQt5/QtWidgets/QMenu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="42" column="8" lean-forward="false" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/callback_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="2380">
           <caret line="146" column="37" lean-forward="false" selection-start-line="146" selection-start-column="37" selection-end-line="146" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/widgets/mainMenuBar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-555164436/PyQt5/QtWidgets/QAction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="279" column="8" lean-forward="false" selection-start-line="279" selection-start-column="8" selection-end-line="279" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.3/system/python_stubs/-555164436/PyQt5/QtWidgets/QWidgetAction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="78" column="8" lean-forward="false" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/ui_files/pymon.ui">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/ui_files/mainMenu.ui">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/ui_files/mainwindow.ui">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/esi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2362">
+          <caret line="34" column="7" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="40" selection-end-column="22" />
           <folding>
-            <element signature="e#64#82#0" expanded="true" />
+            <element signature="e#0#68#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pymon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="87" column="12" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#37#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/output.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1138">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/mainframe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="56" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/ui_files/compile_ui.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/widgets/characterFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/widgets/overviewFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/widgets/tabwidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="156" column="44" lean-forward="true" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
+          <folding>
+            <element signature="e#86#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

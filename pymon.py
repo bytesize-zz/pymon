@@ -1,11 +1,17 @@
 from __future__ import print_function
 
+from pprint import pprint
 import service.esi
 import config
 import swagger_client
 from swagger_client.rest import ApiException
 
-from pprint import pprint
+# gui imports
+from gui.mainwindow import GeneralMainDesign
+from PyQt5.QtWidgets import QApplication
+
+
+import sys
 
 def getAlliance():
     # create an instance of the API class
@@ -63,8 +69,12 @@ def getWallet():
 
 if __name__ == "__main__":
 
-    print("Welcome to pymon. Input command or help for help.")
+    app = QApplication(sys.argv)
+    mainwindow = GeneralMainDesign()
+    mainwindow.show()
+    sys.exit(app.exec_())
 
+    print("Welcome to pymon. Input command or help for help.")
     while True:
         command = input()
 

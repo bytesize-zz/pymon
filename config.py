@@ -41,3 +41,8 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 # ------------------------------------------------------
 # GUI Settings
 # ------------------------------------------------------
+
+GUI_MAIN_WINDOW_STANDARD_WIDTH = 960
+GUI_MAIN_WINDOW_STANDARD_HEIGHT = 720
+GUI_MAIN_WINDOW_MINIMUM_WIDTH = 544
+GUI_MAIN_WINDOW_MINIMUM_HEIGHT = 480
