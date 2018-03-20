@@ -1,8 +1,6 @@
-from PyQt5.QtWidgets import QTabWidget, QWidget, QFrame, QGridLayout, QLabel, QPushButton
-from PyQt5.QtGui import QFont
-from PyQt5.QtCore import QSize, QRect
-
+from PyQt5.QtWidgets import QTabWidget, QWidget, QGridLayout
 from gui.widgets.characterOverviewWidget import CharacterOverviewWidget
+from PyQt5 import QtCore
 
 class TabWidget(QTabWidget):
     def __init__(self, parent=None):
@@ -10,6 +8,8 @@ class TabWidget(QTabWidget):
 
         # Overview Tab
         self.createOverviewTab()
+
+
 
 
     def createOverviewTab(self):
@@ -20,10 +20,12 @@ class TabWidget(QTabWidget):
 
         # Hier Schleife einfügen: for each user createOverViewWidget(User)
         characterOverview1 = CharacterOverviewWidget(self)
-        button2 = QPushButton("name2")
+        # characterOverview1.installEventFilter(self)
+        characterOverview2 = CharacterOverviewWidget(self)
+        characterOverview3 = CharacterOverviewWidget(self)
         grid.addWidget(characterOverview1, 0, 0)
-        grid.addWidget(characterOverview1, 0, 1)
-        grid.addWidget(button2, 0, 2)
+        grid.addWidget(characterOverview2, 0, 1)
+        grid.addWidget(characterOverview3, 1, 0)
 
         self.overviewTab.setLayout(grid)
 
