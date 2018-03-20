@@ -1,34 +1,32 @@
-from PyQt5.QtWidgets import QTabWidget, QWidget, QFrame
+from PyQt5.QtWidgets import QTabWidget, QWidget, QFrame, QGridLayout, QLabel, QPushButton
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import QSize, QRect
 
-from gui.widgets.overviewFrame import OverviewFrame
+from gui.widgets.characterOverviewWidget import CharacterOverviewWidget
 
 class TabWidget(QTabWidget):
-    """Tab widget of related collection/s"""
-
     def __init__(self, parent=None):
         super(TabWidget, self).__init__(parent)
-        self.set_font()
 
         # Overview Tab
         self.createOverviewTab()
 
-        #self._retranslate_status_tips()
 
     def createOverviewTab(self):
         self.overviewTab = QWidget()
-        self.overviewFrame = QFrame()
         self.addTab(self.overviewTab, "Overview")
-        #self.overviewTab.addWidget(overviewFrame)
+
+        grid = QGridLayout(self.overviewTab)
+
+        # Hier Schleife einfügen: for each user createOverViewWidget(User)
+        characterOverview1 = CharacterOverviewWidget(self)
+        button2 = QPushButton("name2")
+        grid.addWidget(characterOverview1, 0, 0)
+        grid.addWidget(characterOverview1, 0, 1)
+        grid.addWidget(button2, 0, 2)
+
+        self.overviewTab.setLayout(grid)
 
     def createCharacterTab(self):
         self.characterTab = QWidget()
         self.addTab(self.characterTab, "Character Name")
-
-    def set_font(self):
-        font = QFont()
-        font.setPointSize(10)
-        self.setFont(font)
-
-    #def _retranslate_status_tips(self):
-        # self.tab_audio.setStatusTip("Audio collection of related culture...")

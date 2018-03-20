@@ -3,6 +3,7 @@ from __future__ import print_function
 from pprint import pprint
 import service.esi
 import config
+
 import swagger_client
 from swagger_client.rest import ApiException
 

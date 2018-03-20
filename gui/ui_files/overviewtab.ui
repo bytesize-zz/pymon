@@ -18,9 +18,12 @@
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>1011</width>
+     <width>1031</width>
      <height>791</height>
     </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -29,18 +32,32 @@
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>22</x>
-       <y>20</y>
-       <width>971</width>
-       <height>711</height>
+       <x>80</x>
+       <y>50</y>
+       <width>891</width>
+       <height>541</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="0,0">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetFixedSize</enum>
-      </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QWidget" name="widget" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>320</width>
+          <height>120</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="1">
-       <widget class="QWidget" name="widget" native="true"/>
+       <widget class="QWidget" name="widget_2" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>320</width>
+          <height>120</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
