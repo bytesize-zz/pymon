@@ -7,6 +7,7 @@ import threading
 import service
 import config
 
+
 HTML = '''
 <!DOCTYPE html>
 <html>
