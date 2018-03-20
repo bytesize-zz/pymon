@@ -1,9 +1,7 @@
 user.txt
 *.xml
-*.pyc
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
 *$py.class
 
 # C extensions
@@ -105,3 +103,18 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Icon
+Thumbs.db
+.tmtags
+.idea
+tags
+vendor.tags
+tmtagsHistory
+*.sublime-project
+*.sublime-workspace
+.bundle
