@@ -1,388 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb943282-7a5b-4ba5-aaa7-c1568789f559" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/gui/ui_files/overviewtab.ui" afterPath="$PROJECT_DIR$/gui/ui_files/overviewtab.ui" />
-      <change beforePath="$PROJECT_DIR$/gui/widgets/overviewFrame.py" afterPath="$PROJECT_DIR$/gui/widgets/characterOverviewWidget.py" />
-      <change beforePath="$PROJECT_DIR$/gui/widgets/tabwidget.py" afterPath="$PROJECT_DIR$/gui/widgets/tabwidget.py" />
-      <change beforePath="$PROJECT_DIR$/pymon.py" afterPath="$PROJECT_DIR$/pymon.py" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/alliance_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/assets_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/bookmarks_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/calendar_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/character_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/clones_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/contacts_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/contracts_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/corporation_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/dogma_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/faction_warfare_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/fittings_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/fleets_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/incursions_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/industry_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/insurance_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/killmails_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/location_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/loyalty_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/mail_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/market_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/opportunities_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/planetary_interaction_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/routes_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/search_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/skills_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/sovereignty_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/status_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/universe_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/user_interface_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/wallet_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api/wars_api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/api_client.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/configuration.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/delete_characters_character_id_mail_labels_label_id_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/delete_fleets_fleet_id_members_member_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/delete_fleets_fleet_id_squads_squad_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/delete_fleets_fleet_id_wings_wing_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/forbidden.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_alliances_alliance_id_contacts_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_alliances_alliance_id_icons_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_alliances_alliance_id_icons_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_alliances_alliance_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_alliances_alliance_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_alliances_names_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_agents_research_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_assets_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_attributes_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_blueprints_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_bookmarks_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_bookmarks_coordinates.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_bookmarks_folders_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_bookmarks_item.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_calendar_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_calendar_event_id_attendees_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_calendar_event_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_chat_channels_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_chat_channels_allowed.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_chat_channels_blocked.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_chat_channels_muted.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_chat_channels_operator.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_clones_home_location.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_clones_jump_clone.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_clones_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_contacts_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_contacts_labels_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_contracts_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_contracts_contract_id_bids_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_contracts_contract_id_items_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_corporationhistory_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fatigue_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fittings_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fittings_item.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fleet_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fleet_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fw_stats_kills.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fw_stats_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_fw_stats_victory_points.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_industry_jobs_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_killmails_recent_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_location_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_loyalty_points_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_labels_label.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_labels_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_lists_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_mail_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_mail_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_mail_id_recipient.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mail_recipient.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_medals_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_medals_graphic.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_mining_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_notifications_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_notifications_contacts_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_online_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_opportunities_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_orders_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_orders_history_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_content.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_extractor_details.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_factory_details.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_head.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_link.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_pin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_planets_planet_id_route.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_portrait_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_portrait_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_roles_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_search_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_ship_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_skillqueue_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_skills_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_skills_skill.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_standings_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_character.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_combat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_industry.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_inventory.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_isk.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_market.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_mining.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_module.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_orbital.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_pve.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_social.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_stats_travel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_titles_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_wallet_journal_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_wallet_journal_extra_info.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_character_id_wallet_transactions_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_characters_names_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporation_corporation_id_mining_extractions_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporation_corporation_id_mining_observers_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporation_corporation_id_mining_observers_observer_id_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_alliancehistory_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_assets_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_blueprints_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_bookmarks_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_bookmarks_coordinates.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_bookmarks_folders_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_bookmarks_item.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_contacts_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_containers_logs_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_contracts_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_contracts_contract_id_bids_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_contracts_contract_id_items_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_customs_offices_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_divisions_hangar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_divisions_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_divisions_wallet.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_facilities_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_fw_stats_kills.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_fw_stats_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_fw_stats_victory_points.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_icons_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_icons_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_industry_jobs_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_killmails_recent_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_medals_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_medals_issued_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_members_titles_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_membertracking_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_orders_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_orders_history_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_outposts_outpost_id_coordinates.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_outposts_outpost_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_outposts_outpost_id_service.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_roles_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_roles_history_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_shareholders_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_standings_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_starbases_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_starbases_starbase_id_fuel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_starbases_starbase_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_structures_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_structures_service.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_titles_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_wallets_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_wallets_division_journal_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_wallets_division_journal_extra_info.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_corporation_id_wallets_division_transactions_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_corporations_names_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_dogma_attributes_attribute_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_dogma_attributes_attribute_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_dogma_effects_effect_id_modifier.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_dogma_effects_effect_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_dogma_effects_effect_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fleets_fleet_id_members_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fleets_fleet_id_members_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fleets_fleet_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fleets_fleet_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fleets_fleet_id_wings_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fleets_fleet_id_wings_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fleets_fleet_id_wings_squad.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_active_total.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_active_total_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_active_total.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_active_total_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_kills.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_last_week.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_last_week_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_victory_points.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_yesterday.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_characters_yesterday_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_active_total.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_active_total_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_kills.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_last_week.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_last_week_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_victory_points.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_yesterday.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_corporations_yesterday_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_kills.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_last_week.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_last_week_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_victory_points.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_yesterday.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_leaderboards_yesterday_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_stats_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_stats_kills.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_stats_victory_points.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_systems_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_fw_wars_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_incursions_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_industry_facilities_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_industry_systems_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_industry_systems_cost_indice.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_insurance_prices_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_insurance_prices_level.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_killmails_killmail_id_killmail_hash_attacker.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_killmails_killmail_id_killmail_hash_item.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_killmails_killmail_id_killmail_hash_item_1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_killmails_killmail_id_killmail_hash_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_killmails_killmail_id_killmail_hash_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_killmails_killmail_id_killmail_hash_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_killmails_killmail_id_killmail_hash_victim.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_loyalty_stores_corporation_id_offers_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_loyalty_stores_corporation_id_offers_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_loyalty_stores_corporation_id_offers_required_item.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_groups_market_group_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_groups_market_group_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_prices_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_region_id_history_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_region_id_history_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_region_id_orders_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_region_id_orders_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_markets_structures_structure_id_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_opportunities_groups_group_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_opportunities_tasks_task_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_route_origin_destination_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_search_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_sovereignty_campaigns_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_sovereignty_campaigns_participant.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_sovereignty_map_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_sovereignty_structures_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_status_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_ancestries_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_bloodlines_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_categories_category_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_categories_category_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_constellations_constellation_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_constellations_constellation_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_constellations_constellation_id_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_factions_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_graphics_graphic_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_graphics_graphic_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_groups_group_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_groups_group_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_moons_moon_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_moons_moon_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_moons_moon_id_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_planets_planet_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_planets_planet_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_planets_planet_id_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_races_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_regions_region_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_regions_region_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_schematics_schematic_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_schematics_schematic_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stargates_stargate_id_destination.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stargates_stargate_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stargates_stargate_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stargates_stargate_id_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stars_star_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stations_station_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stations_station_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_stations_station_id_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_structures_structure_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_structures_structure_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_structures_structure_id_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_system_jumps_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_system_kills_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_systems_system_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_systems_system_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_systems_system_id_planet.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_systems_system_id_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_types_type_id_dogma_attribute.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_types_type_id_dogma_effect.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_types_type_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_universe_types_type_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_wars_war_id_aggressor.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_wars_war_id_ally.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_wars_war_id_defender.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_wars_war_id_killmails_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_wars_war_id_killmails_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_wars_war_id_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/get_wars_war_id_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/internal_server_error.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_affiliation_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_affiliation_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_assets_locations_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_assets_locations_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_assets_names_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_fittings_created.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_fittings_fitting.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_fittings_item.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_mail_bad_request.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_mail_labels_label.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_mail_mail.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_characters_character_id_mail_recipient.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_corporations_corporation_id_assets_locations_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_corporations_corporation_id_assets_locations_position.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_corporations_corporation_id_assets_names_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_fleets_fleet_id_members_invitation.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_fleets_fleet_id_members_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_fleets_fleet_id_members_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_fleets_fleet_id_wings_created.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_fleets_fleet_id_wings_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_fleets_fleet_id_wings_wing_id_squads_created.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_fleets_fleet_id_wings_wing_id_squads_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_ui_openwindow_newmail_new_mail.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_ui_openwindow_newmail_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_agent.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_alliance.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_character.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_constellation.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_corporation.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_faction.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_inventory_type.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_region.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_service_unavailable.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_station.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_ids_system.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_names_200_ok.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/post_universe_names_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_characters_character_id_calendar_event_id_response.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_characters_character_id_mail_mail_id_bad_request.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_characters_character_id_mail_mail_id_contents.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_bad_request.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_members_member_id_movement.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_members_member_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_members_member_id_unprocessable_entity.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_new_settings.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_squads_squad_id_naming.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_squads_squad_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_wings_wing_id_naming.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/models/put_fleets_fleet_id_wings_wing_id_not_found.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/swagger_client/rest.py" afterPath="" />
-    </list>
+    <list default="true" id="eb943282-7a5b-4ba5-aaa7-c1568789f559" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -398,7 +17,7 @@
     <SUITE FILE_PATH="coverage/pymon$output.coverage" NAME="output Coverage Results" MODIFIED="1521374896453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
     <SUITE FILE_PATH="coverage/pymon$setup.coverage" NAME="setup Coverage Results" MODIFIED="1521232227650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/service" />
     <SUITE FILE_PATH="coverage/pymon$kivytest.coverage" NAME="kivytest Coverage Results" MODIFIED="1521296761251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
-    <SUITE FILE_PATH="coverage/pymon$pymon.coverage" NAME="pymon Coverage Results" MODIFIED="1521562151149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pymon$pymon.coverage" NAME="pymon Coverage Results" MODIFIED="1521562309143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pymon$test.coverage" NAME="test Coverage Results" MODIFIED="1521390208873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
     <SUITE FILE_PATH="coverage/pymon$output__1_.coverage" NAME="output (1) Coverage Results" MODIFIED="1521557830724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui/ui_files" />
     <SUITE FILE_PATH="coverage/pymon$pymon_wxapp.coverage" NAME="pymon_wxapp Coverage Results" MODIFIED="1521310504144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -418,7 +37,18 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="pymon.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pymon.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-832">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -485,7 +115,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -708,15 +338,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.49573562" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344086" sideWeight="0.49253732" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.48933902" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344086" sideWeight="0.5074627" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2344086" sideWeight="0.5074627" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.48081023" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15618336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15618336" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1056,7 +686,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pymon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="-832">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
