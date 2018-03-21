@@ -1,6 +1,6 @@
 # https://github.com/MTG/dunya-desktop/blob/master/dunyadesktop_app/general_design.py
-import os
 
+# ToDo: Optimize Imorts
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -9,10 +9,9 @@ from service.esi import login
 
 import config
 
-# from widgets.dockwidget import DockWidget, DockWidgetContentsLeft,  DockWidgetContentsTop
-# from widgets.queryframe import QueryFrame
-from gui.widgets.progressbar import ProgressBar
+# Import of neccessary Widgets
 from gui.widgets.tabwidget import TabWidget
+from gui.charManagerWindow import CharManagerWindow
 
 class GeneralMainDesign(QMainWindow):
     """General design of the main window"""
@@ -22,18 +21,19 @@ class GeneralMainDesign(QMainWindow):
 
     def init_MainWindow(self):
         self.set_main_window()
-        self.centralwidget = QWidget(self)
 
+        self.centralwidget = QWidget(self)
         layout = QVBoxLayout(self.centralwidget)
         layout.setContentsMargins(0, 0, 2, 0)
         layout.setSpacing(0)
+        self.setCentralWidget(self.centralwidget)
 
         # query frame
         # self.frame_query = QueryFrame()
         # self._set_frame()
         # layout.addWidget(self.frame_query)
 
-        self.setCentralWidget(self.centralwidget)
+
 
         # status bar
         self.statusbar = QStatusBar(self)
@@ -69,20 +69,27 @@ class GeneralMainDesign(QMainWindow):
         QMetaObject.connectSlotsByName(self)
 
     def set_main_window(self):
+        # Standard Values for this Window
+        standard_width = 960
+        standard_height = 720
+        minimum_width = 544
+        minimum_height = 480
+
         """Sets the size policies of the main window"""
-        self.resize(config.GUI_MAIN_WINDOW_STANDARD_WIDTH, config.GUI_MAIN_WINDOW_STANDARD_HEIGHT)
+        self.resize(standard_width, standard_height)
         size_policy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
         self.setSizePolicy(size_policy)
-        self.setMinimumSize(QSize(config.GUI_MAIN_WINDOW_MINIMUM_WIDTH, config.GUI_MAIN_WINDOW_MINIMUM_HEIGHT))
+        self.setMinimumSize(QSize(minimum_width, minimum_height))
 
         # main window icon
         self.setWindowIcon(QIcon(""))
         self.setWindowTitle(config.APP_NAME)
 
     def set_main_menubar(self):
+        # Create Menu Bar with Actions
         # .menubar.setGeometry(QRect(0, 0, 908, 21))
         self.menubar.setObjectName("menubar")
 
@@ -94,7 +101,7 @@ class GeneralMainDesign(QMainWindow):
         exitAction = QAction("&Exit", self)
         #File Menu Action Triggers
         addCharAction.triggered.connect(self.addCharacterTriggered)
-        # manageCharAction.triggered.connect()
+        manageCharAction.triggered.connect(self.manageCharacterTriggered)
         exitAction.triggered.connect(self.exitTriggered)
 
         self.fileMenu.addAction(addCharAction)
@@ -150,8 +157,15 @@ class GeneralMainDesign(QMainWindow):
     ################
 
     def exitTriggered(self):
+        # Close the Application
          self.close()
 
     def addCharacterTriggered(self):
         login()  # Start Login Process to Eve SSO (service.esi.login())
         self.tab_widget.createCharacterTab()
+
+    def manageCharacterTriggered(self):
+        # Open New Window Character Manager
+        self.charManager = CharManagerWindow(self)
+        self.charManager.show()
+
