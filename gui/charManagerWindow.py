@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QSizePolicy, QLabel, QVBoxLayout, QHBoxLayout, QTableWidget, QMainWindow,\
-    QTableWidgetItem, QCheckBox, QAbstractItemView, QHeaderView
+    QTableWidgetItem, QCheckBox, QAbstractItemView, QHeaderView, QTableView
 from PyQt5.QtCore import QSize, QAbstractTableModel, Qt
 from PyQt5.QtGui import QPalette, QPixmap, QFont, QIcon
 import config
@@ -8,7 +8,7 @@ import config
 # to complicated for now, because you can't simpli throw a checkbox in a table
 # instad you have to create a QAbstractTableView and/or QAbstractItemView
 
-class MyTable(QTableWidget):
+class MyTable(QTableView):
     def __init__(self, r, c):
         super().__init__(r, c)
 
@@ -62,6 +62,10 @@ class CharManagerWindow(QMainWindow):
             self.characterTable.horizontalHeader().setSectionResizeMode(x, QHeaderView.ResizeToContents)
         self.characterTable.horizontalHeader().setStretchLastSection(True)
         self.characterTable.horizontalHeader().setDefaultAlignment(Qt.AlignLeft)
+
+    #def setTableContent(self):
+
+        #self.characterTable.setItem(0,0, QTableWidgetItem("21564611212"))
 
 
     def set_main_window(self):
