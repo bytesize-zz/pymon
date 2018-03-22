@@ -70,10 +70,13 @@ def getWallet():
 
 if __name__ == "__main__":
 
-    app = QApplication(sys.argv)
-    mainwindow = GeneralMainDesign()
-    mainwindow.show()
-    sys.exit(app.exec_())
+    try:
+        app = QApplication(sys.argv)
+        mainwindow = GeneralMainDesign()
+        mainwindow.show()
+        sys.exit(app.exec_())
+    except Exception:
+        print(Exception)
 
     print("Welcome to pymon. Input command or help for help.")
     while True:

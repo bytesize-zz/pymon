@@ -12,7 +12,11 @@ class MyTable(QTableWidget):
     def __init__(self, r, c):
         super().__init__(r, c)
 
-        self.setSelectionMode(QAbstractItemView.SingleSelection)  #
+        #Table Configuration
+        self.characterTable.setShowGrid(False)  # Hide Grid ToDo: Hide Field Selection
+        self.characterTable.setEditTriggers(QAbstractItemView.NoEditTriggers)  # Disable editing
+
+        self.setSelectionMode(QAbstractItemView.SingleSelection)  # Select only one row at once
         self.setSelectionBehavior(QAbstractItemView.SelectRows)   # Mark the whole Row
         #self.setFocusPolicy(Qt.NoFocus)
         self.show()
@@ -25,23 +29,27 @@ class CharManagerWindow(QMainWindow):
 
         self.centralwidget = QWidget(self)
         self.layout = QVBoxLayout(self.centralwidget)
-        self.layout.setContentsMargins(0, 0, 2, 0)
+        self.layout.setContentsMargins(0, 0, 5, 0)
         self.layout.setSpacing(0)
         self.setCentralWidget(self.centralwidget)
 
-        self.createTable()
-        self.setTableHeader()
+        #Heading Label
+        self.headingLabel = QLabel("Characters")
+        self.headingLabel.setFont(QFont("Arial", 20, QFont.Bold))
+        self.layout.addWidget(self.headingLabel)
+        self.layout.addSpacing(10)
 
+        self.createTable()
         self.show()
 
     def createTable(self):
 
-        self.characterTable = MyTable(2, 5)
+        self.characterTable = MyTable(2, 4)
         self.layout.addWidget(self.characterTable)
-        self.characterTable.setShowGrid(False)  # Hide Grid ToDo: Field Hide Selection
 
-        checkBox = QCheckBox("x")
-        #self.characterTable.setItem(1, 1, QTableWidgetItem())
+        self.setTableHeader()
+        #self.setTableContent()
+
 
     def setTableHeader(self):
 
@@ -50,8 +58,10 @@ class CharManagerWindow(QMainWindow):
         self.characterTable.verticalHeader().setVisible(False)
 
         # set each column width, for now ResizeToContents
-        for x in range(0, 5):
+        for x in range(0, 3):
             self.characterTable.horizontalHeader().setSectionResizeMode(x, QHeaderView.ResizeToContents)
+        self.characterTable.horizontalHeader().setStretchLastSection(True)
+        self.characterTable.horizontalHeader().setDefaultAlignment(Qt.AlignLeft)
 
 
     def set_main_window(self):
