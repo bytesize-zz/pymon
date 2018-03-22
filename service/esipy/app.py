@@ -4,7 +4,6 @@ from pyswagger import App
 
 from .utils import check_cache
 
-
 class EsiApp(object):
     """ EsiApp is an app object that'll allows us to play with ESI Meta
     API, not to have to deal with all ESI versions manually / meta """
