@@ -118,3 +118,4 @@ tmtagsHistory
 *.sublime-project
 *.sublime-workspace
 .bundle
+pymon.db

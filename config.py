@@ -13,7 +13,7 @@ APP_NAME = "PyMon"
 # -----------------------------------------------------
 # SQL Alchemy configs
 # -----------------------------------------------------
-SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///pymon.db'
 
 # -----------------------------------------------------
 # ESI Configs

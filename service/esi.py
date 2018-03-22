@@ -1,3 +1,4 @@
+# https://github.com/Kyria/flask-esipy-example/blob/master/app.py
 from service.callback_server import StoppableHTTPServer, AuthHandler
 
 
@@ -7,6 +8,8 @@ from service.esipy.app import App
 from service.esipy.client import EsiClient
 from service.esipy.security import EsiSecurity
 from service.esipy.exceptions import APIException
+
+from db.data.user import User
 
 import webbrowser
 import config
@@ -30,40 +33,6 @@ logger.addHandler(console)
 # -----------------------------------------------------------------------
 # Database models
 # -----------------------------------------------------------------------
-class User():
-    # our ID is the character ID from EVE API
-    character_id = ""
-    character_owner_hash = ""
-    character_name = ""
-
-    # SSO Token stuff
-    access_token = ""
-    access_token_expires = ""
-    refresh_token = ""
-
-    def get_id(self):
-        """ Required for flask-login """
-        return self.character_id
-
-    def get_sso_data(self):
-        """ Little "helper" function to get formated data for esipy security
-        """
-        return {
-            'access_token': self.access_token,
-            'refresh_token': self.refresh_token,
-            'expires_in': (
-                self.access_token_expires - datetime.utcnow()
-            ).total_seconds()
-        }
-
-    def update_token(self, token_response):
-        """ helper function to update token data from SSO response """
-        self.access_token = token_response['access_token']
-        self.access_token_expires = datetime.fromtimestamp(
-            time.time() + token_response['expires_in'],
-        )
-        if 'refresh_token' in token_response:
-            self.refresh_token = token_response['refresh_token']
 
 
 # -----------------------------------------------------------------------
@@ -185,6 +154,8 @@ class esi():
         cdata = esisecurity.verify()
 
         # if the user is already authed, we log him out
+        #if current_user.is_authenticated:
+        #   logout_user()
 
         # now we check in database, if the user exists
         # actually we'd have to also check with character_owner_hash, to be

@@ -1,26 +1,68 @@
 from PyQt5.QtWidgets import QWidget, QSizePolicy, QLabel, QVBoxLayout, QHBoxLayout, QTableWidget, QMainWindow,\
     QTableWidgetItem, QCheckBox, QAbstractItemView, QHeaderView, QTableView
-from PyQt5.QtCore import QSize, QAbstractTableModel, Qt
+from PyQt5.QtCore import QSize, QAbstractTableModel, Qt, QVariant
 from PyQt5.QtGui import QPalette, QPixmap, QFont, QIcon
 import config
+import sys
 
 
-# to complicated for now, because you can't simpli throw a checkbox in a table
+# to complicated for now, because you can't simply throw a checkbox in a table
 # instad you have to create a QAbstractTableView and/or QAbstractItemView
 
-class MyTable(QTableView):
+class MyTable(QTableWidget):
     def __init__(self, r, c):
         super().__init__(r, c)
 
         #Table Configuration
-        self.characterTable.setShowGrid(False)  # Hide Grid ToDo: Hide Field Selection
-        self.characterTable.setEditTriggers(QAbstractItemView.NoEditTriggers)  # Disable editing
+        self.setShowGrid(False)  # Hide Grid ToDo: Hide Field Selection
+        self.setEditTriggers(QAbstractItemView.NoEditTriggers)  # Disable editing
 
         self.setSelectionMode(QAbstractItemView.SingleSelection)  # Select only one row at once
         self.setSelectionBehavior(QAbstractItemView.SelectRows)   # Mark the whole Row
         #self.setFocusPolicy(Qt.NoFocus)
-        self.show()
 
+    def add_row(self,  data):
+        # expect a array of strings, wich contain data of one user
+        # ToDo check if data is valid
+        self.insertRow(self.rowCount())
+
+        for pos in range(0, len(data)):
+            self.setItem(self.rowCount()-1, pos, QTableWidgetItem(data[pos]))
+
+
+class MyTableModel(QAbstractTableModel):
+    def __init__(self, datain, headerdata, parent=None):
+        """
+        Args:
+            datain: a list of lists\n
+            headerdata: a list of strings
+        """
+        QAbstractTableModel.__init__(self, parent)
+        self.arraydata = datain
+        self.headerdata = headerdata
+
+    def rowCount(self, parent):
+        return len(self.arraydata)
+
+    def columnCount(self, parent):
+        if len(self.arraydata) > 0:
+            return len(self.arraydata[0])
+        return 0
+
+    def data(self, index, role):
+        if not index.isValid():
+            return QVariant()
+        elif role != Qt.DisplayRole:
+            return QVariant()
+        return QVariant(self.arraydata[index.row()][index.column()])
+
+    def setData(self, index, value, role):
+        pass         # not sure what to put here
+
+    def headerData(self, col, orientation, role):
+        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+            return QVariant(self.headerdata[col])
+        return QVariant()
 
 class CharManagerWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -44,11 +86,13 @@ class CharManagerWindow(QMainWindow):
 
     def createTable(self):
 
-        self.characterTable = MyTable(2, 4)
+        self.characterTable = MyTable(0, 4)
         self.layout.addWidget(self.characterTable)
 
         self.setTableHeader()
-        #self.setTableContent()
+        self.setTableContent()
+
+
 
 
     def setTableHeader(self):
@@ -58,14 +102,32 @@ class CharManagerWindow(QMainWindow):
         self.characterTable.verticalHeader().setVisible(False)
 
         # set each column width, for now ResizeToContents
-        for x in range(0, 3):
+        for x in range(0, len(header)-1):
             self.characterTable.horizontalHeader().setSectionResizeMode(x, QHeaderView.ResizeToContents)
         self.characterTable.horizontalHeader().setStretchLastSection(True)
         self.characterTable.horizontalHeader().setDefaultAlignment(Qt.AlignLeft)
 
-    #def setTableContent(self):
+    def setTableContent(self):
+        #self.characterTable.add_row(["test", "test2"])
 
-        #self.characterTable.setItem(0,0, QTableWidgetItem("21564611212"))
+        #Ask the Database for a List of all saved Characters
+        #User = db.getUserList()
+        user = [["65456465484", "agdshjsdg",  "sdhkjsahd", "36565131"]]
+
+
+        data = []
+        # If there are any users saved get the needed elements for our table
+        if len(user) > 0:
+            for x in range(0, len(user)):
+                data.append(user[x][0])
+                data.append(user[x][1])
+                data.append(user[x][2])
+            self.characterTable.add_row(data)
+
+                #if checkAuthorization("userid") == True: data.append("Authorisation OK")         //example
+
+
+
 
 
     def set_main_window(self):
