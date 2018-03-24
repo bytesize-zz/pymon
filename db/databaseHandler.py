@@ -8,9 +8,9 @@ from db.data.user import User
 
 import config
 
-class MyDatabese():
+class DatabaseHandler():
     def __init__(self, parent=None):
-        super(MyDatabese, self).__init__()
+        super(DatabaseHandler, self).__init__()
 
 
         engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
@@ -18,24 +18,47 @@ class MyDatabese():
         self.session = Session()
 
 
-    def addUser(self, user):
+    def addUser(self, newUser):
+        self.dbUser = self.getUser(newUser.CharacterID)  # ask DB for User with this ID
 
-        self.session.add(user)
+        #print("newUser: "), print(newUser)
+        #print("dbUser: "), print(self.dbUser)
 
-    def getUser(self, characterID): #TODO: change names characterID CharacterID -> confusing
+        # ToDo: Exception Handling
+        if self.dbUser is None:
+            print("New Character found, lets add him do the Database")
+            self.session.add(newUser)
+        elif self.dbUser.CharacterID == newUser.CharacterID:
+            print("Character already present, lets update him.")
+            self.dbUser.AccessToken = newUser.AccessToken
+            self.dbUser.RefreshToken = newUser.RefreshToken
+            self.dbUser.AccessTokenExpire = newUser.AccessTokenExpire
+        else:
+            print("Something is wrong at databaseHandler.addUser()")
 
-        # Get User from DB if already excisting
+        #print("Updated Line: "), print(self.session.dirty)
+        #print("New Line: "), print(self.session.new)
+
+        self.session.commit()
+
+    def getUser(self, cID):
+
+        # Get User from DB if already existing
         try:
-            user = self.session.query(User).filter(
-                User.CharacterID == characterID,
-            ).one()
-            return user
-        # if not retun None
-        except NoResultFound:
+            user = self.session.query(User).filter_by(CharacterID=cID).first()
+        except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
             user = User()
-            user.CharacterID = characterID
-            return None
+            user.CharacterID = cID
 
+        return user  # Might be an empty user
+
+    def getAllUser(self):
+        try:
+            userList = self.session.query(User).order_by(User.CharacterName)
+            return userList
+
+        except NoResultFound:
+            return None
 
 
 

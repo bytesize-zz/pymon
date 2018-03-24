@@ -10,6 +10,7 @@ from service.esipy.security import EsiSecurity
 from service.esipy.exceptions import APIException
 
 from db.data.user import User
+from db.databaseHandler import DatabaseHandler
 
 import webbrowser
 import config
@@ -98,6 +99,8 @@ class esi():
         # self.settings = CRESTSettings.getInstance()
         self.scopes = ['characterFittingsRead', 'characterFittingsWrite', 'esi-characters.read_standings.v1']
 
+        self.dbHandler = DatabaseHandler()
+
         # these will be set when needed
         self.httpd = None
         self.state = None
@@ -152,6 +155,7 @@ class esi():
 
         # we get the character informations
         cdata = esisecurity.verify()
+        print(cdata)
 
         # if the user is already authed, we log him out
         #if current_user.is_authenticated:
@@ -162,17 +166,14 @@ class esi():
         # sure the owner is still the same, but that's an example only...
 
         user = User()
-        user.character_id = cdata['CharacterID']
+        user.CharacterID = cdata['CharacterID']
 
-        user.character_owner_hash = cdata['CharacterOwnerHash']
-        user.character_name = cdata['CharacterName']
+        user.CharacterOwnerHash = cdata['CharacterOwnerHash']
+        user.CharacterName = cdata['CharacterName']
         user.update_token(auth_response)
 
-       # getInfos(user)
+        print(user)
+        self.dbHandler.addUser(user)
 
-        file = open("user.txt", "w")
-        file.truncate()
-        file.write(str(cdata['CharacterID'])+"\n")
-        file.write(str(auth_response['access_token']))
         # now the user is ready, so update/create it and log the user
 

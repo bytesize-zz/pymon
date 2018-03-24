@@ -41,6 +41,10 @@ class User(Base):
         if 'refresh_token' in token_response:
             self.RefreshToken = token_response['refresh_token']
 
+    def __repr__(self):
+        return "<User(ID='%s', name='%s', hash='%s', access='%s', refresh='%s', expire='%s')>" % (
+            self.CharacterID, self.CharacterName, self.CharacterOwnerHash, self.AccessToken, self.RefreshToken, self.AccessTokenExpire)
+
 
 class SkillQueue(Base):
     __tablename__ = 'SkillQueue'

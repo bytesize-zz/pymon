@@ -5,6 +5,8 @@ from PyQt5.QtGui import QPalette, QPixmap, QFont, QIcon
 import config
 import sys
 
+from db.databaseHandler import DatabaseHandler
+
 
 # to complicated for now, because you can't simply throw a checkbox in a table
 # instad you have to create a QAbstractTableView and/or QAbstractItemView
@@ -67,6 +69,9 @@ class MyTableModel(QAbstractTableModel):
 class CharManagerWindow(QMainWindow):
     def __init__(self, parent=None):
         super(CharManagerWindow, self).__init__(parent)
+
+        self.dbHandler = DatabaseHandler()
+
         self.set_main_window()
 
         self.centralwidget = QWidget(self)
@@ -108,27 +113,19 @@ class CharManagerWindow(QMainWindow):
         self.characterTable.horizontalHeader().setDefaultAlignment(Qt.AlignLeft)
 
     def setTableContent(self):
-        #self.characterTable.add_row(["test", "test2"])
+        # self.characterTable.add_row(["test", "test2"])
 
-        #Ask the Database for a List of all saved Characters
-        #User = db.getUserList()
-        user = [["65456465484", "agdshjsdg",  "sdhkjsahd", "36565131"]]
+        # Ask the Database for a List of all saved Characters
+        userList = self.dbHandler.getAllUser()
 
-
-        data = []
         # If there are any users saved get the needed elements for our table
-        if len(user) > 0:
-            for x in range(0, len(user)):
-                data.append(user[x][0])
-                data.append(user[x][1])
-                data.append(user[x][2])
+        for instance in userList:
+            data=[]
+            data.append(str(instance.CharacterID))
+            data.append(instance.CharacterName)
+            data.append("Account Name ?")
+            data.append("OK")       # Add Auth check here
             self.characterTable.add_row(data)
-
-                #if checkAuthorization("userid") == True: data.append("Authorisation OK")         //example
-
-
-
-
 
     def set_main_window(self):
         # Standard Values for this Window
