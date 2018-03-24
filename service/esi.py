@@ -172,7 +172,14 @@ class esi():
         user.CharacterName = cdata['CharacterName']
         user.update_token(auth_response)
 
-        print(user)
+        #print(user)
+
+        print("String Lengths:")
+        print("Hash:"), print(user.CharacterOwnerHash)
+        print("Access Token:"), print(user.AccessToken)
+        print("Refresh Token:"), print(user.RefreshToken)
+        print("Date Time:"), print(user.AccessTokenExpire)
+
         self.dbHandler.addUser(user)
 
         # now the user is ready, so update/create it and log the user

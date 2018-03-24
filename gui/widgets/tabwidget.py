@@ -18,7 +18,7 @@ class TabWidget(QTabWidget):
 
         grid = QGridLayout(self.overviewTab)
 
-        # Hier Schleife einfügen: for each user createOverViewWidget(User)
+        # ToDo: Hier Schleife einfügen: for each user createOverViewWidget(User)
         self.characterOverview1 = CharacterOverviewWidget(self)
         characterOverview2 = CharacterOverviewWidget(self)
         characterOverview3 = CharacterOverviewWidget(self)

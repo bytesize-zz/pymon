@@ -97,11 +97,7 @@ class CharManagerWindow(QMainWindow):
         self.setTableHeader()
         self.setTableContent()
 
-
-
-
     def setTableHeader(self):
-
         header = ("ID", "Name", "Account", "Authentication Status")
         self.characterTable.setHorizontalHeaderLabels(header)
         self.characterTable.verticalHeader().setVisible(False)
@@ -123,8 +119,8 @@ class CharManagerWindow(QMainWindow):
             data=[]
             data.append(str(instance.CharacterID))
             data.append(instance.CharacterName)
-            data.append("Account Name ?")
-            data.append("OK")       # Add Auth check here
+            data.append("Account Name ?")  # ToDo: Add Account Name here or remowe column entirely
+            data.append("OK")       # ToDo: Add Auth check here
             self.characterTable.add_row(data)
 
     def set_main_window(self):
@@ -146,6 +142,7 @@ class CharManagerWindow(QMainWindow):
         # main window icon
         self.setWindowIcon(QIcon(""))
         self.setWindowTitle(config.APP_NAME + " Character Manager")
+
 
 
 

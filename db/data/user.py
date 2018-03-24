@@ -18,7 +18,6 @@ class User(Base):
     AccessToken = Column(String(100))
     AccessTokenExpire = Column(String(100))
     def get_id(self):
-        """ Required for flask-login """
         return self.CharacterID
 
     def get_sso_data(self):
@@ -45,16 +44,22 @@ class User(Base):
         return "<User(ID='%s', name='%s', hash='%s', access='%s', refresh='%s', expire='%s')>" % (
             self.CharacterID, self.CharacterName, self.CharacterOwnerHash, self.AccessToken, self.RefreshToken, self.AccessTokenExpire)
 
+class Character(Base):
+    __tablename__ = 'Character'
+    id = Column(Integer, primary_key=True)
+    UserID = Column(Integer, ForeignKey('User.id'))
 
 class SkillQueue(Base):
     __tablename__ = 'SkillQueue'
     id = Column(Integer, primary_key=True)
-    skillname = Column(String(100), nullable=False)
-    queueposition = Column(Integer)
+    skill_id = Column(Integer)
+    finish_date = Column(String(100))
+    start_date = Column(String(100))
+    finished_level = Column(Integer)
     UserID = Column(Integer, ForeignKey('User.id'))
 
 
-class SkillCompleted(Base):
+class SkillsCompleted(Base):
     __tablename__ = 'SkillCompleted'
     id = Column(Integer, primary_key=True)
     skillname = Column(String(100), nullable=False)
