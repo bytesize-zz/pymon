@@ -7,6 +7,7 @@ from __future__ import absolute_import
 import base64
 import logging
 import time
+import config
 
 from requests import Session
 from requests.utils import quote
@@ -98,9 +99,9 @@ class EsiSecurity(object):
         self._session = Session()
         self._session.headers.update({
             'Accept': 'application/json',
-            'User-Agent': (
-                'EsiPy/Security/ - '
-                'https://github.com/Kyria/EsiPy'
+            'User-Agent': (config.ESI_USER_AGENT +
+                '/security/ - ' +
+                config.ESI_AGENT_DESCRIPTION
             )
         })
 

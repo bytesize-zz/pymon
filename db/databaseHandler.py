@@ -1,10 +1,9 @@
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
-from db.data.user import User
+from db.databaseTables import User
 
 import config
 

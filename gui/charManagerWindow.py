@@ -115,10 +115,10 @@ class CharManagerWindow(QMainWindow):
         userList = self.dbHandler.getAllUser()
 
         # If there are any users saved get the needed elements for our table
-        for instance in userList:
+        for user in userList:
             data=[]
-            data.append(str(instance.CharacterID))
-            data.append(instance.CharacterName)
+            data.append(str(user.CharacterID))
+            data.append(user.CharacterName)
             data.append("Account Name ?")  # ToDo: Add Account Name here or remowe column entirely
             data.append("OK")       # ToDo: Add Auth check here
             self.characterTable.add_row(data)

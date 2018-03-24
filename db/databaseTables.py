@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 
@@ -7,6 +7,7 @@ Base = declarative_base()
 from datetime import datetime
 import config
 import time
+
 
 # User is mainly for Authorisation purposes and root for all Character Informations
 class User(Base):
@@ -17,7 +18,7 @@ class User(Base):
     CharacterOwnerHash = Column(String(40), nullable=False)  # Maybe Length of 28 is enough
     RefreshToken = Column(String(75))                       # Maybe Length of 65 is enough
     AccessToken = Column(String(100))                       # Maybe Length of 87 is enough
-    AccessTokenExpire = Column(DateTime)                 # ToDo: Get Length of Datetime
+    AccessTokenExpire = Column(DateTime)
 
     def get_id(self):
         return self.CharacterID
@@ -47,6 +48,7 @@ class User(Base):
             self.CharacterID, self.CharacterName, self.CharacterOwnerHash, self.AccessToken,
             self.RefreshToken, self.AccessTokenExpire)
 
+
 # Character's public information filled by GET /characters/{character_id}/
 class Character(Base):
     __tablename__ = 'Character'
@@ -60,14 +62,27 @@ class Character(Base):
     race_id = Column(Integer)
     bloodline_id = Column(Integer)
     ancestry_id = Column(Integer)
-    # security_status = Column(Float)  # ToDo: How use Float here ?
+    security_status = Column(Float)
     faction_id = Column(Integer)
     UserID = Column(Integer, ForeignKey('User.id'))
 
+
+class CharacterPortrait(Base):
+    __tablename__ = 'Portrait'
+    id = Column(Integer, primary_key=True)
+    px64x64 = Column(String(100))
+    px128x128 = Column(String(100))     # ToDo: Check for necessary String Length
+    px256x256 = Column(String(100))
+    px512x512 = Column(String(100))
+    UserID = Column(Integer, ForeignKey('User.id'))
+
+
 class Implants(Base):
+    __tablename__ = 'Implants'
     id = Column(Integer, primary_key=True)
     # List of Integer (implant_type_id) max. 11      # ToDo: Find Informations for this
     UserID = Column(Integer, ForeignKey('User.id'))
+
 
 class SkillQueue(Base):
     __tablename__ = 'SkillQueue'

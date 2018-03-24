@@ -1,15 +1,12 @@
 # https://github.com/Kyria/flask-esipy-example/blob/master/app.py
 from service.callback_server import StoppableHTTPServer, AuthHandler
 
-
-from datetime import datetime
-
 from service.esipy.app import App
 from service.esipy.client import EsiClient
 from service.esipy.security import EsiSecurity
 from service.esipy.exceptions import APIException
 
-from db.data.user import User
+from db.databaseTables import User
 from db.databaseHandler import DatabaseHandler
 
 import webbrowser
@@ -41,6 +38,8 @@ logger.addHandler(console)
 # -----------------------------------------------------------------------
 # create the app
 esiapp = App.create(config.ESI_SWAGGER_JSON)
+
+#securityKey = EsiSecurity.getSecurityKey(config.ESI_SECRET_KEY)
 
 # init the security object
 esisecurity = EsiSecurity(
@@ -106,14 +105,6 @@ class esi():
         self.state = None
         self.ssoTimer = None
 
-        self.eve_options = {
-            'loginServer' : "https://login.eveonline.com",
-            'client_id': "2e3ccffa023e4c9685ab8d549ffab9c8",
-            'api_key': "",
-            'redirect_uri': "http://localhost:6461",
-            'testing': "false"
-        }
-
     def logout(self):
         """Logout of implicit character"""
         print("Character logout")
@@ -149,13 +140,13 @@ class esi():
         # now we try to get tokens
         try:
             auth_response = esisecurity.auth(code)
-            # print(auth_response)
+            #print(auth_response)
         except APIException as e:
             return print('Login EVE Online SSO failed: %s' % e)
 
         # we get the character informations
         cdata = esisecurity.verify()
-        print(cdata)
+        #print(cdata)
 
         # if the user is already authed, we log him out
         #if current_user.is_authenticated:

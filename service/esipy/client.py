@@ -6,6 +6,8 @@ import time
 import warnings
 import logging
 
+import config
+
 from concurrent.futures import ThreadPoolExecutor
 from collections import namedtuple
 from datetime import datetime
@@ -72,9 +74,9 @@ class EsiClient(BaseClient):
         # check for specified headers and update session.headers
         headers = kwargs.pop('headers', {})
         if 'User-Agent' not in headers:
-            headers['User-Agent'] = (
-                'EsiPy/Client - '
-                'https://github.com/Kyria/EsiPy'
+            headers['User-Agent'] = (config.ESI_USER_AGENT +
+                '/client - ' +
+                config.ESI_AGENT_DESCRIPTION
             )
         self._session.headers.update({"Accept": "application/json"})
         self._session.headers.update(headers)
