@@ -8,15 +8,17 @@ from datetime import datetime
 import config
 import time
 
+# User is mainly for Authorisation purposes and root for all Character Informations
 class User(Base):
     __tablename__ = 'User'
     id = Column(Integer, primary_key=True)
     CharacterID = Column(Integer, nullable=False)
-    CharacterName = Column(String(100), nullable=False)
-    CharacterOwnerHash = Column(String(100), nullable=False)
-    RefreshToken = Column(String(100))
-    AccessToken = Column(String(100))
-    AccessTokenExpire = Column(String(100))
+    CharacterName = Column(String(37), nullable=False)
+    CharacterOwnerHash = Column(String(40), nullable=False)  # Maybe Length of 28 is enough
+    RefreshToken = Column(String(75))                       # Maybe Length of 65 is enough
+    AccessToken = Column(String(100))                       # Maybe Length of 87 is enough
+    AccessTokenExpire = Column(DateTime)                 # ToDo: Get Length of Datetime
+
     def get_id(self):
         return self.CharacterID
 
@@ -42,35 +44,64 @@ class User(Base):
 
     def __repr__(self):
         return "<User(ID='%s', name='%s', hash='%s', access='%s', refresh='%s', expire='%s')>" % (
-            self.CharacterID, self.CharacterName, self.CharacterOwnerHash, self.AccessToken, self.RefreshToken, self.AccessTokenExpire)
+            self.CharacterID, self.CharacterName, self.CharacterOwnerHash, self.AccessToken,
+            self.RefreshToken, self.AccessTokenExpire)
 
+# Character's public information filled by GET /characters/{character_id}/
 class Character(Base):
     __tablename__ = 'Character'
     id = Column(Integer, primary_key=True)
+    name = Column(String(37))
+    description = Column(String(500))
+    corporation_id = Column(Integer)
+    alliance_id = Column(Integer)
+    birthday = Column(DateTime)
+    gender = Column(String(6))
+    race_id = Column(Integer)
+    bloodline_id = Column(Integer)
+    ancestry_id = Column(Integer)
+    # security_status = Column(Float)  # ToDo: How use Float here ?
+    faction_id = Column(Integer)
+    UserID = Column(Integer, ForeignKey('User.id'))
+
+class Implants(Base):
+    id = Column(Integer, primary_key=True)
+    # List of Integer (implant_type_id) max. 11      # ToDo: Find Informations for this
     UserID = Column(Integer, ForeignKey('User.id'))
 
 class SkillQueue(Base):
     __tablename__ = 'SkillQueue'
     id = Column(Integer, primary_key=True)
     skill_id = Column(Integer)
-    finish_date = Column(String(100))
-    start_date = Column(String(100))
+    finish_date = Column(DateTime)
+    start_date = Column(DateTime)
     finished_level = Column(Integer)
+    queue_position = Column(Integer)
+    training_start_sp = Column(Integer)
+    level_end_sp = Column(Integer)
+    level_start_sp = Column(Integer)
     UserID = Column(Integer, ForeignKey('User.id'))
 
 
 class SkillsCompleted(Base):
     __tablename__ = 'SkillCompleted'
     id = Column(Integer, primary_key=True)
-    skillname = Column(String(100), nullable=False)
+    skill_id = Column(Integer)
+    skillpoints_in_skill = Column(Integer)
+    trained_skill_level = Column(Integer)
+    active_skill_level = Column(Integer)
+    total_sp = Column(Integer)
+    unallocated_sp = Column(Integer)
     UserID = Column(Integer, ForeignKey('User.id'))
 
 
 class CorpHistory(Base):
     __tablename__ = 'CorpHistory'
     id = Column(Integer, primary_key=True)
-    CorpName = Column(String(100), nullable=False)
-    EntryDate = Column(DateTime)
+    start_date = Column(DateTime)
+    corporation_id = Column(Integer)
+    is_deleted = Column(String(5))      # True or False
+    record_id = Column(Integer)
 
 
 engine = create_engine(config.SQLALCHEMY_DATABASE_URI)

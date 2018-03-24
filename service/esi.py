@@ -175,9 +175,9 @@ class esi():
         #print(user)
 
         print("String Lengths:")
-        print("Hash:"), print(user.CharacterOwnerHash)
-        print("Access Token:"), print(user.AccessToken)
-        print("Refresh Token:"), print(user.RefreshToken)
+        print("Hash:"), print(len(user.CharacterOwnerHash))
+        print("Access Token:"), print(len(user.AccessToken))
+        print("Refresh Token:"), print(len(user.RefreshToken))
         print("Date Time:"), print(user.AccessTokenExpire)
 
         self.dbHandler.addUser(user)
