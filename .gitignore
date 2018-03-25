@@ -119,3 +119,5 @@ tmtagsHistory
 *.sublime-workspace
 .bundle
 pymon.db
+.flooignore
+.floo

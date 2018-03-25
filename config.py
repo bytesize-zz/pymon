@@ -20,6 +20,8 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///pymon.db'
 # ESI Configs
 # -----------------------------------------------------
 ESI_DATASOURCE = 'tranquility'  # Change it to 'singularity' to use the test server
+ESI_ESI_URL = 'https://esi.tech.ccp.is'     # Alternative: esi.evetech.net ?
+ESI_SSO_URL = 'https://login.eveonline.com'
 ESI_SWAGGER_JSON = 'https://esi.tech.ccp.is/latest/swagger.json?datasource=%s' % ESI_DATASOURCE
 ESI_SECRET_KEY = 'f7xMYMqSSvO9EpmS2FZtW9ZPKnQHvRhUQVkGfsBS'  # app secret key
 ESI_CLIENT_ID = '2e3ccffa023e4c9685ab8d549ffab9c8'  # app client ID

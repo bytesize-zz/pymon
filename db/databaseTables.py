@@ -21,7 +21,7 @@ class User(Base):
     AccessTokenExpire = Column(DateTime)
 
     def get_id(self):
-        return self.CharacterID
+        return self.id
 
     def get_sso_data(self):
         """ Little "helper" function to get formated data for esipy security
@@ -29,9 +29,9 @@ class User(Base):
         return {
             'access_token': self.AccessToken,
             'refresh_token': self.RefreshToken,
-            'expires_in': (
+            'expires_in': int((
                 self.AccessTokenExpire - datetime.utcnow()
-            ).total_seconds()
+            ).total_seconds())
         }
 
     def update_token(self, token_response):
@@ -64,24 +64,68 @@ class Character(Base):
     ancestry_id = Column(Integer)
     security_status = Column(Float)
     faction_id = Column(Integer)
-    UserID = Column(Integer, ForeignKey('User.id'))
+    owner_id = Column(Integer, ForeignKey('User.id'))
+
+    def setCharacter(self, request_response, ownerID):
+        self.name = request_response.name
+        self.description = request_response.description
+        self.corporation_id = request_response.corporation_id
+        self.alliance_id = request_response.alliance_id
+        self.birthday = request_response.birthday
+        self.gender = request_response.gender
+        self.race_id = request_response.race_id
+        self.bloodline_id = request_response.bloodline_id
+        self.ancestry_id = request_response.ancestry_id
+        self.security_status = request_response.security_status
+        self.faction_id = request_response.faction_id
+        self.owner_id = ownerID
+        return self
+
+    def updateCharacter(self, newCharacter):
+        # ToDO: remove unchangeable elements
+        self.name = newCharacter.name
+        self.description = newCharacter.description
+        self.corporation_id = newCharacter.corporation_id
+        self.alliance_id = newCharacter.alliance_id
+        self.birthday = newCharacter.birthday
+        self.gender = newCharacter.gender
+        self.race_id = newCharacter.race_id
+        self.bloodline_id = newCharacter.bloodline_id
+        self.ancestry_id = newCharacter.ancestry_id
+        self.security_status = newCharacter.security_status
+        self.faction_id = newCharacter.faction_id
+        return self
+
+    def __repr__(self):
+        return "<Character(name='%s', description='%s', corporation_id='%s', alliance_id='%s', birthday='%s', gender='%s', " \
+               "race_id='%s', bloodline_id='%s', ancestry_id='%s', security_status='%s', faction_id'%s', owner_id='%s' )>" % (
+            self.name, self.description, self.corporation_id, self.alliance_id, self.birthday, self.gender, self.race_id,
+            self.bloodline_id, self.ancestry_id, self.security_status, self.faction_id, self.owner_id)
 
 
 class CharacterPortrait(Base):
-    __tablename__ = 'Portrait'
+    __tablename__ = 'CharacterPortrait'
     id = Column(Integer, primary_key=True)
     px64x64 = Column(String(100))
     px128x128 = Column(String(100))     # ToDo: Check for necessary String Length
     px256x256 = Column(String(100))
     px512x512 = Column(String(100))
-    UserID = Column(Integer, ForeignKey('User.id'))
+    owner_id = Column(Integer, ForeignKey('User.id'))
+
+    def setCharacterPortrait(self, request_response, ownerID):
+        self.px64x64 = request_response.px64x64
+        self.px128x128 = request_response.px128x128
+        self.px256x256 = request_response.px256x256
+        self.px512x512 = request_response.px512x512
+        self.owner_id = ownerID
+        return self
 
 
 class Implants(Base):
     __tablename__ = 'Implants'
     id = Column(Integer, primary_key=True)
     # List of Integer (implant_type_id) max. 11      # ToDo: Find Informations for this
-    UserID = Column(Integer, ForeignKey('User.id'))
+    owner_id = Column(Integer, ForeignKey('User.id'))
 
 
 class SkillQueue(Base):
@@ -95,7 +139,7 @@ class SkillQueue(Base):
     training_start_sp = Column(Integer)
     level_end_sp = Column(Integer)
     level_start_sp = Column(Integer)
-    UserID = Column(Integer, ForeignKey('User.id'))
+    owner_id = Column(Integer, ForeignKey('User.id'))
 
 
 class SkillsCompleted(Base):
@@ -107,7 +151,7 @@ class SkillsCompleted(Base):
     active_skill_level = Column(Integer)
     total_sp = Column(Integer)
     unallocated_sp = Column(Integer)
-    UserID = Column(Integer, ForeignKey('User.id'))
+    owner_id = Column(Integer, ForeignKey('User.id'))
 
 
 class CorpHistory(Base):
@@ -117,7 +161,7 @@ class CorpHistory(Base):
     corporation_id = Column(Integer)
     is_deleted = Column(String(5))      # True or False
     record_id = Column(Integer)
-
+    owner_id = Column(Integer, ForeignKey('User.id'))
 
 engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
 Base.metadata.create_all(engine)

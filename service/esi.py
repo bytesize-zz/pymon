@@ -49,7 +49,7 @@ esisecurity = EsiSecurity(
     secret_key=config.ESI_SECRET_KEY,
 )
 
-# init the client
+# init the client   ToDo: is this used ?
 esiclient = EsiClient(
     security=esisecurity,
     cache=None,
@@ -96,7 +96,7 @@ class esi():
         """
 
         # self.settings = CRESTSettings.getInstance()
-        self.scopes = ['characterFittingsRead', 'characterFittingsWrite', 'esi-characters.read_standings.v1']
+        #self.scopes = ['characterFittingsRead', 'characterFittingsWrite', 'esi-characters.read_standings.v1']
 
         self.dbHandler = DatabaseHandler()
 
@@ -171,7 +171,7 @@ class esi():
         print("Refresh Token:"), print(len(user.RefreshToken))
         print("Date Time:"), print(user.AccessTokenExpire)
 
-        self.dbHandler.addUser(user)
+        self.dbHandler.saveUser(user)
 
         # now the user is ready, so update/create it and log the user
 

@@ -2,23 +2,27 @@ from PyQt5.QtWidgets import QWidget, QSizePolicy, QLabel, QGridLayout, QVBoxLayo
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPalette, QPixmap, QFont
 
+from db.databaseTables import User, Character, SkillQueue
+from db.databaseHandler import DatabaseHandler
 
 # ToDo Mouse Over and click Event/Action
 class CharacterOverviewWidget(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, user, parent=None):
         QWidget.__init__(self, parent=parent)
         self.setAutoFillBackground(True)
         # self.installEventFilter()
+        self.user = user
 
+        self.dbHandler = DatabaseHandler()
 
         pal = QPalette()
         pal.setColor(self.backgroundRole(), QtCore.Qt.red)
         self.setPalette(pal)
 
         # Character Image
-        characterImage = QLabel()
-        characterImage.setPixmap(QPixmap('image.png').scaled(120, 120))
-        characterImage.resize(120, 120)
+        self.characterImage = QLabel()
+        self.characterImage.setPixmap(QPixmap('image.png').scaled(120, 120))
+        self.characterImage.resize(120, 120)
 
         # Labels
         self.characterNameLabel = QLabel("Name")
@@ -29,8 +33,9 @@ class CharacterOverviewWidget(QWidget):
         self.characterQueueEndDateLabel = QLabel("Queue End Date")
         self.characterQueueRemainingTimeLabel = QLabel("Queue Remaining Time")
 
-        self.setLabelFonts()
+        self.setLabels()
 
+        self.setLabelFonts()
 
         vbox= QVBoxLayout()
         vbox.setSpacing(1)
@@ -46,7 +51,7 @@ class CharacterOverviewWidget(QWidget):
         vbox.addWidget(self.characterQueueRemainingTimeLabel)
 
         hbox = QHBoxLayout()
-        hbox.addWidget(characterImage)
+        hbox.addWidget(self.characterImage)
         hbox.addSpacing(10)
         hbox.addLayout(vbox)
         hbox.addStretch(1)
@@ -56,6 +61,14 @@ class CharacterOverviewWidget(QWidget):
 
 
         self.set_size_policy()
+
+    def setLabels(self):
+        #print("x")
+
+        portrait = self.dbHandler.getCharacterPortrait(self.user.get_id())
+        self.characterNameLabel.setText(self.user.CharacterName)
+        #self.characterImage.setPixmap(newPixMap.scaled(120, 120))
+        #self.characterNameLabel = self.user.CharacterName
 
     def eventFilter(self, object, event):
         if event.type() == QtCore.QEvent.HoverMove:

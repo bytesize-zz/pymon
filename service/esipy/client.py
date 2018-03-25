@@ -74,10 +74,8 @@ class EsiClient(BaseClient):
         # check for specified headers and update session.headers
         headers = kwargs.pop('headers', {})
         if 'User-Agent' not in headers:
-            headers['User-Agent'] = (config.ESI_USER_AGENT +
-                '/client - ' +
-                config.ESI_AGENT_DESCRIPTION
-            )
+            headers['User-Agent'] = (config.ESI_USER_AGENT + '/client - ' + config.ESI_AGENT_DESCRIPTION)
+
         self._session.headers.update({"Accept": "application/json"})
         self._session.headers.update(headers)
 

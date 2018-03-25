@@ -9,6 +9,8 @@ import logging
 import time
 import config
 
+from datetime import datetime
+
 from requests import Session
 from requests.utils import quote
 from six.moves.urllib.parse import urlparse
@@ -45,9 +47,9 @@ class EsiSecurity(object):
         SSO authentication. Defaults to tranquility
         """
         app = kwargs.pop('app', None)
-        sso_url = kwargs.pop('sso_url', "https://login.eveonline.com")
-        esi_url = kwargs.pop('esi_url', "https://esi.tech.ccp.is")
-        esi_datasource = kwargs.pop('esi_datasource', "tranquility")
+        sso_url = kwargs.pop('sso_url', config.ESI_SSO_URL)
+        esi_url = kwargs.pop('esi_url', config.ESI_ESI_URL)
+        esi_datasource = kwargs.pop('esi_datasource', config.ESI_DATASOURCE)
 
         self.security_name = kwargs.pop('security_name', 'evesso')
         self.redirect_uri = redirect_uri
@@ -99,10 +101,7 @@ class EsiSecurity(object):
         self._session = Session()
         self._session.headers.update({
             'Accept': 'application/json',
-            'User-Agent': (config.ESI_USER_AGENT +
-                '/security/ - ' +
-                config.ESI_AGENT_DESCRIPTION
-            )
+            'User-Agent': (config.ESI_USER_AGENT + '/security/ - ' + config.ESI_AGENT_DESCRIPTION)
         })
 
         # token data
@@ -208,6 +207,14 @@ class EsiSecurity(object):
         if 'refresh_token' in response_json:
             self.refresh_token = response_json['refresh_token']
 
+    def set_token(self, access, refresh, expiry):
+        """"
+        Used to set the tokens with data's from the database for a specific user
+        """
+        self.access_token = access
+        self.refresh_token = refresh
+        self.token_expiry = expiry.timestamp()  # Convert Datetime from DB into seconds
+
     def is_token_expired(self, offset=0):
         """ Return true if the token is expired.
 
@@ -221,6 +228,7 @@ class EsiSecurity(object):
         :param offset: the expiry offset (in seconds) [default: 0]
         :return: boolean true if expired, else false.
         """
+
         if self.token_expiry is None:
             return True
         return int(time.time()) >= (self.token_expiry - offset)

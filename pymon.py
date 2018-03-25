@@ -6,6 +6,7 @@ import config
 
 import swagger_client
 from swagger_client.rest import ApiException
+from service.updateHandler import UpdateHandler
 
 # gui imports
 from gui.mainwindow import GeneralMainDesign
@@ -37,8 +38,8 @@ def getStandings():
     access_token = lines[1]
 
     api = swagger_client.CharacterApi()
-    api.api_client.set_default_header(config.ESI_USER_AGENT,
-                'https://github.com/Kyria/EsiPy')  # Set a relevant user agent so we know which software is actually using ESI
+    # Set a relevant user agent so we know which software is actually using ESI
+    api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
     api.api_client.host = "esi.evetech.net"
     api.api_client.configuration.access_token = access_token  # fill in your access token here
 
@@ -73,10 +74,11 @@ if __name__ == "__main__":
     try:
         app = QApplication(sys.argv)
         mainwindow = GeneralMainDesign()
+        updateHandler = UpdateHandler()
         mainwindow.show()
         sys.exit(app.exec_())
-    except Exception:
-        print(Exception)
+    except Exception as e:
+        print(e)
 
     print("Welcome to pymon. Input command or help for help.")
     while True:
