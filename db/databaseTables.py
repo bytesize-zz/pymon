@@ -44,9 +44,9 @@ class User(Base):
             self.RefreshToken = token_response['refresh_token']
 
     def __repr__(self):
-        return "<User(ID='%s', name='%s', hash='%s', access='%s', refresh='%s', expire='%s')>" % (
-            self.CharacterID, self.CharacterName, self.CharacterOwnerHash, self.AccessToken,
-            self.RefreshToken, self.AccessTokenExpire)
+        return "<User(id='%s', charID='%s', name='%s', hash='%s', access='%s', refresh='%s', expire='%s')>" % (
+            self.id, self.CharacterID, self.CharacterName, self.CharacterOwnerHash,
+            self.AccessToken, self.RefreshToken, self.AccessTokenExpire)
 
 
 # Character's public information filled by GET /characters/{character_id}/
@@ -120,6 +120,10 @@ class CharacterPortrait(Base):
         self.owner_id = ownerID
         return self
 
+    def __repr__(self):
+        return"<Character_Portrait(64='%s', 128='%s', 256='%s', 512='%s')>" % \
+              (self.px64x64, self.px128x128, self.px256x256, self.px512x512)
+
 
 class Implants(Base):
     __tablename__ = 'Implants'
@@ -141,6 +145,8 @@ class SkillQueue(Base):
     level_start_sp = Column(Integer)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
+    def updateSkillQueue(self, skillQueue):
+        print("x")
 
 class SkillsCompleted(Base):
     __tablename__ = 'SkillCompleted'

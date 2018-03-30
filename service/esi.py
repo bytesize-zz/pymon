@@ -8,6 +8,7 @@ from service.esipy.exceptions import APIException
 
 from db.databaseTables import User
 from db.databaseHandler import DatabaseHandler
+from service.updateHandler import UpdateHandler
 
 import webbrowser
 import config
@@ -71,21 +72,9 @@ def generate_token():
         hashlib.sha256
     ).hexdigest()
 
+class Esi():
 
-def login():
-    """ this redirects the user to the EVE SSO login """
-    # token = generate_token()
-    # requests.session['token'] = token
-    server = esi()
-    server.startServer()
-    return webbrowser.open(esisecurity.get_auth_uri(scopes=['esi-characters.read_standings.v1',
-                                                            'esi-wallet.read_character_wallet.v1']))
-
-
-
-class esi():
-
-    def __init__(self):
+    def __init__(self, callback=None):
         """
         A note on login/logout events: the character login events happen
         whenever a characters is logged into via the SSO, regardless of mod.
@@ -94,16 +83,28 @@ class esi():
         mode. The mode is sent as an argument, as well as the umber of
         characters still in the cache (if USER mode)
         """
-
         # self.settings = CRESTSettings.getInstance()
         #self.scopes = ['characterFittingsRead', 'characterFittingsWrite', 'esi-characters.read_standings.v1']
 
-        self.dbHandler = DatabaseHandler()
+        self.dbHandler = DatabaseHandler()  # ToDo: Dangerous to start an own instance of dbHandler
+        self.updateHandler = UpdateHandler()    # ToDo: Dangerous to start an own instance of updateHandler
+
+        self.mainWindowCB = callback
 
         # these will be set when needed
         self.httpd = None
         self.state = None
         self.ssoTimer = None
+
+        self.login()
+
+    def login(self):
+        """ this redirects the user to the EVE SSO login """
+        # token = generate_token()
+        # requests.session['token'] = token
+
+        self.startServer()
+        return webbrowser.open(esisecurity.get_auth_uri(scopes=config.ESI_SCOPES))
 
     def logout(self):
         """Logout of implicit character"""
@@ -140,13 +141,11 @@ class esi():
         # now we try to get tokens
         try:
             auth_response = esisecurity.auth(code)
-            #print(auth_response)
         except APIException as e:
             return print('Login EVE Online SSO failed: %s' % e)
 
         # we get the character informations
         cdata = esisecurity.verify()
-        #print(cdata)
 
         # if the user is already authed, we log him out
         #if current_user.is_authenticated:
@@ -158,20 +157,17 @@ class esi():
 
         user = User()
         user.CharacterID = cdata['CharacterID']
-
         user.CharacterOwnerHash = cdata['CharacterOwnerHash']
         user.CharacterName = cdata['CharacterName']
         user.update_token(auth_response)
 
-        #print(user)
 
-        print("String Lengths:")
-        print("Hash:"), print(len(user.CharacterOwnerHash))
-        print("Access Token:"), print(len(user.AccessToken))
-        print("Refresh Token:"), print(len(user.RefreshToken))
-        print("Date Time:"), print(user.AccessTokenExpire)
+        if True:    # ToDO: Do we need to verify if user is valid?
+            user.id = self.dbHandler.saveUser(user)
+            if user.id is not None:     # We don't want DB Entrys without owner
+                self.updateHandler.updateUser(user)
+                self.mainWindowCB()
 
-        self.dbHandler.saveUser(user)
-
+        self.dbHandler.close()
         # now the user is ready, so update/create it and log the user
 

@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
-from service.esi import login
+from service.esi import Esi
 
 import config
 
@@ -22,11 +22,7 @@ class GeneralMainDesign(QMainWindow):
     def init_MainWindow(self):
         self.set_main_window()
 
-        self.centralwidget = QWidget(self)
-        layout = QVBoxLayout(self.centralwidget)
-        layout.setContentsMargins(0, 0, 2, 0)
-        layout.setSpacing(0)
-        self.setCentralWidget(self.centralwidget)
+        self.createLayout()
 
         # query frame
         # self.frame_query = QueryFrame()
@@ -45,8 +41,7 @@ class GeneralMainDesign(QMainWindow):
         self.set_main_menubar()
 
         # Tab Widget
-        self.tab_widget = TabWidget(self)
-        layout.addWidget(self.tab_widget)
+        self.createTabwidget()
 
         self.show()
         # self.progress_bar = ProgressBar(self)
@@ -124,9 +119,13 @@ class GeneralMainDesign(QMainWindow):
         # Tools Menu
         self.toolsMenu = self.menubar.addMenu('&Tools')
         manageNotificationsAction = QAction("&Manage Notifications", self)
+        reloadUI = QAction("&Reload UI", self)
         optionsAction = QAction("&Options", self)
 
+        reloadUI.triggered.connect(self.callback)
+
         self.toolsMenu.addAction(manageNotificationsAction)
+        self.toolsMenu.addAction(reloadUI)
         self.toolsMenu.addSeparator()
         self.toolsMenu.addAction(optionsAction)
 
@@ -152,7 +151,7 @@ class GeneralMainDesign(QMainWindow):
 
     ################
     #
-    # Benubar Action trigger Functions
+    # Menubar Action trigger Functions
     #
     ################
 
@@ -161,11 +160,44 @@ class GeneralMainDesign(QMainWindow):
          self.close()
 
     def addCharacterTriggered(self):
-        login()  # Start Login Process to Eve SSO (service.esi.login())
-        self.tab_widget.createCharacterTab()
+        # ToDO: Find a way to trigger a repaint after the login process, also a complete Update for the new character
+        Esi(self.callback)
 
     def manageCharacterTriggered(self):
         # Open New Window Character Manager
         self.charManager = CharManagerWindow(self)
         self.charManager.show()
 
+    def deleteLayout(self):
+        print("Deleting Layout..")
+        while self.layout.count() > 0:
+            item = self.layout.takeAt(0)
+            if not item:
+                continue
+
+            w = item.widget()
+            if w:
+                w.deleteLater()
+        print("Layout deleted.")
+
+    def createLayout(self):
+        print("creating Layout...")
+        self.centralwidget = QWidget(self)
+        self.layout = QVBoxLayout(self.centralwidget)
+        self.layout.setContentsMargins(0, 0, 2, 0)
+        self.layout.setSpacing(0)
+        self.setCentralWidget(self.centralwidget)
+        print("Layout created.")
+
+    def createTabwidget(self):
+        print("creating Tabwidget ...")
+        self.tab_widget = TabWidget(self)
+        self.layout.addWidget(self.tab_widget)
+        print("Tabwidget created.")
+
+    def callback(self):
+        # repaint Function: delete old layout and children, then paint a new one
+        self.deleteLayout()
+        self.createLayout()
+        self.createTabwidget()
+        print(self)

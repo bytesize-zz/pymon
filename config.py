@@ -23,13 +23,15 @@ ESI_DATASOURCE = 'tranquility'  # Change it to 'singularity' to use the test ser
 ESI_ESI_URL = 'https://esi.tech.ccp.is'     # Alternative: esi.evetech.net ?
 ESI_SSO_URL = 'https://login.eveonline.com'
 ESI_SWAGGER_JSON = 'https://esi.tech.ccp.is/latest/swagger.json?datasource=%s' % ESI_DATASOURCE
-ESI_SECRET_KEY = 'f7xMYMqSSvO9EpmS2FZtW9ZPKnQHvRhUQVkGfsBS'  # app secret key
-ESI_CLIENT_ID = '2e3ccffa023e4c9685ab8d549ffab9c8'  # app client ID
+ESI_SECRET_KEY = 'gmv5MxaFvyqrbHiiXV5T3FxCuJ5wOH7YLChwrqD8'  # app secret key
+ESI_CLIENT_ID = '53ae85c260ea4f77a3394edfbb9f4121'  # app client ID
 ESI_CALLBACK = 'http://%s:%d/sso/callback' % (HOST, PORT)  # the callback URI you gave CCP
 ESI_USER_AGENT = 'pymon'
 ESI_AGENT_DESCRIPTION = 'https://github.com/bytesize-zz/pymon'
-ESI_SCOPES = ['esi-characters.read_standings.v1',   # List of all needed Scopes
-              'esi-wallet.read_character_wallet.v1']
+ESI_SCOPES = ['esi-skills.read_skills.v1',
+              'esi-skills.read_skillqueue.v1',
+              'esi-wallet.read_character_wallet.v1',
+              'esi-characters.read_fatigue.v1']
 
 # ------------------------------------------------------
 # Session settings for flask login

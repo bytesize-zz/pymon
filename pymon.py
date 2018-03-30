@@ -11,7 +11,7 @@ from service.updateHandler import UpdateHandler
 # gui imports
 from gui.mainwindow import GeneralMainDesign
 from PyQt5.QtWidgets import QApplication
-
+import threading
 
 import sys
 
@@ -73,29 +73,17 @@ if __name__ == "__main__":
 
     try:
         app = QApplication(sys.argv)
-        mainwindow = GeneralMainDesign()
         updateHandler = UpdateHandler()
+        updateHandler.updateAll()
+        mainwindow = GeneralMainDesign()
+
+        '''
+        updateHandler = threading.Thread(target=UpdateHandler())
+        updateHandler.name = "UpdateHandler"
+        updateHandler.daemon = True
+        updateHandler.start()
+        '''
         mainwindow.show()
         sys.exit(app.exec_())
     except Exception as e:
         print(e)
-
-    print("Welcome to pymon. Input command or help for help.")
-    while True:
-        command = input()
-
-        if command == "help":
-            print("Available Commands:\n"
-                  "help: see this help\n"
-                  "login: Login to your Eve Account to get rights\n"
-                  "standings: get list of standings after login\n"
-                  "exit: Exit Program")
-        elif command == "login":
-            service.esi.login()
-
-        elif command == "standings":
-            getStandings()
-        elif command == "wallet":
-            getWallet()
-        elif command == "exit":
-            break

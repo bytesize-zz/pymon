@@ -1,9 +1,8 @@
 import swagger_client
-from swagger_client.rest import ApiException
 from PyQt5.QtNetwork import QNetworkAccessManager
+from PyQt5.QtCore import QUrl
 
 import config
-
 
 from db.databaseHandler import DatabaseHandler
 from db.databaseTables import User, Character, CharacterPortrait
@@ -16,6 +15,7 @@ class UpdateHandler():
         super(UpdateHandler, self).__init__()
 
         esiapp = App.create(config.ESI_SWAGGER_JSON)
+
         # init the security object
         self.esisecurity = EsiSecurity(
             app=esiapp,
@@ -26,21 +26,26 @@ class UpdateHandler():
 
 
         self.dbHandler = DatabaseHandler()
-        self.updateAll()
 
     def updateAll(self):
-        """ Method to update Data for all stored Characters.
+        """ Method to update Data for all stored Users.
 
-            1. refresh the Authentication
-            2. ask EvE API for new Data
         """
 
         userList = self.dbHandler.getAllUser()
         for user in userList:
-            self.refreshUserAuth(user)
-            self.updateCharacter(user)
-            self.updatePortrait(user)
-            #print(user)
+            self.updateUser(user)
+
+    def updateUser(self, user):
+        """ Method to update Data for one stored User.
+
+            1. refresh the Authentication
+            2. ask EvE API for new Data
+        """
+        self.refreshUserAuth(user)
+        self.updateCharacter(user)
+        self.updatePortrait(user)
+        self.updateSkillQueue(user)
 
     def refreshUserAuth(self, user):
         """ Get a new Access Token based on Refresh Token.
@@ -66,6 +71,7 @@ class UpdateHandler():
     def updateCharacter(self, user):
 
         # ToDo: Do this api creation different
+        print("Updating Character:" + user.CharacterName)
         api = swagger_client.CharacterApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -80,9 +86,8 @@ class UpdateHandler():
 
 
     def updatePortrait(self, user):
-        #print("x")
         # ToDo: Do this api creation different
-        print("Updating Portrait:")
+        print("Updating Portrait:" + user.CharacterName)
         api = swagger_client.CharacterApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -90,11 +95,31 @@ class UpdateHandler():
 
         try:
             response = api.get_characters_character_id_portrait(user.CharacterID)
-            #print("Got response: "), print(response)
+            #print(user)
             portrait = CharacterPortrait().setCharacterPortrait(response, user.get_id())
             self.dbHandler.saveCharacterPortrait(portrait)
         except Exception as e:
             print("Exception in updateHandler.updatePortrait(): %s\n" % e)
 
     def downloadPortraits(self, user):
-        print("xc")
+        #ToDo: finalize this
+        netwManager = QNetworkAccessManager()
+        url = QUrl()
+
+    def updateSkillQueue(self, user):
+
+        print("Updating Skill:" + user.CharacterName)
+        api = swagger_client.SkillsApi()
+        api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
+        api.api_client.host = config.ESI_ESI_URL
+        api.api_client.configuration.access_token = user.AccessToken
+
+        try:
+            response = api.get_characters_character_id_skillqueue(user.CharacterID)
+            #skillQueue = (response, user.get_id())
+            #self.dbHandler.saveSkillQueue(skillQueue)
+        except Exception as e:
+            print("Exception in updateHandler.updateSkillqueue(): %s\n" % e)
+
+
+

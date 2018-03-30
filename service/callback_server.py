@@ -154,7 +154,7 @@ class StoppableHTTPServer(http.server.HTTPServer):
 
 
 if __name__=="__main__":
-    httpd = StoppableHTTPServer(("127.0.0.1", service.config.PORT), AuthHandler)
+    httpd = StoppableHTTPServer(("127.0.0.1", config.PORT), AuthHandler)
     threading._start_new_thread(httpd.serve, ())
     input("Press <RETURN> to stop server\n")
     httpd.stop()

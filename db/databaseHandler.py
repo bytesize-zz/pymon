@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine
+import sqlite3
 
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
@@ -12,38 +13,39 @@ class DatabaseHandler():
     def __init__(self, parent=None):
         super(DatabaseHandler, self).__init__()
 
-
-        engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
+        # ToDo: is 'check_same_thread':False the right solution ?
+        engine = create_engine(config.SQLALCHEMY_DATABASE_URI, connect_args={'check_same_thread':False})
         Session = sessionmaker(bind=engine)  # once engine is available
         self.session = Session()
+
+        # ToDo: Create a Loop that periodicly updates the Database with EvE Informations
 
 
     def saveUser(self, newUser):
         self.dbUser = self.getUser(newUser.CharacterID)  # ask DB for User with this ID
-
-        #print("newUser: "), print(newUser)
-        #print("dbUser: "), print(self.dbUser)
-
+        id = None
+        print("Saving User:"), print(newUser)
         # ToDo: Exception Handling
         if self.dbUser is None:
             print("New User found, lets add him do the Database")
             self.session.add(newUser)
+            self.session.flush()        # We do this, so the DB can give us the autogenerating id to return
+            id = newUser.id
         elif self.dbUser.CharacterID == newUser.CharacterID:
             print("User already present, lets update him.")
             self.dbUser.AccessToken = newUser.AccessToken
             self.dbUser.RefreshToken = newUser.RefreshToken
             self.dbUser.AccessTokenExpire = newUser.AccessTokenExpire
+            id = self.dbUser.id
         else:
             print("Something is wrong at databaseHandler.saveUser()")
 
-        #print("Updated Line: "), print(self.session.dirty)
-        #print("New Line: "), print(self.session.new)
-
         self.session.commit()
+        return id
 
     def getUser(self, cID):
-
         # Get User from DB if already existing
+        print("Getting User with characterID:" + str(cID))
         try:
             user = self.session.query(User).filter_by(CharacterID=cID).first()
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
@@ -61,7 +63,6 @@ class DatabaseHandler():
             return None
 
     def saveCharacter(self, newCharacter):
-        print(newCharacter.owner_id)
         self.dbCharacter = self.getCharacter(newCharacter.owner_id)  # ask DB for User with this ID
 
         # ToDo: Exception Handling
@@ -80,10 +81,9 @@ class DatabaseHandler():
 
     def getCharacter(self, ownerID):
         # Get Character from DB if already existing
-        #print(ownerID)
+        print("Gettin Character with ownerID: " + str(ownerID))
         try:
             character = self.session.query(Character).filter_by(owner_id=ownerID).first()
-            print(character)
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
             print(NoResultFound)
             character = Character()
@@ -92,13 +92,11 @@ class DatabaseHandler():
 
     def saveSkillQueue(self, newSkillQueue):
         # Add or update the received skillqueue
-        print(newSkillQueue.owner_id)
         self.dbSkillQueue = self.getCharacter(newSkillQueue.owner_id)  # ask DB for User with this ID
 
         # ToDo: Exception Handling
         if self.dbSkillQueue is None:
             print("New Character found, lets add him do the Database")
-            print(newSkillQueue)
             self.session.add(newSkillQueue)
         elif self.dbSkillQueue.owner_id == newSkillQueue.owner_id:
             print("Character already present, lets update him.")
@@ -113,7 +111,6 @@ class DatabaseHandler():
         #print(ownerID)
         try:
             skillQueue = self.session.query(SkillQueue).filter_by(owner_id=ownerID).first()
-            print(skillQueue)
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
             print(NoResultFound)
             skillQueue = SkillQueue()
@@ -122,34 +119,38 @@ class DatabaseHandler():
 
     def saveCharacterPortrait(self, newCharacterPortrait):
         # Add or update the received CharacterPortrait
-        #print(newCharacterPortrait.owner_id)
         self.dbCharacterPortrait = self.getCharacterPortrait(newCharacterPortrait.owner_id)  # ask DB for User with this ID
 
         # ToDo: Exception Handling
         try:
             if self.dbCharacterPortrait is None:
-                print("New Portrait found, lets add him do the Database")
-                #print(newCharacterPortrait)
+                print("New Portrait found, lets add it do the Database")
                 self.session.add(newCharacterPortrait)
             elif self.dbCharacterPortrait.owner_id == newCharacterPortrait.owner_id:
-                print("Portrait already present, lets update him.")
+                print("Portrait already present, lets update it.")
                 self.dbCharacterPortrait.setCharacterPortrait(newCharacterPortrait, newCharacterPortrait.owner_id)
             else:
                 print("Something is wrong at databaseHandler.saveCharacterPortrait()")
         except Exception as e:
             print(e)
-
+        print("Character Portrait saved")
         self.session.commit()
 
     def getCharacterPortrait(self, ownerID):
         # Get CharacterPortrait for this owner from DB if already existing
-        #print(ownerID)
+        print("Gettin characterPortrait with ownerID: " + str(ownerID))
         try:
-            print("Ask Database CharacterPortrait entry for owner", + ownerID)
             characterPortrait = self.session.query(CharacterPortrait).filter_by(owner_id=ownerID).first()
-            #print(CharacterPortrait)
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
             print(NoResultFound)
             characterPortrait = CharacterPortrait()
             characterPortrait.owner_id = ownerID
+
+        print(characterPortrait)
         return characterPortrait  # Might be an empty CharacterPortrait
+
+    def close(self):
+        self.session.close()
+
+    def __del__(self):
+        self.session.close()

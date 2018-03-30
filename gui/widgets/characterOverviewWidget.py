@@ -5,6 +5,10 @@ from PyQt5.QtGui import QPalette, QPixmap, QFont
 from db.databaseTables import User, Character, SkillQueue
 from db.databaseHandler import DatabaseHandler
 
+import urllib, io
+from urllib import request
+
+
 # ToDo Mouse Over and click Event/Action
 class CharacterOverviewWidget(QWidget):
     def __init__(self, user, parent=None):
@@ -21,7 +25,8 @@ class CharacterOverviewWidget(QWidget):
 
         # Character Image
         self.characterImage = QLabel()
-        self.characterImage.setPixmap(QPixmap('image.png').scaled(120, 120))
+        self.pixmap = QPixmap('image.png')
+        self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
         self.characterImage.resize(120, 120)
 
         # Labels
@@ -34,7 +39,7 @@ class CharacterOverviewWidget(QWidget):
         self.characterQueueRemainingTimeLabel = QLabel("Queue Remaining Time")
 
         self.setLabels()
-
+        self.setCharacterPortrait()
         self.setLabelFonts()
 
         vbox= QVBoxLayout()
@@ -63,12 +68,18 @@ class CharacterOverviewWidget(QWidget):
         self.set_size_policy()
 
     def setLabels(self):
-        #print("x")
-
-        portrait = self.dbHandler.getCharacterPortrait(self.user.get_id())
         self.characterNameLabel.setText(self.user.CharacterName)
-        #self.characterImage.setPixmap(newPixMap.scaled(120, 120))
-        #self.characterNameLabel = self.user.CharacterName
+
+    def setCharacterPortrait(self):
+        # Gets url to the character Portrait from db and sets the shown image to it
+        # ToDo: Needs to be changed, so that the image is be save on the harddrive
+        portraitUrl = self.dbHandler.getCharacterPortrait(self.user.get_id())
+        if portraitUrl is not None:
+            data = request.urlopen(portraitUrl.px128x128).read()
+            self.pixmap.loadFromData(data)
+            self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
+        else:
+            print("No portrait URL for " + self.user.CharacterName + " in the Database")
 
     def eventFilter(self, object, event):
         if event.type() == QtCore.QEvent.HoverMove:
