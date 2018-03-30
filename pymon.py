@@ -83,7 +83,7 @@ if __name__ == "__main__":
         updateHandler.daemon = True
         updateHandler.start()
         '''
-        mainwindow.show()
+        #mainwindow.show()
         sys.exit(app.exec_())
     except Exception as e:
         print(e)

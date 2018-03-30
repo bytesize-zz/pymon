@@ -5,7 +5,7 @@ from PyQt5.QtCore import QUrl
 import config
 
 from db.databaseHandler import DatabaseHandler
-from db.databaseTables import User, Character, CharacterPortrait
+from db.databaseTables import User, Character, CharacterPortrait, SkillQueue
 
 from service.esipy.app import App
 from service.esipy.security import EsiSecurity
@@ -31,10 +31,14 @@ class UpdateHandler():
         """ Method to update Data for all stored Users.
 
         """
-
-        userList = self.dbHandler.getAllUser()
-        for user in userList:
-            self.updateUser(user)
+        try:
+            userList = self.dbHandler.getAllUser()
+            print(userList)
+            for user in userList:
+                print(user)
+                self.updateUser(user)
+        except Exception as e:
+            print(e)
 
     def updateUser(self, user):
         """ Method to update Data for one stored User.
@@ -107,8 +111,7 @@ class UpdateHandler():
         url = QUrl()
 
     def updateSkillQueue(self, user):
-
-        print("Updating Skill:" + user.CharacterName)
+        print("Updating SkillQueue for :" + user.CharacterName)
         api = swagger_client.SkillsApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -116,8 +119,13 @@ class UpdateHandler():
 
         try:
             response = api.get_characters_character_id_skillqueue(user.CharacterID)
-            #skillQueue = (response, user.get_id())
-            #self.dbHandler.saveSkillQueue(skillQueue)
+            if len(response) > 0:
+                # Create a SkillQueue Object, containing list of Skills and the owner ID
+                skillQueue = SkillQueue().createSkillQueue(response, user.get_id())
+                # Saving the Skill Queue
+                self.dbHandler.saveSkillQueue(skillQueue)
+            else:
+                print(user.CharacterName + " has an Empty Skillqueue")
         except Exception as e:
             print("Exception in updateHandler.updateSkillqueue(): %s\n" % e)
 

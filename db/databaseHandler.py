@@ -4,7 +4,7 @@ import sqlite3
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
-from db.databaseTables import User, Character, SkillQueue, CharacterPortrait
+from db.databaseTables import User, Character, SkillQueue, SkillQueueItem, CharacterPortrait
 
 
 import config
@@ -85,37 +85,47 @@ class DatabaseHandler():
         try:
             character = self.session.query(Character).filter_by(owner_id=ownerID).first()
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
-            print(NoResultFound)
+            print("NoResultFound")
             character = Character()
             character.owner_id = ownerID
         return character  # Might be an empty character
 
+
     def saveSkillQueue(self, newSkillQueue):
         # Add or update the received skillqueue
-        self.dbSkillQueue = self.getCharacter(newSkillQueue.owner_id)  # ask DB for User with this ID
-
-        # ToDo: Exception Handling
-        if self.dbSkillQueue is None:
-            print("New Character found, lets add him do the Database")
-            self.session.add(newSkillQueue)
-        elif self.dbSkillQueue.owner_id == newSkillQueue.owner_id:
-            print("Character already present, lets update him.")
-            self.dbSkillQueue.updatekillQueue(newSkillQueue)
-        else:
-            print("Something is wrong at databaseHandler.saveCharacter()")
+        try:
+            print("Updating Skillqueue...")
+            self.deleteSkillQueue(newSkillQueue.owner_id)   # First delete old SkillQueue
+            for skill in newSkillQueue.items:               # Then add the new One
+                self.session.add(skill)
+        except Exception as e:
+            print(e)
 
         self.session.commit()
+
 
     def getSkillQueue(self, ownerID):
         # Get SkillQueue for this owner from DB if already existing
         #print(ownerID)
         try:
-            skillQueue = self.session.query(SkillQueue).filter_by(owner_id=ownerID).first()
+            skillQueue = SkillQueue().createSkillQueue(self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).all(), ownerID)
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
-            print(NoResultFound)
-            skillQueue = SkillQueue()
-            skillQueue.owner_id = ownerID
-        return skillQueue  # Might be an empty skillqueue
+            print("NoResultFound")
+
+        if skillQueue is None or len(skillQueue.items) == 0:
+            return None
+        else:
+            return skillQueue  # Might be an empty skillqueue
+
+    def deleteSkillQueue(self, ownerID):
+        print("Deleting old Skill Queue from " + str(ownerID))
+        try:  # Deleting old SkillQueueItems
+            self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).delete(synchronize_session=False)
+        except Exception as e:
+            print(e)
+
+        self.session.commit()
+
 
     def saveCharacterPortrait(self, newCharacterPortrait):
         # Add or update the received CharacterPortrait

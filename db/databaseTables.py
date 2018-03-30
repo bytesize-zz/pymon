@@ -131,9 +131,8 @@ class Implants(Base):
     # List of Integer (implant_type_id) max. 11      # ToDo: Find Informations for this
     owner_id = Column(Integer, ForeignKey('User.id'))
 
-
-class SkillQueue(Base):
-    __tablename__ = 'SkillQueue'
+class SkillQueueItem(Base):
+    __tablename__ = 'SkillQueueItem'
     id = Column(Integer, primary_key=True)
     skill_id = Column(Integer)
     finish_date = Column(DateTime)
@@ -145,11 +144,45 @@ class SkillQueue(Base):
     level_start_sp = Column(Integer)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
-    def updateSkillQueue(self, skillQueue):
-        print("x")
+    def setSkillQueueItem(self, newSkill, ownerID):
+        self.skill_id = newSkill.skill_id
+        self.finish_date = newSkill.finish_date
+        self.start_date = newSkill.start_date
+        self.finished_level = newSkill.finished_level
+        self.queue_position = newSkill.queue_position
+        self.training_start_sp = newSkill.training_start_sp
+        self.level_end_sp = newSkill.level_end_sp
+        self.level_start_sp = newSkill.level_start_sp
+        self.owner_id = ownerID
 
-class SkillsCompleted(Base):
-    __tablename__ = 'SkillCompleted'
+        return self
+
+    def __repr__(self):
+        return"<SkillQueueItem(id='%s', skill_id='%s', finish_date='%s', start_date='%s'," \
+              "finished_level='%s', queue_position='%s', training_start_sp='%s', level_end_sp='%s'," \
+              "level_start_sp='%s', owner_id='%s')>" % \
+              (self.id, self.skill_id, self.finish_date, self.start_date, self.finished_level, self.queue_position,
+               self.training_start_sp, self.level_end_sp, self.level_start_sp, self.owner_id)
+
+
+class SkillQueue():
+    items = []  # List of SkillQueueItems
+    owner_id = None
+
+    def createSkillQueue(self, request_response, ownerID):
+        # We use this, to add the ownerID to our List of skills
+        self.owner_id = ownerID
+
+        for entry in request_response:
+            skill = SkillQueueItem()
+            skill.setSkillQueueItem(entry, ownerID)
+            self.items.append(skill)
+
+        return self
+
+
+class SkillsCompletedItem(Base):
+    __tablename__ = 'SkillsCompletedItem'
     id = Column(Integer, primary_key=True)
     skill_id = Column(Integer)
     skillpoints_in_skill = Column(Integer)
@@ -157,11 +190,27 @@ class SkillsCompleted(Base):
     active_skill_level = Column(Integer)
     total_sp = Column(Integer)
     unallocated_sp = Column(Integer)
+    list_id = Column(Integer, ForeignKey('SkillsCompletedList.id'))
+
+
+class SkillsCompletedList(Base):
+    __tablename__ = 'SkillsCompletedList'
+    id = Column(Integer, primary_key=True)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
 
-class CorpHistory(Base):
-    __tablename__ = 'CorpHistory'
+class CorpHistoryItem(Base):
+    __tablename__ = 'CorpHistoryItem'
+    id = Column(Integer, primary_key=True)
+    start_date = Column(DateTime)
+    corporation_id = Column(Integer)
+    is_deleted = Column(String(5))      # True or False
+    record_id = Column(Integer)
+    list_id = Column(Integer, ForeignKey('CorpHistoryList.id'))
+
+
+class CorpHistoryList(Base):
+    __tablename__ = 'CorpHistoryList'
     id = Column(Integer, primary_key=True)
     start_date = Column(DateTime)
     corporation_id = Column(Integer)
@@ -169,5 +218,7 @@ class CorpHistory(Base):
     record_id = Column(Integer)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
+
+# Don't delete this!
 engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
 Base.metadata.create_all(engine)
