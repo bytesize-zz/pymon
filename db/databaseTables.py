@@ -181,8 +181,8 @@ class SkillQueue():
         return self
 
 
-class SkillsCompletedItem(Base):
-    __tablename__ = 'SkillsCompletedItem'
+class CompletedSkillItem(Base):
+    __tablename__ = 'CompletedSkillItem'
     id = Column(Integer, primary_key=True)
     skill_id = Column(Integer)
     skillpoints_in_skill = Column(Integer)
@@ -190,13 +190,34 @@ class SkillsCompletedItem(Base):
     active_skill_level = Column(Integer)
     total_sp = Column(Integer)
     unallocated_sp = Column(Integer)
-    list_id = Column(Integer, ForeignKey('SkillsCompletedList.id'))
+    list_id = Column(Integer, ForeignKey('User.id'))
+
+    def setSkillQueueItem(self, newSkill, ownerID):
+        self.skill_id = newSkill.skill_id
+        self.finish_date = newSkill.finish_date
+        self.start_date = newSkill.start_date
+        self.finished_level = newSkill.finished_level
+        self.queue_position = newSkill.queue_position
+        self.training_start_sp = newSkill.training_start_sp
+        self.level_end_sp = newSkill.level_end_sp
+        self.level_start_sp = newSkill.level_start_sp
+        self.owner_id = ownerID
 
 
-class SkillsCompletedList(Base):
-    __tablename__ = 'SkillsCompletedList'
-    id = Column(Integer, primary_key=True)
-    owner_id = Column(Integer, ForeignKey('User.id'))
+class CompletedSkillList():
+    items = []  # List of SkillsCompletedItems
+    owner_id = None
+
+    def createCSL(self, request_response, ownerID):
+        # We use this, to add the ownerID to our List of skills
+        self.owner_id = ownerID
+
+        for entry in request_response:
+            skill = SkillQueueItem()
+            skill.setSkillQueueItem(entry, ownerID)
+            self.items.append(skill)
+
+        return self
 
 
 class CorpHistoryItem(Base):

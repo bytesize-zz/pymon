@@ -10,26 +10,24 @@ class TabWidget(QTabWidget):
     def __init__(self, parent=None):
         super(TabWidget, self).__init__(parent)
         self.parent = parent
+        self.dbHandler = DatabaseHandler()  # ToDo: Dangerous to start an own instance of dbHandler?
+
+        try:
+            userList = self.dbHandler.getAllUser()
+        except Exception as e:
+            print(e)
 
         # Overview Tab
-        self.createOverviewTab()
+        print(userList)
+        self.createOverviewTab(userList)
+        self.createCharacterTabs(userList)
 
-
-    def createOverviewTab(self):
-        dbHandler = DatabaseHandler()  # ToDo: Dangerous to start an own instance of dbHandler?
+    def createOverviewTab(self, userList):
 
         self.overviewTab = QWidget()
         self.addTab(self.overviewTab, "Overview")
 
         grid = QGridLayout(self.overviewTab)
-
-        try:
-            userList = dbHandler.getAllUser()
-            dbHandler.close()
-        except Exception as e:
-            print(e)
-
-
 
         x = 0
         y = 0
@@ -55,7 +53,9 @@ class TabWidget(QTabWidget):
         self.createOverviewTab()
 
 
-    def createCharacterTab(self):
-        self.characterTab = QWidget()
-        self.addTab(self.characterTab, "Character Name")
+    def createCharacterTabs(self, userList):
+
+        for user in userList:
+            characterTab = QWidget()
+            self.addTab(characterTab, user.CharacterName)
 
