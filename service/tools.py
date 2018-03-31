@@ -5,9 +5,11 @@ from db.databaseTables import Character, SkillQueueItem, SkillQueue
 
 import datetime
 
-def getSkillName(x):
+def getSkillName(skill):
     print("x")
+    skillname = "x"
 
+    return skillname
 def getSkillRemainingTime(skill):
     print("x")
     now = datetime.datetime.now()

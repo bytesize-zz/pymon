@@ -1,4 +1,5 @@
 # https://github.com/AlbertoRFer/Static-ESI-skill-dump
+# ToDO: Use this once on program install. Add update function wich deletes old entrys, and ask for new ones (in case of new skills added by EvE)
 from service.esipy import App
 from service.esipy import EsiClient
 
