@@ -7,7 +7,7 @@ from db.databaseHandler import DatabaseHandler
 
 import urllib, io
 from urllib import request
-
+import service.tools
 
 # ToDo Mouse Over and click Event/Action
 class CharacterOverviewWidget(QWidget):
@@ -20,9 +20,10 @@ class CharacterOverviewWidget(QWidget):
 
         self.character = self.dbHandler.getCharacter(user.get_id())
 
-        pal = QPalette()
-        pal.setColor(self.backgroundRole(), QtCore.Qt.red)
-        self.setPalette(pal)
+        # Background Color
+        #pal = QPalette()
+        #pal.setColor(self.backgroundRole(), QtCore.Qt.red)
+        #self.setPalette(pal)
 
         # Character Image
         self.characterImage = QLabel()
@@ -36,7 +37,7 @@ class CharacterOverviewWidget(QWidget):
         self.characterSkillpointsLabel = QLabel("Skillpoints")
         self.characterSkillRemainingTimeLabel = QLabel("Skill Remaining Time")
         self.characterSkillNameLabel = QLabel("Skillname")
-        self.characterQueueEndDateLabel = QLabel("Queue End Date")
+        self.characterSkillEndDateLabel = QLabel("Queue End Date")
         self.characterQueueRemainingTimeLabel = QLabel("Queue Remaining Time")
 
         self.setLabels()
@@ -53,7 +54,7 @@ class CharacterOverviewWidget(QWidget):
         vbox.addWidget(self.characterSkillRemainingTimeLabel)
         vbox.addSpacing(5)
         vbox.addWidget(self.characterSkillNameLabel)
-        vbox.addWidget(self.characterQueueEndDateLabel)
+        vbox.addWidget(self.characterSkillEndDateLabel)
         vbox.addWidget(self.characterQueueRemainingTimeLabel)
 
         hbox = QHBoxLayout()
@@ -62,15 +63,22 @@ class CharacterOverviewWidget(QWidget):
         hbox.addLayout(vbox)
         hbox.addStretch(1)
 
-
         self.setLayout(hbox)
-
 
         self.set_size_policy()
 
     def setLabels(self):
         self.characterNameLabel.setText(self.character.name)
+        self.characterBalanceLabel.setText(format(self.character.balance, ",") + " ISK")
         self.characterSkillpointsLabel.setText(format(self.character.total_sp, ",") + " SP")
+
+        lastSkill = self.dbHandler.getSkillQueueLast(self.user.get_id())
+        firstSkill = self.dbHandler.getSkillQueueFirst(self.user.get_id())
+
+        #self.characterSkillRemainingTimeLabel.setText(service.tools.getSkillRemainingTime(firstSkill))
+        self.characterSkillEndDateLabel.setText(str(firstSkill.finish_date))
+        #self.characterQueueRemainingTimeLabel.setText(service.tools.getQueueRemainingTime(lastSkill))
+
 
     def setCharacterPortrait(self):
         # Gets url to the character Portrait from db and sets the shown image to it
@@ -92,7 +100,7 @@ class CharacterOverviewWidget(QWidget):
         #self.setMinimumSize(320, 120)
 
     def setLabelFonts(self):
-        self.characterNameLabel.setFont(QFont("Comic Sans MS", 14, QFont.Bold))
+        self.characterNameLabel.setFont(QFont("Arial", 14, QFont.Bold))
         self.characterBalanceLabel.setFont(QFont("Arial", 12, QFont.Bold))
         self.characterSkillpointsLabel.setFont(QFont("Arial", 10))
         self.characterSkillRemainingTimeLabel.setFont(QFont("Arial", 10))

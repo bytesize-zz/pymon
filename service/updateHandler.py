@@ -1,3 +1,9 @@
+"""
+    update Handler
+
+    Responsible for every inquiry to the esipy api and timed updates from eve
+
+"""
 import swagger_client
 from PyQt5.QtNetwork import QNetworkAccessManager
 from PyQt5.QtCore import QUrl
@@ -48,6 +54,7 @@ class UpdateHandler():
         """
         self.refreshUserAuth(user)
         self.updateCharacter(user)
+        self.updateBalance(user)
         self.updatePortrait(user)
         self.updateSkillQueue(user)
         self.updateCompletedSkills(user)
@@ -90,6 +97,19 @@ class UpdateHandler():
         except Exception as e:
             print("Exception in updateHandler.updateCharacter(): %s\n" % e)
 
+    def updateBalance(self, user):
+        print("Updating Balance:" + user.CharacterName)
+        api = swagger_client.WalletApi()
+        api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
+        api.api_client.host = config.ESI_ESI_URL
+        api.api_client.configuration.access_token = user.AccessToken
+
+        try:
+            response = api.get_characters_character_id_wallet(user.CharacterID)
+            print(response)
+            self.dbHandler.saveCharacterBalance(response, user.get_id())
+        except Exception as e:
+            print(e)
 
     def updatePortrait(self, user):
         # ToDo: Do this api creation different

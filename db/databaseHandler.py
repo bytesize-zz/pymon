@@ -1,6 +1,10 @@
-from sqlalchemy import create_engine
-import sqlite3
+"""
+    Database Handler
 
+    The one Module that adresses the Database directly. Every DB request should go threw here
+
+"""
+from sqlalchemy import create_engine, desc, asc
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -79,7 +83,6 @@ class DatabaseHandler():
         self.session.commit()
 
     def saveCharacterSP(self, ownerID, total_sp, unallocated_sp):
-        print(str(ownerID))
         self.dbCharacter = self.getCharacter(ownerID)  # ask DB for User with this ID
         if self.dbCharacter is None:
             print("No Character found, do nothing")
@@ -88,6 +91,18 @@ class DatabaseHandler():
             self.dbCharacter.setSkillpoints(total_sp, unallocated_sp)
         else:
             print("Something is wrong at databaseHandler.saveCharacterSP()")
+
+        self.session.commit()
+
+    def saveCharacterBalance(self, balance, ownerID):
+        self.dbCharacter = self.getCharacter(ownerID)  # ask DB for User with this ID
+        if self.dbCharacter is None:
+            print("No Character found, do nothing")
+        elif self.dbCharacter.owner_id == ownerID:
+            print("Character found, update Balance")
+            self.dbCharacter.setBalance(balance)
+        else:
+            print("Something is wrong at databaseHandler.saveCharacterBalance()")
 
         self.session.commit()
 
@@ -128,6 +143,24 @@ class DatabaseHandler():
             return None
         else:
             return skillQueue  # Might be an empty skillqueue
+
+    def getSkillQueueFirst(self, ownerID):
+        # Ask for the First Item in the SkillQueue
+        skill = None
+        try:
+            skill = self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).order_by(SkillQueueItem.queue_position).first()
+        except Exception as e:
+            print(e)
+        return skill
+
+    def getSkillQueueLast(self, ownerID):
+        # Ask for the Last Item in the SkillQueue
+        skill = None
+        try:
+            skill = self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).order_by(desc(SkillQueueItem.queue_position)).first()
+        except Exception as e:
+            print(e)
+        return skill
 
     def deleteSkillQueue(self, ownerID):
         print("Deleting old Skill Queue from owner " + str(ownerID))

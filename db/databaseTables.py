@@ -1,3 +1,10 @@
+"""
+    Database Tables
+
+    containing the Tables for the Database, with useful functions
+    as well as some object classes, to handle the tables, but won't be saved in the DB themselves
+
+"""
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
@@ -66,6 +73,7 @@ class Character(Base):
     faction_id = Column(Integer)
     total_sp = Column(Integer)
     unallocated_sp = Column(Integer)
+    balance = Column(Integer)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
     def setCharacter(self, request_response, ownerID):
@@ -86,6 +94,9 @@ class Character(Base):
     def setSkillpoints(self,  total_sp, unallocated_sp):
         self.total_sp = total_sp
         self.unallocated_sp = unallocated_sp
+
+    def setBalance(self, balance):
+        self.balance = balance
 
     def updateCharacter(self, newCharacter):
         # ToDO: remove unchangeable elements
@@ -256,6 +267,30 @@ class CorpHistoryList(Base):
     is_deleted = Column(String(5))      # True or False
     record_id = Column(Integer)
     owner_id = Column(Integer, ForeignKey('User.id'))
+
+class StaticSkillGroups(Base):
+    __tablename__ = 'StaticSkillGroups'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    group_id = Column(Integer)
+
+    def setData(self, name, group_id):
+        self.name = name
+        self.group_id = group_id
+        return self
+
+class StaticSkills(Base):
+    __tablename__ = 'StaticSkills'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    skill_id = Column(Integer)
+    group_id = Column(Integer, ForeignKey('StaticSkillGroups.id'))
+
+    def setData(self, name, skill_id, group_id):
+        self.name = name
+        self.skill_id = skill_id
+        self.group_id = group_id
+        return self
 
 
 # Don't delete this!

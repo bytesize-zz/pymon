@@ -29,8 +29,6 @@ class GeneralMainDesign(QMainWindow):
         # self._set_frame()
         # layout.addWidget(self.frame_query)
 
-
-
         # status bar
         self.statusbar = QStatusBar(self)
         self.set_status_bar()
@@ -63,6 +61,7 @@ class GeneralMainDesign(QMainWindow):
 
         QMetaObject.connectSlotsByName(self)
 
+        # ToDo: Can get in Conflict with "Add User" Update
         self.timer = QTimer()
         self.timer.timeout.connect(self.callback)
         self.timer.setSingleShot(False)
@@ -203,8 +202,11 @@ class GeneralMainDesign(QMainWindow):
 
     def callback(self):
         # repaint Function: delete old layout and children, then paint a new one
-        self.deleteLayout()
-        self.createLayout()
-        self.createTabwidget()
-        print("update")
+        # should only be neccessary after adding a new Character
+        try:
+            self.deleteLayout()
+            self.createLayout()
+            self.createTabwidget()
+        except Exception as e:
+            print(e)
 
