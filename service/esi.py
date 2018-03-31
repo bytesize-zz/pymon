@@ -166,7 +166,7 @@ class Esi():
             user.id = self.dbHandler.saveUser(user)
             if user.id is not None:     # We don't want DB Entrys without owner
                 self.updateHandler.updateUser(user)
-                self.mainWindowCB()
+                # self.mainWindowCB() ToDo: Why isn't this working?
 
         self.dbHandler.close()
         # now the user is ready, so update/create it and log the user

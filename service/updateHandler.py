@@ -5,7 +5,7 @@ from PyQt5.QtCore import QUrl
 import config
 
 from db.databaseHandler import DatabaseHandler
-from db.databaseTables import User, Character, CharacterPortrait, SkillQueue
+from db.databaseTables import User, Character, CharacterPortrait, SkillQueue, CompletedSkillList
 
 from service.esipy.app import App
 from service.esipy.security import EsiSecurity
@@ -50,6 +50,8 @@ class UpdateHandler():
         self.updateCharacter(user)
         self.updatePortrait(user)
         self.updateSkillQueue(user)
+        self.updateCompletedSkills(user)
+
 
     def refreshUserAuth(self, user):
         """ Get a new Access Token based on Refresh Token.
@@ -129,5 +131,26 @@ class UpdateHandler():
         except Exception as e:
             print("Exception in updateHandler.updateSkillqueue(): %s\n" % e)
 
+    def updateCompletedSkills(self, user):
+        """ Update the completed Skills
+        Since we get a List of completed Skills and the Skillpoint values, we need to split where we save them
+        The Skills go in the CompletedSkillItems DB.
+        The Skillpoint values will be added to the character Table
+
+        :param user: Stored User Class from Database
+        """
+        print("Updating completed Skills for " + user.CharacterName)
+        api = swagger_client.SkillsApi()
+        api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
+        api.api_client.host = config.ESI_ESI_URL
+        api.api_client.configuration.access_token = user.AccessToken
+
+        try:
+            response = api.get_characters_character_id_skills(user.CharacterID)
+            skillList = CompletedSkillList().createCSL(response, user.get_id())
+            self.dbHandler.saveCompletedSkills(skillList)
+            self.dbHandler.saveCharacterSP(user.get_id(), response.total_sp, response.unallocated_sp)
+        except Exception as e:
+            print(e)
 
 

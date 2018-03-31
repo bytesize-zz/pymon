@@ -64,6 +64,8 @@ class Character(Base):
     ancestry_id = Column(Integer)
     security_status = Column(Float)
     faction_id = Column(Integer)
+    total_sp = Column(Integer)
+    unallocated_sp = Column(Integer)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
     def setCharacter(self, request_response, ownerID):
@@ -80,6 +82,10 @@ class Character(Base):
         self.faction_id = request_response.faction_id
         self.owner_id = ownerID
         return self
+
+    def setSkillpoints(self,  total_sp, unallocated_sp):
+        self.total_sp = total_sp
+        self.unallocated_sp = unallocated_sp
 
     def updateCharacter(self, newCharacter):
         # ToDO: remove unchangeable elements
@@ -172,13 +178,17 @@ class SkillQueue():
     def createSkillQueue(self, request_response, ownerID):
         # We use this, to add the ownerID to our List of skills
         self.owner_id = ownerID
-
         for entry in request_response:
             skill = SkillQueueItem()
             skill.setSkillQueueItem(entry, ownerID)
             self.items.append(skill)
-
         return self
+
+    def __repr__(self):
+        rep = "owner_id" + str(self.owner_id) + "\n"
+        for item in self.items:
+            rep = rep + item.__repr__() + "\n"
+        return rep
 
 
 class CompletedSkillItem(Base):
@@ -188,21 +198,23 @@ class CompletedSkillItem(Base):
     skillpoints_in_skill = Column(Integer)
     trained_skill_level = Column(Integer)
     active_skill_level = Column(Integer)
-    total_sp = Column(Integer)
-    unallocated_sp = Column(Integer)
-    list_id = Column(Integer, ForeignKey('User.id'))
+    #total_sp = Column(Integer)
+    #unallocated_sp = Column(Integer)
+    owner_id = Column(Integer, ForeignKey('User.id'))
 
-    def setSkillQueueItem(self, newSkill, ownerID):
+    def setCompletedSkillItem(self, newSkill, ownerID):
         self.skill_id = newSkill.skill_id
-        self.finish_date = newSkill.finish_date
-        self.start_date = newSkill.start_date
-        self.finished_level = newSkill.finished_level
-        self.queue_position = newSkill.queue_position
-        self.training_start_sp = newSkill.training_start_sp
-        self.level_end_sp = newSkill.level_end_sp
-        self.level_start_sp = newSkill.level_start_sp
+        self.skillpoints_in_skill = newSkill.skillpoints_in_skill
+        self.trained_skill_level = newSkill.trained_skill_level
+        self.active_skill_level = newSkill.active_skill_level
+        #self.total_sp = newSkill.total_sp
+        #self.unallocated_sp = newSkill.unallocated_sp
         self.owner_id = ownerID
 
+    def __repr__(self):
+        return"<CompletedSkillItem(id='%s', skill_id='%s', skillpoints_in_skill='%s', trained_skill_level='%s'," \
+              "active_skill_level='%s', owner_id='%s')>" % \
+              (self.id, self.skill_id, self.skillpoints_in_skill, self.trained_skill_level, self.active_skill_level, self.owner_id)
 
 class CompletedSkillList():
     items = []  # List of SkillsCompletedItems
@@ -212,12 +224,18 @@ class CompletedSkillList():
         # We use this, to add the ownerID to our List of skills
         self.owner_id = ownerID
 
-        for entry in request_response:
-            skill = SkillQueueItem()
-            skill.setSkillQueueItem(entry, ownerID)
+        for entry in request_response.skills:
+            skill = CompletedSkillItem()
+            skill.setCompletedSkillItem(entry, ownerID)
             self.items.append(skill)
 
         return self
+
+    def __repr__(self):
+        rep = "owner_id" + str(self.owner_id) + "\n"
+        for item in self.items:
+            rep = rep + item.__repr__() + "\n"
+        return rep
 
 
 class CorpHistoryItem(Base):

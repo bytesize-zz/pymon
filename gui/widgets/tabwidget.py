@@ -18,7 +18,6 @@ class TabWidget(QTabWidget):
             print(e)
 
         # Overview Tab
-        print(userList)
         self.createOverviewTab(userList)
         self.createCharacterTabs(userList)
 
@@ -33,7 +32,6 @@ class TabWidget(QTabWidget):
         y = 0
         self.widgetList = []
         for user in userList:
-            print(user)
             newWidget = CharacterOverviewWidget(user)
             self.widgetList.append(newWidget)
             grid.addWidget(newWidget, x, y)

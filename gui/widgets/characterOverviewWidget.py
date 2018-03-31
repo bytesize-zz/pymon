@@ -16,8 +16,9 @@ class CharacterOverviewWidget(QWidget):
         self.setAutoFillBackground(True)
         # self.installEventFilter()
         self.user = user
-
         self.dbHandler = DatabaseHandler()
+
+        self.character = self.dbHandler.getCharacter(user.get_id())
 
         pal = QPalette()
         pal.setColor(self.backgroundRole(), QtCore.Qt.red)
@@ -68,7 +69,8 @@ class CharacterOverviewWidget(QWidget):
         self.set_size_policy()
 
     def setLabels(self):
-        self.characterNameLabel.setText(self.user.CharacterName)
+        self.characterNameLabel.setText(self.character.name)
+        self.characterSkillpointsLabel.setText(format(self.character.total_sp, ",") + " SP")
 
     def setCharacterPortrait(self):
         # Gets url to the character Portrait from db and sets the shown image to it

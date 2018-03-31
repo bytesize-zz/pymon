@@ -63,6 +63,12 @@ class GeneralMainDesign(QMainWindow):
 
         QMetaObject.connectSlotsByName(self)
 
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.callback)
+        self.timer.setSingleShot(False)
+        self.timer.start(10000)
+
+
     def set_main_window(self):
         # Standard Values for this Window
         standard_width = 960
@@ -200,4 +206,5 @@ class GeneralMainDesign(QMainWindow):
         self.deleteLayout()
         self.createLayout()
         self.createTabwidget()
-        print(self)
+        print("update")
+
