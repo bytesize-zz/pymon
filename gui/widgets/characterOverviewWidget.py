@@ -107,13 +107,17 @@ class CharacterOverviewWidget(QWidget):
     def setCharacterPortrait(self):
         # Gets url to the character Portrait from db and sets the shown image to it
         # ToDo: Needs to be changed, so that the image is be save on the harddrive
-        portraitUrl = self.dbHandler.getCharacterPortrait(self.user.get_id())
-        if portraitUrl is not None:
-            data = request.urlopen(portraitUrl.px128x128).read()
-            self.pixmap.loadFromData(data)
-            self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
-        else:
-            print("No portrait URL for " + self.user.CharacterName + " in the Database")
+        try:
+            portraitUrl = self.dbHandler.getCharacterPortrait(self.user.get_id())
+            if portraitUrl is not None:
+                data = request.urlopen(portraitUrl.px128x128).read()
+                self.pixmap.loadFromData(data)
+                self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
+            else:
+                print("No portrait URL for " + self.user.CharacterName + " in the Database")
+        except Exception as e:
+            print(e)
+
 
     def eventFilter(self, object, event):
         if event.type() == QtCore.QEvent.HoverMove:

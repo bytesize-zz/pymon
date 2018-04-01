@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QTabWidget, QWidget, QGridLayout
 from gui.widgets.characterOverviewWidget import CharacterOverviewWidget
+from gui.widgets.characterTabWidget import CharacterTabWidget
 from PyQt5 import QtCore
 
 # Database Imports
@@ -36,7 +37,7 @@ class TabWidget(QTabWidget):
             self.widgetList.append(newWidget)
             grid.addWidget(newWidget, x, y)
 
-            # ToDo: Find a proper Way to print these widgets, maybe QHBox+ QVBox Layout
+            # ToDo: Find a proper Way to print these widgets relative to mainwindow size
             # after adding a widget we need to prepare the next coordinates
             if (y == 0): y = y+1
             elif ( y == 1 ):
@@ -54,6 +55,7 @@ class TabWidget(QTabWidget):
     def createCharacterTabs(self, userList):
 
         for user in userList:
-            characterTab = QWidget()
+            characterTab = CharacterTabWidget(user)
             self.addTab(characterTab, user.CharacterName)
+
 

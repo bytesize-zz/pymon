@@ -59,12 +59,12 @@ class UpdateHandler():
             1. refresh the Authentication
             2. ask EvE API for new Data
         """
-        self.refreshUserAuth(user)
-        self.updateCharacter(user)
-        self.updateBalance(user)
-        self.updatePortrait(user)
-        self.updateSkillQueue(user)
-        self.updateCompletedSkills(user)
+        #self.refreshUserAuth(user)
+        #self.updateCharacter(user)
+        #self.updateBalance(user)
+        #self.updatePortrait(user)
+        #self.updateSkillQueue(user)
+        #self.updateCompletedSkills(user)
 
 
     def refreshUserAuth(self, user):
