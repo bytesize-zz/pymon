@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 import datetime
-import base64
 
 # -----------------------------------------------------
 # Application configurations
@@ -10,6 +9,8 @@ SECRET_KEY = 'YouNeedToChangeThisToBeSecure!'
 PORT = 5015
 HOST = 'localhost'
 APP_NAME = "PyMon"
+
+TIME_DIFFERENCE = 0  # Time difference between user timezone and eve time
 
 # -----------------------------------------------------
 # SQL Alchemy configs

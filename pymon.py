@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 from pprint import pprint
-import service.esi
 import config
 
 import swagger_client
@@ -11,9 +10,10 @@ from service.updateHandler import UpdateHandler
 # gui imports
 from gui.mainwindow import GeneralMainDesign
 from PyQt5.QtWidgets import QApplication
-import threading
 
+import threading
 import sys
+import datetime
 
 def getAlliance():
     # create an instance of the API class
@@ -72,6 +72,9 @@ def getWallet():
 if __name__ == "__main__":
 
     try:
+
+        config.TIME_DIFFERENCE = datetime.datetime.now() - datetime.datetime.utcnow()
+
         app = QApplication(sys.argv)
         updateHandler = UpdateHandler()
         updateHandler.updateAll()

@@ -4,20 +4,16 @@ from db.databaseHandler import DatabaseHandler
 from db.databaseTables import Character, SkillQueueItem, SkillQueue
 
 import datetime
+import config
 
-def getSkillName(skill):
-    print("x")
-    skillname = "x"
 
-    return skillname
 def getSkillRemainingTime(skill):
-    print("x")
-    now = datetime.datetime.now()
+    # Calculate the timedelta between now and skill end, then return formatted string
+    now = datetime.datetime.utcnow()
     then = skill.finish_date
-    diff = then - now
-    print(diff)
-    #formatDateTime(diff)
-    return "x"
+    diff = (then - now)
+
+    return formatTimeDelta(diff)
 
 def getQueueRemainingTime(skill):
     print("x")
@@ -25,8 +21,17 @@ def getQueueRemainingTime(skill):
 def getQueueEndDate(skill):
     print("x")
 
-def formatDateTime(x):
-    result = x.strftime("%d, %h, %m, %s")
+def formatDateTime(dt):
+    result = dt.strftime("%A %d.%m.%y %H:%M")
+    return result
 
-    print(result)
-    return "x"
+def formatTimeDelta(td):
+    # Convert a datetime Timedelta into a formatted string
+    days = td.days
+    s = td.seconds
+    hours = s // 3600
+    s = s - (hours * 3600)
+    minutes = s // 60
+    seconds = s - (minutes * 60)
+
+    return "%sd %sh %sm %ss" % (days, hours, minutes, seconds)

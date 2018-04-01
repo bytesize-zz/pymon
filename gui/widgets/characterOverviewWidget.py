@@ -75,9 +75,33 @@ class CharacterOverviewWidget(QWidget):
         lastSkill = self.dbHandler.getSkillQueueLast(self.user.get_id())
         firstSkill = self.dbHandler.getSkillQueueFirst(self.user.get_id())
 
-        #self.characterSkillRemainingTimeLabel.setText(service.tools.getSkillRemainingTime(firstSkill))
-        self.characterSkillEndDateLabel.setText(str(firstSkill.finish_date))
-        #self.characterQueueRemainingTimeLabel.setText(service.tools.getQueueRemainingTime(lastSkill))
+        if firstSkill is None:  # ToDo: Check for different approach
+            # Character has no SkillQueue
+            print(self.character.name + " has an empty SkillQueue")
+            SkillRemainingTime = ""
+            SkillName = ""
+            SkillEndDate = ""
+            QueueRemainingTime = ""
+        elif firstSkill.finish_date is None:
+            # Character has an inactive SkillQueue
+            print(self.character.name + " has an inactive SkillQueue")
+            SkillRemainingTime = "Paused"
+            SkillName = self.dbHandler.getStaticSkillData(firstSkill.skill_id).name + " " + str(firstSkill.finished_level)
+            SkillEndDate = ""
+            QueueRemainingTime = ""
+        else:
+            # Character has an active SkillQueue
+            print(self.character.name + " has an active SkillQueue")
+            SkillRemainingTime = service.tools.getSkillRemainingTime(firstSkill)
+            SkillName = self.dbHandler.getStaticSkillData(firstSkill.skill_id).name + " " + str(firstSkill.finished_level)
+            SkillEndDate = service.tools.formatDateTime(firstSkill.finish_date)
+            QueueRemainingTime = "Queue ends in " + service.tools.getSkillRemainingTime(lastSkill)
+
+
+        self.characterSkillRemainingTimeLabel.setText(SkillRemainingTime)
+        self.characterSkillNameLabel.setText(SkillName)
+        self.characterSkillEndDateLabel.setText(SkillEndDate)
+        self.characterQueueRemainingTimeLabel.setText(QueueRemainingTime)
 
 
     def setCharacterPortrait(self):

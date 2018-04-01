@@ -33,6 +33,13 @@ class UpdateHandler():
 
         self.dbHandler = DatabaseHandler()
 
+    def calculateTimeDifference(self):
+        config.TIME_DIFFERENCE = 0
+
+    def getServerStatus(self):
+        # GET /status/
+        print("x")
+
     def updateAll(self):
         """ Method to update Data for all stored Users.
 
@@ -106,7 +113,7 @@ class UpdateHandler():
 
         try:
             response = api.get_characters_character_id_wallet(user.CharacterID)
-            print(response)
+            #print(response)
             self.dbHandler.saveCharacterBalance(response, user.get_id())
         except Exception as e:
             print(e)

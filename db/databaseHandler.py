@@ -8,7 +8,8 @@ from sqlalchemy import create_engine, desc, asc
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
-from db.databaseTables import User, Character, SkillQueue, SkillQueueItem, CharacterPortrait, CompletedSkillItem, CompletedSkillList
+from db.databaseTables import User, Character, SkillQueue, SkillQueueItem, CharacterPortrait, CompletedSkillItem, \
+    CompletedSkillList, StaticSkills
 
 
 import config
@@ -133,7 +134,7 @@ class DatabaseHandler():
 
     def getSkillQueue(self, ownerID):
         # Get SkillQueue for this owner from DB if already existing
-        #print(ownerID)
+        skillQueue = None
         try:
             skillQueue = SkillQueue().createSkillQueue(self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).all(), ownerID)
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
@@ -146,20 +147,26 @@ class DatabaseHandler():
 
     def getSkillQueueFirst(self, ownerID):
         # Ask for the First Item in the SkillQueue
+        print(" Getting SkillQueueFirst with ownerID: " + str(ownerID))
         skill = None
         try:
             skill = self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).order_by(SkillQueueItem.queue_position).first()
         except Exception as e:
             print(e)
+
+        print(skill)
         return skill
 
     def getSkillQueueLast(self, ownerID):
         # Ask for the Last Item in the SkillQueue
+        print(" Getting SkillQueueLast with ownerID: " + str(ownerID))
         skill = None
         try:
             skill = self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).order_by(desc(SkillQueueItem.queue_position)).first()
         except Exception as e:
             print(e)
+
+        print(skill)
         return skill
 
     def deleteSkillQueue(self, ownerID):
@@ -224,6 +231,14 @@ class DatabaseHandler():
         print("Character Portrait saved")
         self.session.commit()
 
+    def getStaticSkillData(self, skill_id):
+        staticSkill = None
+        try:
+            staticSkill = self.session.query(StaticSkills).filter_by(skill_id=skill_id).first()
+        except Exception as e:
+            print(e)
+        return staticSkill
+
     def getCharacterPortrait(self, ownerID):
         # Get CharacterPortrait for this owner from DB if already existing
         print("Gettin characterPortrait with ownerID: " + str(ownerID))
@@ -234,7 +249,7 @@ class DatabaseHandler():
             characterPortrait = CharacterPortrait()
             characterPortrait.owner_id = ownerID
 
-        print(characterPortrait)
+        #print(characterPortrait)
         return characterPortrait  # Might be an empty CharacterPortrait
 
     def close(self):
