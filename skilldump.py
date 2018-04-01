@@ -59,20 +59,19 @@ class SkillDump():
                 skillname = response.data['name']
                 skillid = response.data['type_id']
 
-                skill = StaticSkills().setData(skillname, skillid, group_id)
-                print(skillname)
-                print(skillid)
-                # print(skill)
+                print(response.data)
 
-                self.session.add(skill)
+                if response.data['published'] == True:
+                    skill = StaticSkills().setData(response.data)
+                    self.session.add(skill)
 
             gral[group_name] = [{'Category ID': group}, group_dict]
-
             self.session.commit()
 
         # with open("skills.txt", 'w') as f:
         # json.dump(gral, fp=f, indent=4, sort_keys=True)
 
 if __name__ == "__main__":
+
 
    SkillDump()

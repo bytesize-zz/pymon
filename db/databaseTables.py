@@ -284,12 +284,20 @@ class StaticSkills(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     skill_id = Column(Integer)
+    description = Column(String)
+    icon_id = Column(Integer)
+    market_group_id = Column(Integer)
+    basePrice = Column(Integer)
     group_id = Column(Integer, ForeignKey('StaticSkillGroups.id'))
 
-    def setData(self, name, skill_id, group_id):
-        self.name = name
-        self.skill_id = skill_id
-        self.group_id = group_id
+    def setData(self, data):
+        self.name = data['name']
+        self.skill_id = data['type_id']
+        self.description = data['description']
+        self.icon_id = data['icon_id']
+        self.market_group_id = data['market_group_id']
+        #self.basePrice = Column['base_price']
+        self.group_id = data['group_id']
         return self
 
 
