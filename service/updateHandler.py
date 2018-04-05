@@ -9,6 +9,7 @@ from PyQt5.QtNetwork import QNetworkAccessManager
 from PyQt5.QtCore import QUrl
 
 import config
+import skilldump
 
 from db.databaseHandler import DatabaseHandler
 from db.databaseTables import User, Character, CharacterPortrait, SkillQueue, CompletedSkillList
@@ -44,11 +45,16 @@ class UpdateHandler():
         """ Method to update Data for all stored Users.
 
         """
+
+        # If we have'nt yet, we get the Static Informations for Skills/Ships etc from Eve
+        # ToDo: Get Ship Dump and implement a real update function
+        if self.dbHandler.staticDumpPresent() == False:
+            #print("No Skill Dump present, lets get it ... ")
+            skilldump.SkillDump()
+
         try:
             userList = self.dbHandler.getAllUser()
-            print(userList)
             for user in userList:
-                print(user)
                 self.updateUser(user)
         except Exception as e:
             print(e)
@@ -66,6 +72,8 @@ class UpdateHandler():
         #self.updateSkillQueue(user)
         #self.updateCompletedSkills(user)
 
+        #self.getStructureDetails(user)
+
 
     def refreshUserAuth(self, user):
         """ Get a new Access Token based on Refresh Token.
@@ -76,13 +84,13 @@ class UpdateHandler():
         :param user: Stored User Class from Database
         """
 
-        print("Starting Auth refresh for " + user.CharacterName)
+        #print("Starting Auth refresh for " + user.CharacterName)
         self.esisecurity.set_token(user.AccessToken, user.RefreshToken, user.AccessTokenExpire)
 
         if self.esisecurity.is_token_expired() == True:
-            print("Access Token is expired, getting a new one ...")
+            #print("Access Token is expired, getting a new one ...")
             user.update_token(self.esisecurity.refresh())
-            print("Saving new Token in th DB")
+            #print("Saving new Token in th DB")
             self.dbHandler.saveUser(user)
         else:
             print("Access Token valid, nothing to do")
@@ -91,7 +99,7 @@ class UpdateHandler():
     def updateCharacter(self, user):
 
         # ToDo: Do this api creation different
-        print("Updating Character:" + user.CharacterName)
+        #("Updating Character:" + user.CharacterName)
         api = swagger_client.CharacterApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -105,7 +113,7 @@ class UpdateHandler():
             print("Exception in updateHandler.updateCharacter(): %s\n" % e)
 
     def updateBalance(self, user):
-        print("Updating Balance:" + user.CharacterName)
+        #print("Updating Balance:" + user.CharacterName)
         api = swagger_client.WalletApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -120,7 +128,7 @@ class UpdateHandler():
 
     def updatePortrait(self, user):
         # ToDo: Do this api creation different
-        print("Updating Portrait:" + user.CharacterName)
+        #print("Updating Portrait:" + user.CharacterName)
         api = swagger_client.CharacterApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -140,7 +148,7 @@ class UpdateHandler():
         url = QUrl()
 
     def updateSkillQueue(self, user):
-        print("Updating SkillQueue for :" + user.CharacterName)
+        #print("Updating SkillQueue for :" + user.CharacterName)
         api = swagger_client.SkillsApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -166,7 +174,7 @@ class UpdateHandler():
 
         :param user: Stored User Class from Database
         """
-        print("Updating completed Skills for " + user.CharacterName)
+        #print("Updating completed Skills for " + user.CharacterName)
         api = swagger_client.SkillsApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
@@ -181,3 +189,16 @@ class UpdateHandler():
             print(e)
 
 
+    def getStructureDetails(self, user):
+        # Test Function for getting Corp Structures, specially remaining structure fuel/time
+        api = swagger_client.CorporationApi()
+        api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
+        api.api_client.host = config.ESI_ESI_URL
+        api.api_client.configuration.access_token = user.AccessToken
+
+        try:
+            response = api.get_corporations_corporation_id_structures(573400667)
+            print(response)
+            print(response.data)
+        except Exception as e:
+            print(e)

@@ -15,6 +15,7 @@ def getSkillRemainingTime(skill):
 
     return formatTimeDelta(diff)
 
+
 def getQueueRemainingTime(skill):
     print("x")
 

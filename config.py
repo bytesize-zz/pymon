@@ -32,7 +32,8 @@ ESI_AGENT_DESCRIPTION = 'https://github.com/bytesize-zz/pymon'
 ESI_SCOPES = ['esi-skills.read_skills.v1',
               'esi-skills.read_skillqueue.v1',
               'esi-wallet.read_character_wallet.v1',
-              'esi-characters.read_fatigue.v1']
+              'esi-characters.read_fatigue.v1',
+              'esi-corporations.read_structures.v1']
 
 # ------------------------------------------------------
 # Session settings for flask login

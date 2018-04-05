@@ -7,9 +7,9 @@ from PyQt5 import QtCore
 from db.databaseTables import User
 from db.databaseHandler import DatabaseHandler
 
-class TabWidget(QTabWidget):
+class MainTabWidget(QTabWidget):
     def __init__(self, parent=None):
-        super(TabWidget, self).__init__(parent)
+        super(MainTabWidget, self).__init__(parent)
         self.parent = parent
         self.dbHandler = DatabaseHandler()  # ToDo: Dangerous to start an own instance of dbHandler?
 

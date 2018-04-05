@@ -74,7 +74,7 @@ def generate_token():
 
 class Esi():
 
-    def __init__(self, callback=None):
+    def __init__(self, queue):
         """
         A note on login/logout events: the character login events happen
         whenever a characters is logged into via the SSO, regardless of mod.
@@ -84,12 +84,11 @@ class Esi():
         characters still in the cache (if USER mode)
         """
         # self.settings = CRESTSettings.getInstance()
-        #self.scopes = ['characterFittingsRead', 'characterFittingsWrite', 'esi-characters.read_standings.v1']
 
         self.dbHandler = DatabaseHandler()  # ToDo: Dangerous to start an own instance of dbHandler
         self.updateHandler = UpdateHandler()    # ToDo: Dangerous to start an own instance of updateHandler
 
-        self.mainWindowCB = callback
+        self.gui_queue = queue
 
         # these will be set when needed
         self.httpd = None
@@ -166,8 +165,10 @@ class Esi():
             user.id = self.dbHandler.saveUser(user)
             if user.id is not None:     # We don't want DB Entrys without owner
                 self.updateHandler.updateUser(user)
-                # self.mainWindowCB() ToDo: Why isn't this working?
+                self.writeToQueue()
 
         self.dbHandler.close()
         # now the user is ready, so update/create it and log the user
 
+    def writeToQueue(self):
+        self.gui_queue.put("Reprint MainWindow")

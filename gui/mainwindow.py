@@ -1,16 +1,18 @@
 # https://github.com/MTG/dunya-desktop/blob/master/dunyadesktop_app/general_design.py
 
-# ToDo: Optimize Imorts
+# ToDo: Optimize Imports
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 from service.esi import Esi
-
+import time
 import config
 
+from Lib import queue
+
 # Import of neccessary Widgets
-from gui.widgets.tabwidget import TabWidget
+from gui.widgets.mainTabWidget import MainTabWidget
 from gui.charManagerWindow import CharManagerWindow
 
 class GeneralMainDesign(QMainWindow):
@@ -18,6 +20,8 @@ class GeneralMainDesign(QMainWindow):
     def __init__(self):
         super().__init__()
         self.init_MainWindow()
+
+        self.gui_queue = queue.Queue()
 
     def init_MainWindow(self):
         self.set_main_window()
@@ -60,13 +64,6 @@ class GeneralMainDesign(QMainWindow):
         # self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dw_collections)
 
         QMetaObject.connectSlotsByName(self)
-
-        # ToDo: Can get in Conflict with "Add User" Update
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.callback)
-        self.timer.setSingleShot(False)
-        self.timer.start(10000)
-
 
     def set_main_window(self):
         # Standard Values for this Window
@@ -124,13 +121,13 @@ class GeneralMainDesign(QMainWindow):
         # Tools Menu
         self.toolsMenu = self.menubar.addMenu('&Tools')
         manageNotificationsAction = QAction("&Manage Notifications", self)
-        reloadUI = QAction("&Reload UI", self)
+        #reloadUI = QAction("&Reload UI", self)
         optionsAction = QAction("&Options", self)
 
-        reloadUI.triggered.connect(self.callback)
+        #reloadUI.triggered.connect(self.writeToQueue)
 
         self.toolsMenu.addAction(manageNotificationsAction)
-        self.toolsMenu.addAction(reloadUI)
+        #self.toolsMenu.addAction(reloadUI)
         self.toolsMenu.addSeparator()
         self.toolsMenu.addAction(optionsAction)
 
@@ -165,8 +162,8 @@ class GeneralMainDesign(QMainWindow):
          self.close()
 
     def addCharacterTriggered(self):
-        # ToDO: Find a way to trigger a repaint after the login process, also a complete Update for the new character
-        Esi(self.callback)
+        self.startUpdateTimer()  # ToDo: Configure Timer for a maximum run time
+        Esi(self.gui_queue)
 
     def manageCharacterTriggered(self):
         # Open New Window Character Manager
@@ -196,11 +193,11 @@ class GeneralMainDesign(QMainWindow):
 
     def createTabwidget(self):
         print("creating Tabwidget ...")
-        self.tab_widget = TabWidget(self)
+        self.tab_widget = MainTabWidget(self)
         self.layout.addWidget(self.tab_widget)
         print("Tabwidget created.")
 
-    def callback(self):
+    def reprintUI(self):
         # repaint Function: delete old layout and children, then paint a new one
         # should only be neccessary after adding a new Character
         try:
@@ -210,3 +207,15 @@ class GeneralMainDesign(QMainWindow):
         except Exception as e:
             print(e)
 
+    def hearAtQueue(self):
+        if self.gui_queue.empty() is False:
+            msg = self.gui_queue.get()
+            if msg == "Reprint MainWindow":
+                self.reprintUI()
+                self.timer.stop()
+
+    def startUpdateTimer(self):
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.hearAtQueue)
+        self.timer.setSingleShot(False)
+        self.timer.start(1000)

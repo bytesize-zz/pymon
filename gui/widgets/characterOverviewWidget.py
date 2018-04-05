@@ -67,6 +67,8 @@ class CharacterOverviewWidget(QWidget):
 
         self.set_size_policy()
 
+        self.startUpdateTimer()
+
     def setLabels(self):
         self.characterNameLabel.setText(self.character.name)
         self.characterBalanceLabel.setText(format(self.character.balance, ",") + " ISK")
@@ -77,21 +79,21 @@ class CharacterOverviewWidget(QWidget):
 
         if firstSkill is None:  # ToDo: Check for different approach
             # Character has no SkillQueue
-            print(self.character.name + " has an empty SkillQueue")
+            #print(self.character.name + " has an empty SkillQueue")
             SkillRemainingTime = ""
             SkillName = ""
             SkillEndDate = ""
             QueueRemainingTime = ""
         elif firstSkill.finish_date is None:
             # Character has an inactive SkillQueue
-            print(self.character.name + " has an inactive SkillQueue")
+           # print(self.character.name + " has an inactive SkillQueue")
             SkillRemainingTime = "Paused"
             SkillName = self.dbHandler.getStaticSkillData(firstSkill.skill_id).name + " " + str(firstSkill.finished_level)
             SkillEndDate = ""
             QueueRemainingTime = ""
         else:
             # Character has an active SkillQueue
-            print(self.character.name + " has an active SkillQueue")
+            #print(self.character.name + " has an active SkillQueue")
             SkillRemainingTime = service.tools.getSkillRemainingTime(firstSkill)
             SkillName = self.dbHandler.getStaticSkillData(firstSkill.skill_id).name + " " + str(firstSkill.finished_level)
             SkillEndDate = service.tools.formatDateTime(firstSkill.finish_date)
@@ -125,7 +127,7 @@ class CharacterOverviewWidget(QWidget):
 
     def set_size_policy(self):
         self.setMaximumSize(350, 150)
-        #self.setMinimumSize(320, 120)
+        self.setMinimumSize(350, 150)
 
     def setLabelFonts(self):
         self.characterNameLabel.setFont(QFont("Arial", 14, QFont.Bold))
@@ -133,3 +135,17 @@ class CharacterOverviewWidget(QWidget):
         self.characterSkillpointsLabel.setFont(QFont("Arial", 10))
         self.characterSkillRemainingTimeLabel.setFont(QFont("Arial", 10))
 
+    def startUpdateTimer(self):
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(self.setLabels)
+        self.timer.setSingleShot(False)
+        self.timer.start(1000)
+
+
+    def updateLabel(self):
+        self.characterBalanceLabel.update()
+        self.characterSkillpointsLabel.update()
+        self.characterSkillRemainingTimeLabel.update()
+        self.characterSkillNameLabel.update()
+        self.characterSkillEndDateLabel.update()
+        self.characterQueueRemainingTimeLabel.update()

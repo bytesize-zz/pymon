@@ -73,5 +73,4 @@ class SkillDump():
 
 if __name__ == "__main__":
 
-
    SkillDump()

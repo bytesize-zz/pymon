@@ -29,15 +29,15 @@ class DatabaseHandler():
     def saveUser(self, newUser):
         self.dbUser = self.getUser(newUser.CharacterID)  # ask DB for User with this ID
         id = None
-        print("Saving User: "), print(newUser)
+        #print("Saving User: "), print(newUser)
         # ToDo: Exception Handling
         if self.dbUser is None:
-            print("New User found, lets add him do the Database")
+            #print("New User found, lets add him do the Database")
             self.session.add(newUser)
             self.session.flush()        # We do this, so the DB can give us the autogenerating id to return
             id = newUser.id
         elif self.dbUser.CharacterID == newUser.CharacterID:
-            print("User already present, lets update him.")
+            #print("User already present, lets update him.")
             self.dbUser.AccessToken = newUser.AccessToken
             self.dbUser.RefreshToken = newUser.RefreshToken
             self.dbUser.AccessTokenExpire = newUser.AccessTokenExpire
@@ -50,7 +50,7 @@ class DatabaseHandler():
 
     def getUser(self, cID):
         # Get User from DB if already existing
-        print("Getting User with characterID:" + str(cID))
+        #print("Getting User with characterID:" + str(cID))
         try:
             user = self.session.query(User).filter_by(CharacterID=cID).first()
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
@@ -72,11 +72,11 @@ class DatabaseHandler():
 
         # ToDo: Exception Handling
         if self.dbCharacter is None:
-            print("New Character found, lets add him do the Database")
+            #print("New Character found, lets add him do the Database")
             #print(newCharacter)
             self.session.add(newCharacter)
         elif self.dbCharacter.owner_id == newCharacter.owner_id:
-            print("Character already present, lets update him.")
+            #print("Character already present, lets update him.")
             self.dbCharacter.updateCharacter(newCharacter)
         else:
             print("Something is wrong at databaseHandler.saveCharacter()")
@@ -88,7 +88,7 @@ class DatabaseHandler():
         if self.dbCharacter is None:
             print("No Character found, do nothing")
         elif self.dbCharacter.owner_id == ownerID:
-            print("Character found, update Skillpoints")
+            #print("Character found, update Skillpoints")
             self.dbCharacter.setSkillpoints(total_sp, unallocated_sp)
         else:
             print("Something is wrong at databaseHandler.saveCharacterSP()")
@@ -100,7 +100,7 @@ class DatabaseHandler():
         if self.dbCharacter is None:
             print("No Character found, do nothing")
         elif self.dbCharacter.owner_id == ownerID:
-            print("Character found, update Balance")
+            #print("Character found, update Balance")
             self.dbCharacter.setBalance(balance)
         else:
             print("Something is wrong at databaseHandler.saveCharacterBalance()")
@@ -109,7 +109,7 @@ class DatabaseHandler():
 
     def getCharacter(self, ownerID):
         # Get Character from DB if already existing
-        print("Getting Character with ownerID: " + str(ownerID))
+       # print("Getting Character with ownerID: " + str(ownerID))
         try:
             character = self.session.query(Character).filter_by(owner_id=ownerID).first()
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
@@ -122,7 +122,7 @@ class DatabaseHandler():
     def saveSkillQueue(self, newSkillQueue):
         # Add or update the received skillqueue
         try:
-            print("Updating Skillqueue...")
+            #print("Updating Skillqueue...")
             self.deleteSkillQueue(newSkillQueue.owner_id)   # First delete old SkillQueue
             for skill in newSkillQueue.items:               # Then add the new One
                 self.session.add(skill)
@@ -147,30 +147,28 @@ class DatabaseHandler():
 
     def getSkillQueueFirst(self, ownerID):
         # Ask for the First Item in the SkillQueue
-        print(" Getting SkillQueueFirst with ownerID: " + str(ownerID))
+        #print(" Getting SkillQueueFirst with ownerID: " + str(ownerID))
         skill = None
         try:
             skill = self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).order_by(SkillQueueItem.queue_position).first()
         except Exception as e:
             print(e)
 
-        print(skill)
         return skill
 
     def getSkillQueueLast(self, ownerID):
         # Ask for the Last Item in the SkillQueue
-        print(" Getting SkillQueueLast with ownerID: " + str(ownerID))
+        #print(" Getting SkillQueueLast with ownerID: " + str(ownerID))
         skill = None
         try:
             skill = self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).order_by(desc(SkillQueueItem.queue_position)).first()
         except Exception as e:
             print(e)
 
-        print(skill)
         return skill
 
     def deleteSkillQueue(self, ownerID):
-        print("Deleting old Skill Queue from owner " + str(ownerID))
+        #print("Deleting old Skill Queue from owner " + str(ownerID))
         try:  # Deleting old SkillQueueItems
             self.session.query(SkillQueueItem).filter_by(owner_id=ownerID).delete(synchronize_session=False)
         except Exception as e:
@@ -181,7 +179,7 @@ class DatabaseHandler():
     def saveCompletedSkills(self, newSkillList):
         # Add or update the received CompletedSkills
         try:
-            print("Updating completed Skills...")
+            #print("Updating completed Skills...")
             self.deleteCompletedSkills(newSkillList.owner_id)   # First delete old SkillList
             for skill in newSkillList.items:               # Then add the new One
                 self.session.add(skill)
@@ -204,7 +202,7 @@ class DatabaseHandler():
             return skillList  # Might be an empty skillqueue
 
     def deleteCompletedSkills(self, ownerID):
-        print("Deleting old List of Completed Skills from owner " + str(ownerID))
+        #print("Deleting old List of Completed Skills from owner " + str(ownerID))
         try:  # Deleting old CompletedSkillItem's
             self.session.query(CompletedSkillItem).filter_by(owner_id=ownerID).delete(synchronize_session=False)
         except Exception as e:
@@ -219,16 +217,16 @@ class DatabaseHandler():
         # ToDo: Exception Handling
         try:
             if self.dbCharacterPortrait is None:
-                print("New Portrait found, lets add it do the Database")
+                #print("New Portrait found, lets add it do the Database")
                 self.session.add(newCharacterPortrait)
             elif self.dbCharacterPortrait.owner_id == newCharacterPortrait.owner_id:
-                print("Portrait already present, lets update it.")
+                #print("Portrait already present, lets update it.")
                 self.dbCharacterPortrait.setCharacterPortrait(newCharacterPortrait, newCharacterPortrait.owner_id)
             else:
                 print("Something is wrong at databaseHandler.saveCharacterPortrait()")
         except Exception as e:
             print(e)
-        print("Character Portrait saved")
+        #print("Character Portrait saved")
         self.session.commit()
 
     def getStaticSkillData(self, skill_id):
@@ -239,9 +237,21 @@ class DatabaseHandler():
             print(e)
         return staticSkill
 
+    def staticDumpPresent(self):
+        dump = None
+        try:
+            dump = self.session.query(StaticSkills).first()
+        except Exception as e:
+            print(e)
+
+        if dump is None:
+            return False
+        else:
+            return True
+
     def getCharacterPortrait(self, ownerID):
         # Get CharacterPortrait for this owner from DB if already existing
-        print("Gettin characterPortrait with ownerID: " + str(ownerID))
+        #print("Gettin characterPortrait with ownerID: " + str(ownerID))
         try:
             characterPortrait = self.session.query(CharacterPortrait).filter_by(owner_id=ownerID).first()
         except NoResultFound:      # ToDo: Find out, why this exception isn't triggering

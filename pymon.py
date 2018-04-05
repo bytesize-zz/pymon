@@ -76,16 +76,17 @@ if __name__ == "__main__":
         config.TIME_DIFFERENCE = datetime.datetime.now() - datetime.datetime.utcnow()
 
         app = QApplication(sys.argv)
-        updateHandler = UpdateHandler()
-        updateHandler.updateAll()
+        #updateHandler = UpdateHandler()
+        #updateHandler.updateAll()
         mainwindow = GeneralMainDesign()
 
-        '''
-        updateHandler = threading.Thread(target=UpdateHandler())
-        updateHandler.name = "UpdateHandler"
-        updateHandler.daemon = True
-        updateHandler.start()
-        '''
+
+        updateThread = threading.Thread(target=UpdateHandler().updateAll())
+        updateThread.name = "UpdateHandler"
+        updateThread.daemon = True
+        updateThread.start()
+
+
         #mainwindow.show()
         sys.exit(app.exec_())
     except Exception as e:
