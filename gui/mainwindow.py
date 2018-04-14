@@ -6,9 +6,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 from service.esi import Esi
-import time
 import config
-
 from Lib import queue
 
 # Import of neccessary Widgets

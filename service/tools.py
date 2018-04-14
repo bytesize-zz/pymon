@@ -16,8 +16,13 @@ def getSkillRemainingTime(skill):
     return formatTimeDelta(diff)
 
 
-def getQueueRemainingTime(skill):
-    print("x")
+def offset(x):
+    # returns a string wich contains x Spaces
+    o = ""
+    o += " " * x
+
+    return o
+
 
 def getQueueEndDate(skill):
     print("x")

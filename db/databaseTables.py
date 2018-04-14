@@ -142,6 +142,64 @@ class CharacterPortrait(Base):
               (self.px64x64, self.px128x128, self.px256x256, self.px512x512)
 
 
+class CharacterAttributes(Base):
+    __tablename__ = 'CharacterAttributes'
+    id = Column(Integer, primary_key=True)
+    charisma = Column(Integer)
+    intelligence = Column(Integer)
+    memory = Column(Integer)
+    perception = Column(Integer)
+    willpower = Column(Integer)
+    bonus_remaps = Column(Integer)
+    last_remap_date = Column(DateTime)  # Datetime of last neural remap, including usage of bonus remaps
+    accrued_remap_cooldown_date = Column(DateTime)  # Neural remapping cooldown after a character uses remap accrued over time
+    owner_id = Column(Integer, ForeignKey('User.id'))
+
+
+    def test(self, request_response, ownerID):
+
+        self = request_response     # Might work because of same naming ?
+        self.owner_id = ownerID
+        return self
+
+    def create(self, request_response, ownerID):
+        self.charisma = request_response.charisma
+        self.intelligence = request_response.intelligence
+        self.memory = request_response.memory
+        self.perception = request_response.perception
+        self.willpower = request_response.willpower
+        self.bonus_remaps = request_response.bonus_remaps
+        self.last_remap_date = request_response.last_remap_date
+        self.accrued_remap_cooldown_date = request_response.accrued_remap_cooldown_date
+        self.owner_id = ownerID
+
+        return self
+
+    def update(self, newAttributes):
+        self.charisma = newAttributes.charisma
+        self.intelligence = newAttributes.intelligence
+        self.memory = newAttributes.memory
+        self.perception = newAttributes.perception
+        self.willpower = newAttributes.willpower
+        self.bonus_remaps = newAttributes.bonus_remaps
+        self.last_remap_date = newAttributes.last_remap_date
+        self.accrued_remap_cooldown_date = newAttributes.accrued_remap_cooldown_date
+
+        return self
+
+
+class  CharacterNotifications(Base):
+    __tablename__ = 'CharacterNotifications'
+    id = Column(Integer, primary_key=True)
+    notification_id = Column(Integer)
+    sender_id = Column(Integer)
+    sender_type = Column(String)    # Enum [ character, corporation, alliance, faction, other ]
+    timestamp = Column(DateTime)
+    is_read = Column(String)    # Boolean
+    text = Column(String)
+    type = Column(String)
+    owner_id = Column(Integer, ForeignKey('User.id'))
+
 class Implants(Base):
     __tablename__ = 'Implants'
     id = Column(Integer, primary_key=True)
@@ -278,6 +336,9 @@ class StaticSkillGroups(Base):
         self.name = name
         self.group_id = group_id
         return self
+
+    def __repr__(self):
+        return"<Static Skill Group(id='%s', name='%s', group_id='%s')>" % (self.id, self.name, self.group_id)
 
 class StaticSkills(Base):
     __tablename__ = 'StaticSkills'

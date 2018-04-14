@@ -76,12 +76,12 @@ if __name__ == "__main__":
         config.TIME_DIFFERENCE = datetime.datetime.now() - datetime.datetime.utcnow()
 
         app = QApplication(sys.argv)
-        #updateHandler = UpdateHandler()
+        updateHandler = UpdateHandler()
         #updateHandler.updateAll()
         mainwindow = GeneralMainDesign()
 
 
-        updateThread = threading.Thread(target=UpdateHandler().updateAll())
+        updateThread = threading.Thread(target=updateHandler.updateAll)
         updateThread.name = "UpdateHandler"
         updateThread.daemon = True
         updateThread.start()

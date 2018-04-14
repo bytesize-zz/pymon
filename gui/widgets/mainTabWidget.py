@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QTabWidget, QWidget, QGridLayout
+from PyQt5.QtWidgets import QTabWidget, QWidget, QGridLayout, QScrollArea
 from gui.widgets.characterOverviewWidget import CharacterOverviewWidget
 from gui.widgets.characterTabWidget import CharacterTabWidget
 from PyQt5 import QtCore
@@ -6,6 +6,7 @@ from PyQt5 import QtCore
 # Database Imports
 from db.databaseTables import User
 from db.databaseHandler import DatabaseHandler
+import threading
 
 class MainTabWidget(QTabWidget):
     def __init__(self, parent=None):
@@ -25,9 +26,11 @@ class MainTabWidget(QTabWidget):
     def createOverviewTab(self, userList):
 
         self.overviewTab = QWidget()
-        self.addTab(self.overviewTab, "Overview")
-
+        #self.addTab(self.overviewTab, "Overview")
         grid = QGridLayout(self.overviewTab)
+
+        scrollArea = QScrollArea()
+        scrollArea.setWidget(self.overviewTab)
 
         x = 0
         y = 0
@@ -45,10 +48,13 @@ class MainTabWidget(QTabWidget):
                 y = y-1
             elif(y > 1): y = 0
 
-        self.overviewTab.setLayout(grid)
+        scrollArea.setLayout(grid)
+        self.addTab(scrollArea, "Overview")
+
+
+        #self.overviewTab.setLayout(grid)
 
     def repaintOverviewTab(self):
-        #print("x")
         self.createOverviewTab()
 
 

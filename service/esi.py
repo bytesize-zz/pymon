@@ -167,7 +167,6 @@ class Esi():
                 self.updateHandler.updateUser(user)
                 self.writeToQueue()
 
-        self.dbHandler.close()
         # now the user is ready, so update/create it and log the user
 
     def writeToQueue(self):

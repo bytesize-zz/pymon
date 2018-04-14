@@ -8,6 +8,7 @@ from db.databaseHandler import DatabaseHandler
 import urllib, io
 from urllib import request
 import service.tools
+import threading
 
 # ToDo Mouse Over and click Event/Action
 class CharacterOverviewWidget(QWidget):
@@ -18,7 +19,13 @@ class CharacterOverviewWidget(QWidget):
         self.user = user
         self.dbHandler = DatabaseHandler()
 
-        self.character = self.dbHandler.getCharacter(user.get_id())
+        try:
+            self.character = self.dbHandler.getCharacter(user.get_id())
+        except Exception as e:
+            print("Exception in Character Overview Widget: " + str(e))
+
+            if self.character is None:
+                print("Character Overview has a None Character")
 
         # Background Color
         #pal = QPalette()
@@ -70,12 +77,18 @@ class CharacterOverviewWidget(QWidget):
         self.startUpdateTimer()
 
     def setLabels(self):
-        self.characterNameLabel.setText(self.character.name)
-        self.characterBalanceLabel.setText(format(self.character.balance, ",") + " ISK")
-        self.characterSkillpointsLabel.setText(format(self.character.total_sp, ",") + " SP")
+        if self.character is not None:
+            self.characterNameLabel.setText(self.character.name)
+            self.characterBalanceLabel.setText(format(self.character.balance, ",") + " ISK")
+            self.characterSkillpointsLabel.setText(format(self.character.total_sp, ",") + " SP")
 
         lastSkill = self.dbHandler.getSkillQueueLast(self.user.get_id())
-        firstSkill = self.dbHandler.getSkillQueueFirst(self.user.get_id())
+        #firstSkill = self.dbHandler.getSkillQueueFirst(self.user.get_id())
+        #dbThread = threading.Thread(target=self.dbHandler.getQueueFirst, args=(self.user.get_id(),))
+        #dbThread.daemon = True
+        #dbThread.start()
+        firstSkill = self.dbHandler.getQueueFirst(self.user.get_id())
+        #print(realFirst)
 
         if firstSkill is None:  # ToDo: Check for different approach
             # Character has no SkillQueue
@@ -113,10 +126,13 @@ class CharacterOverviewWidget(QWidget):
             portraitUrl = self.dbHandler.getCharacterPortrait(self.user.get_id())
             if portraitUrl is not None:
                 data = request.urlopen(portraitUrl.px128x128).read()
-                self.pixmap.loadFromData(data)
-                self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
             else:
                 print("No portrait URL for " + self.user.CharacterName + " in the Database")
+                # ToDo: Get a working filler Image on case of Connection Problems
+                data = request.urlopen("https://pixabay.com/de/pinguin-vogel-tier-tierwelt-k%C3%A4lte-42936/").read()
+
+            self.pixmap.loadFromData(data)
+            self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
         except Exception as e:
             print(e)
 

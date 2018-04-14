@@ -5,7 +5,10 @@ from PyQt5.QtGui import QPalette, QPixmap, QFont
 from db.databaseTables import User, Character, SkillQueue
 from db.databaseHandler import DatabaseHandler
 
+from gui.widgets.functionTabWidget import FunctionTabWidget
+
 from urllib import request
+from service.tools import offset
 
 import datetime
 import config
@@ -17,7 +20,14 @@ class CharacterTabWidget(QWidget):
         self.user = user
         self.dbHandler = DatabaseHandler()  # ToDo: Dangerous to start an own instance of dbHandler?
 
-        self.character = self.dbHandler.getCharacter(user.get_id())
+        try:
+            self.character = self.dbHandler.getCharacter(user.get_id())
+            self.attributes = self.dbHandler.getCharacterAttributes(user.get_id())
+        except Exception as e:
+            print("Exception in CharacterTab: " + str(e))
+
+            if self.character is None:
+                print("Character Tab has a None Character")
 
         self.layout = self.createLayout()
         self.layout.setSpacing(0)
@@ -36,25 +46,15 @@ class CharacterTabWidget(QWidget):
         self.layout.update()
 
     def createLayout(self):
-        #print("creating Character Tab Layout...")
         vBox = QVBoxLayout()
         vBox.addLayout(self.horizontalTop())
         vBox.addSpacing(5)
         vBox.addLayout(self.horizontalMiddle())
-        vBox.addStretch(1)
-        #print("Layout created.")
+        self.functionTab = FunctionTabWidget(self.user)
+        vBox.addWidget(self.functionTab)
+        #vBox.addStretch(1)
 
         return vBox
-
-    def createLayout2(self):
-        hBox = QHBoxLayout()
-        hBox.addLayout(self.setLeftVertical())
-        hBox.addSpacing(5)
-        hBox.addLayout(self.setMiddleVertical())
-        hBox.addStretch(1)
-        hBox.addLayout(self.setRightVertical())
-
-        return hBox
 
     def horizontalTop(self):
         # Character Image
@@ -68,20 +68,24 @@ class CharacterTabWidget(QWidget):
         characterImage.resize(150, 150)
 
         hBox = QHBoxLayout()
+        hBox.setAlignment(QtCore.Qt.AlignTop)
         hBox.addWidget(characterImage)
         hBox.addSpacing(5)
 
         # Character General Information
         vBox = QVBoxLayout()
-        vBox.setAlignment(QtCore.Qt.AlignLeft)
+        #vBox.setAlignment(QtCore.Qt.AlignLeft)
+        vBox.setAlignment(QtCore.Qt.AlignTop)
+        vBox.setSpacing(0)
+        vBox.setContentsMargins(0,0,0,0)
 
         nameLabel = QLabel(self.character.name)
         nameLabel.setFont(QFont("Arial", 14, QFont.Bold))
 
-        balanceLabel = QLabel("Balance: ")
+        balanceLabel = QLabel("Balance: " + format(self.character.balance, ",") + " ISK")
         corpLabel = QLabel("Corporation: ")
         allyLabel = QLabel("Alliance: ")
-        secLabel = QLabel("Security Status: ")
+        secLabel = QLabel("Security Status: " + str(round(self.character.security_status, 2)))
         fatigueLabel = QLabel("Jump Fatigue: ")
         shipLabel = QLabel("Active Ship: ")
         locationLabel = QLabel("Located in: ")
@@ -96,7 +100,7 @@ class CharacterTabWidget(QWidget):
         vBox.addWidget(shipLabel)
         vBox.addWidget(locationLabel)
         vBox.addWidget(dockedLabel)
-        vBox.addStretch(1)
+        #vBox.addStretch(1)
 
         hBox.addLayout(vBox)
         hBox.addStretch(1)
@@ -108,6 +112,7 @@ class CharacterTabWidget(QWidget):
     def horizontalMiddle(self):
         # Account Subscription Status
         vBox1 = QVBoxLayout()
+        vBox1.setAlignment(QtCore.Qt.AlignTop)
         subscriptionStatusLabel = QLabel("AccountStatus: " + "Omega")
         subsriptionTimeLabel = QLabel("Remaining Time")
 
@@ -115,46 +120,56 @@ class CharacterTabWidget(QWidget):
 
         vBox1.addWidget(subscriptionStatusLabel)
         vBox1.addWidget(subsriptionTimeLabel)
-        vBox1.addStretch(1)
+        #vBox1.addStretch(1)
 
         # Character Stats
         vBox2 = QVBoxLayout()
-        intelligenceLabel = QLabel("Intelligence: ")
-        perceptionLabel = QLabel("Perception: ")
-        charismaLabel = QLabel("Charisma: ")
-        willpowerLabel = QLabel("Willpower: ")
-        memoryLabel = QLabel("Memory: ")
+        vBox2.setAlignment(QtCore.Qt.AlignTop)
+        intelligenceLabel = QLabel("Intelligence: " + offset(8) + str(self.attributes.intelligence))  # 12
+        perceptionLabel = QLabel("Perception: " + offset(9) + str(self.attributes.perception))  # 10
+        charismaLabel = QLabel("Charisma: " + offset(11) + str(self.attributes.charisma))  # 8
+        willpowerLabel = QLabel("Willpower: " + offset(11) + str(self.attributes.willpower))  # 9
+        memoryLabel = QLabel("Memory: " + offset(13) + str(self.attributes.memory))  # 6
+
+        intelligenceLabel.setFixedWidth(120)
 
         vBox2.addWidget(intelligenceLabel)
         vBox2.addWidget(perceptionLabel)
         vBox2.addWidget(charismaLabel)
         vBox2.addWidget(willpowerLabel)
         vBox2.addWidget(memoryLabel)
+        #vBox2.addStretch(1)
 
         #Clone Jump Status
         vBox3 = QVBoxLayout()
+        vBox3.setAlignment(QtCore.Qt.AlignTop)
         bonusRemapLabel = QLabel("Bonus Remap: ")
         neuralRemapLabel = QLabel("Next Neural Remap: ")
         cloneJumpLabel = QLabel("Next Clone Jump: ")
-        vBox2.addStretch(1)
+
 
         vBox3.addWidget(bonusRemapLabel)
         vBox3.addWidget(neuralRemapLabel)
         vBox3.addWidget(cloneJumpLabel)
-        vBox3.addStretch(1)
+        #vBox3.addStretch(1)
 
         # Skills Statistics
         vBox4 = QVBoxLayout()
+        vBox4.setAlignment(QtCore.Qt.AlignTop)
         knownSkillsLabel = QLabel("Known Skills: ")
         skillsAt5Label = QLabel("Skills at Level V: ")
-        totalSPLabel = QLabel("Total SP: ")
-        unallocatedSP = QLabel("Unallocated SP: ")
+        totalSPLabel = QLabel("Total SP: " + format(self.character.total_sp, ","))
+        if self.character.unallocated_sp is None:
+            tmp = 0
+        else:
+            tmp = self.character.unallocated_sp
+        unallocatedSP = QLabel("Unallocated SP: " + format(tmp, ","))
 
         vBox4.addWidget(knownSkillsLabel)
         vBox4.addWidget(skillsAt5Label)
         vBox4.addWidget(totalSPLabel)
         vBox4.addWidget(unallocatedSP)
-        vBox4.addStretch(1)
+        #vBox4.addStretch(1)
 
 
         # Complete horizontal Middle
@@ -168,112 +183,6 @@ class CharacterTabWidget(QWidget):
         hBox.addLayout(vBox4)
 
         return hBox
-
-    def setLeftVertical(self):
-        # Character Image
-        characterImage = QLabel()
-        pixmap = QPixmap(self.getCharacterPortrait())
-
-        if pixmap is None:
-            pixmap = QPixmap('image.png')
-
-        characterImage.setPixmap(pixmap.scaled(150, 150))
-        characterImage.resize(150, 150)
-
-        vBox = QVBoxLayout()
-        vBox.addWidget(characterImage)
-        vBox.addSpacing(2)
-
-        # Account Subscription Status
-        subscriptionStatusLabel = QLabel("AccountStatus: " + "Omega")
-        subsriptionTimeLabel = QLabel("Remaining Time")
-
-        vBox.addWidget(subscriptionStatusLabel)
-        vBox.addWidget(subsriptionTimeLabel)
-        vBox.addStretch(1)
-
-        return vBox
-
-
-    def setMiddleVertical(self):
-        # Character General Information
-        vBox = QVBoxLayout()
-        vBox.setAlignment(QtCore.Qt.AlignLeft)
-
-        nameLabel = QLabel(self.character.name)
-        nameLabel.setFont(QFont("Arial", 14, QFont.Bold))
-
-        balanceLabel = QLabel("Balance: ")
-        corpLabel = QLabel("Corporation: ")
-        allyLabel = QLabel("Alliance: ")
-        secLabel = QLabel("Security Status: ")
-        fatigueLabel = QLabel("Jump Fatigue: ")
-        shipLabel = QLabel("Active Ship: ")
-        locationLabel = QLabel("Located in: ")
-        dockedLabel = QLabel("Docked at: ")
-
-        vBox.addWidget(nameLabel)
-        vBox.addWidget(balanceLabel)
-        vBox.addWidget(corpLabel)
-        vBox.addWidget(allyLabel)
-        vBox.addWidget(secLabel)
-        vBox.addWidget(fatigueLabel)
-        vBox.addWidget(shipLabel)
-        vBox.addWidget(locationLabel)
-        vBox.addWidget(dockedLabel)
-
-        # Character Stats
-        vBox2 = QVBoxLayout()
-        intelligenceLabel = QLabel("Intelligence: ")
-        perceptionLabel = QLabel("Perception: ")
-        charismaLabel = QLabel("Charisma: ")
-        willpowerLabel = QLabel("Willpower: ")
-        memoryLabel = QLabel("Memory: ")
-
-        vBox2.addWidget(intelligenceLabel)
-        vBox2.addWidget(perceptionLabel)
-        vBox2.addWidget(charismaLabel)
-        vBox2.addWidget(willpowerLabel)
-        vBox2.addWidget(memoryLabel)
-
-        # Clone Jump Status
-        vBox3 = QVBoxLayout()
-        bonusRemapLabel = QLabel("Bonus Remap: ")
-        neuralRemapLabel = QLabel("Next Neural Remap: ")
-        cloneJumpLabel = QLabel("Next Clone Jump: ")
-
-        vBox3.addWidget(bonusRemapLabel)
-        vBox3.addWidget(neuralRemapLabel)
-        vBox3.addWidget(cloneJumpLabel)
-        vBox3.addStretch(1)
-
-        hBox = QHBoxLayout()
-        hBox.addLayout(vBox2)
-        hBox.addLayout(vBox3)
-
-        vBox.addLayout(hBox)
-        vBox.addStretch(1)
-
-        return vBox
-
-    def setRightVertical(self):
-
-
-        # Skills Statistics
-        vBox = QVBoxLayout()
-        knownSkillsLabel = QLabel("Known Skills: ")
-        skillsAt5Label = QLabel("Skills at Level V: ")
-        totalSPLabel = QLabel("Total SP: ")
-        unallocatedSP = QLabel("Unallocated SP: ")
-
-        vBox.addStretch(1)
-        vBox.addWidget(knownSkillsLabel)
-        vBox.addWidget(skillsAt5Label)
-        vBox.addWidget(totalSPLabel)
-        vBox.addWidget(unallocatedSP)
-        vBox.addStretch(1)
-
-        return vBox
 
     def getCharacterPortrait(self):
         # Gets url to the character Portrait from db and sets the shown image to it
