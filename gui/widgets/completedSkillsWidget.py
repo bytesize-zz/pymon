@@ -23,8 +23,6 @@ class CompletedSkillsWidget(QWidget):
 
         self.setBackgroundColor()
 
-
-
     def initiateLayout(self):
         '''
             box is a Layout needed to Stretch the scrollArea
@@ -57,12 +55,12 @@ class CompletedSkillsWidget(QWidget):
             for grp in groups:
                 widget = SkillGroupWidget(grp)
                 self.scrollLayout.addWidget(widget)
-                #self.createSkillsFromGroup(grp)
+                #self.createSkillsFromGroup(grp)  # ToDo: Print the known Skills for every Group
 
-
-        self.scrollArea.setWidget(self.scrollContent)
+        self.scrollArea.setWidget(self.scrollContent) # Never forget this!!
 
     def doSomething(self, name):
+        # ToDo: hide/unhide grouped skills on Group Click
         print(name)
 
     def createSkillsFromGroup(self, group):
@@ -78,7 +76,7 @@ class CompletedSkillsWidget(QWidget):
         self.setAutoFillBackground(True)
         # Background Color
         pal = QPalette()
-        pal.setColor(self.backgroundRole(), QtCore.Qt.red)
+        pal.setColor(self.backgroundRole(), QtCore.Qt.gray)
         self.setPalette(pal)
 
 class SkillGroupWidget(QWidget):
@@ -119,7 +117,7 @@ class SkillGroupWidget(QWidget):
         self.setAutoFillBackground(True)
         # Background Color
         pal = QPalette()
-        pal.setColor(self.backgroundRole(), QtCore.Qt.yellow)
+        pal.setColor(self.backgroundRole(), QtCore.Qt.darkGray)
         self.setPalette(pal)
 
 
@@ -142,7 +140,7 @@ class SkillItem(QWidget):
         self.setAutoFillBackground(True)
         # Background Color
         pal = QPalette()
-        pal.setColor(self.backgroundRole(), QtCore.Qt.green)
+        pal.setColor(self.backgroundRole(), QtCore.Qt.lightGray)
         self.setPalette(pal)
 
 if __name__ == "__main__":

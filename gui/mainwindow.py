@@ -23,7 +23,7 @@ class GeneralMainDesign(QMainWindow):
 
     def init_MainWindow(self):
         self.set_main_window()
-
+        self.setBackgroundColor()
         self.createLayout()
 
         # query frame
@@ -82,6 +82,13 @@ class GeneralMainDesign(QMainWindow):
         # main window icon
         self.setWindowIcon(QIcon(""))
         self.setWindowTitle(config.APP_NAME)
+
+    def setBackgroundColor(self):
+        self.setAutoFillBackground(True)
+        # Background Color
+        pal = QPalette()
+        pal.setColor(self.backgroundRole(), Qt.white)
+        self.setPalette(pal)
 
     def set_main_menubar(self):
         # Create Menu Bar with Actions

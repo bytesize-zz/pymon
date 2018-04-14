@@ -8,7 +8,7 @@ from db.databaseHandler import DatabaseHandler
 from gui.widgets.functionTabWidget import FunctionTabWidget
 
 from urllib import request
-from service.tools import offset
+from service.tools import offset, remapTime
 
 import datetime
 import config
@@ -18,7 +18,7 @@ class CharacterTabWidget(QWidget):
         super(CharacterTabWidget, self).__init__(parent)
         self.parent = parent
         self.user = user
-        self.dbHandler = DatabaseHandler()  # ToDo: Dangerous to start an own instance of dbHandler?
+        self.dbHandler = DatabaseHandler()
 
         try:
             self.character = self.dbHandler.getCharacter(user.get_id())
@@ -143,8 +143,8 @@ class CharacterTabWidget(QWidget):
         #Clone Jump Status
         vBox3 = QVBoxLayout()
         vBox3.setAlignment(QtCore.Qt.AlignTop)
-        bonusRemapLabel = QLabel("Bonus Remap: ")
-        neuralRemapLabel = QLabel("Next Neural Remap: ")
+        bonusRemapLabel = QLabel("Bonus Remap: " + str(self.attributes.bonus_remaps))
+        neuralRemapLabel = QLabel("Next Neural Remap: " + remapTime(self.attributes.accrued_remap_cooldown_date))
         cloneJumpLabel = QLabel("Next Clone Jump: ")
 
 

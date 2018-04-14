@@ -15,6 +15,18 @@ def getSkillRemainingTime(skill):
 
     return formatTimeDelta(diff)
 
+def getSkillTrainingTime(skill):
+    # Calculate the timedelta between start-time and end-time of a skill
+    now = datetime.datetime.utcnow()
+
+    if now > skill.start_date:  # Skill is already started
+        start = now  # remaining training time is counted from now on
+    else:
+        start = skill.start_date  # skill start lies in the future
+    diff = skill.finish_date - start
+
+    return formatTimeDelta(diff)
+
 
 def offset(x):
     # returns a string wich contains x Spaces
@@ -23,9 +35,18 @@ def offset(x):
 
     return o
 
+def remapTime(dt):
+    now = datetime.datetime.utcnow()
+    then = dt
+    if then is None:  # Character had never a Remap, so the cooldown is None
+        return "Now"
+    else:
+        diff = (then - now)
 
-def getQueueEndDate(skill):
-    print("x")
+    if diff < datetime.timedelta(0):
+        return "Now"
+    else:
+        return formatDateTime(then)
 
 def formatDateTime(dt):
     result = dt.strftime("%A %d.%m.%y %H:%M")

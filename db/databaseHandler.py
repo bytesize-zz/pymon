@@ -315,7 +315,7 @@ class DatabaseHandler():
         try:
             staticSkill = session.query(StaticSkills).filter_by(skill_id=skill_id).first()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.getStaticSkillData: " + str(e))
         return staticSkill
 
     def getStaticSkillGroups(self):

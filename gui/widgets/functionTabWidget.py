@@ -3,7 +3,7 @@ from PyQt5 import QtCore
 from PyQt5.QtGui import QPalette, QPixmap, QFont
 
 from gui.widgets.completedSkillsWidget import CompletedSkillsWidget, SkillGroupWidget
-
+from gui.widgets.skillQueueWidget import SkillQueueWidget, QueueItem
 
 # Database Imports
 from db.databaseTables import User
@@ -18,14 +18,20 @@ class FunctionTabWidget(QTabWidget):
         self.setBackgroundColor()
 
         self.createCompletedSkills(user)
+        self.createSkillQueue(user)
 
     def createCompletedSkills(self, user):
         completedSkillsTab = CompletedSkillsWidget(user)
         self.addTab(completedSkillsTab, "Skills")
 
+    def createSkillQueue(self, user):
+        skillQueueTab = SkillQueueWidget(user)
+        self.addTab(skillQueueTab, "SkillQueue")
+
     def setBackgroundColor(self):
         self.setAutoFillBackground(True)
         # Background Color
         pal = QPalette()
-        pal.setColor(self.backgroundRole(), QtCore.Qt.lightGray)
+        pal.setColor(self.backgroundRole(), QtCore.Qt.white)
         self.setPalette(pal)
+
