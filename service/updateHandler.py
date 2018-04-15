@@ -39,10 +39,6 @@ class UpdateHandler():
     def calculateTimeDifference(self):
         config.TIME_DIFFERENCE = 0
 
-    def getServerStatus(self):
-        # GET /status/
-        print("x")
-
     def setApiDetails(self, api, user):
 
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
@@ -51,7 +47,7 @@ class UpdateHandler():
 
         return api
 
-    def updateAll(self):
+    def updateAll(self, gui_queue):
         """ Method to update Data for all stored Users.
 
         """
@@ -69,7 +65,9 @@ class UpdateHandler():
             for user in userList:
                 self.updateUser(user)
         except Exception as e:
-            print(e)
+            print("Exception in updateHandler.updateAll: %s\n" % e)
+        finally:
+            gui_queue.put("Reprint MainWindow")
 
     def getSkilldump(self):
         skilldump.SkillDump()
@@ -80,13 +78,16 @@ class UpdateHandler():
             1. refresh the Authentication
             2. ask EvE API for new Data
         """
-        self.refreshUserAuth(user)
-        self.updateCharacter(user)
-        self.updateBalance(user)
-        self.updatePortrait(user)
-        self.updateSkillQueue(user)
-        self.updateCompletedSkills(user)
-        self.updateCharacterAttributes(user)
+        try:
+            self.refreshUserAuth(user)
+            self.updateCharacter(user)
+            self.updateBalance(user)
+            self.updatePortrait(user)
+            self.updateSkillQueue(user)
+            self.updateCompletedSkills(user)
+            self.updateCharacterAttributes(user)
+        except Exception as e:
+            print("Exception in UpdateHandler.updateUser" + str(e))
 
 
         #self.getStructureDetails(user)
@@ -100,18 +101,29 @@ class UpdateHandler():
 
         :param user: Stored User Class from Database
         """
+        try:
+            self.esisecurity.set_token(user.AccessToken, user.RefreshToken, user.AccessTokenExpire)
 
-        #print("Starting Auth refresh for " + user.CharacterName)
-        self.esisecurity.set_token(user.AccessToken, user.RefreshToken, user.AccessTokenExpire)
+            if self.esisecurity.is_token_expired() == True:
+                user.update_token(self.esisecurity.refresh())
+                self.dbHandler.saveUser(user)
+            else:
+                print("Access Token valid, nothing to do")
+        except Exception as e:
+            print("Exception in updateHandler.refreshUserAuth: %s\n" % e)
 
-        if self.esisecurity.is_token_expired() == True:
-            #print("Access Token is expired, getting a new one ...")
-            user.update_token(self.esisecurity.refresh())
-            #print("Saving new Token in th DB")
-            self.dbHandler.saveUser(user)
-        else:
-            print("Access Token valid, nothing to do")
+    def getServerStatus(self, user):
 
+        api = swagger_client.StatusApi()
+        api = self.setApiDetails(api, user)
+        response = None
+
+        try:
+            response = api.get_status()
+        except Exception as e:
+            print("Exception in updateHandler.getServerStatus: %s\n" % e)
+
+        return response
 
     def updateCharacter(self, user):
 
@@ -122,6 +134,8 @@ class UpdateHandler():
             response = api.get_characters_character_id(user.CharacterID)
             char = Character().setCharacter(response, user.get_id())  # create an databaseTables Object of Character
             self.dbHandler.saveCharacter(char)
+            #self.updateAllianceName(char)
+            #self.updateCorporationName(char)
         except Exception as e:
             print("Exception in updateHandler.updateCharacter(): %s\n" % e)
 
@@ -134,7 +148,7 @@ class UpdateHandler():
             response = api.get_characters_character_id_wallet(user.CharacterID)
             self.dbHandler.saveCharacterBalance(response, user.get_id())
         except Exception as e:
-            print(e)
+            print("Exception in updateHandler.updateBalance(): %s\n" % e)
 
     def updatePortrait(self, user):
 
@@ -189,7 +203,7 @@ class UpdateHandler():
             self.dbHandler.saveCompletedSkills(skillList)
             self.dbHandler.saveCharacterSP(user.get_id(), response.total_sp, response.unallocated_sp)
         except Exception as e:
-            print(e)
+            print("Exception in updateHandler.updateCompletedSkills: %s\n" % e)
 
     def updateCharacterAttributes(self, user):
 
@@ -201,20 +215,29 @@ class UpdateHandler():
             charAttributes = CharacterAttributes().create(response, user.get_id())
             self.dbHandler.saveCharacterAttributes(charAttributes)
         except Exception as e:
-            print(e)
+            print("Exception in updateHandler.updateCharacterAttributes(): %s\n" % e)
 
-    def updateAlliName(self, user):
+    def updateAllianceName(self, char):
 
         api = swagger_client.AllianceApi()
         api = self.setApiDetails(api)
 
-        char = self.dbHandler.getCharacter(user.id)
-
         try:
             response = api.get_alliances_alliance_id(char.alliance_id)
-            print(response.name)
+            print(response)
         except Exception as e:
-            print("Exception in UpdateHandler.updateAlliName: " + str(e))
+            print("Exception in UpdateHandler.updateAllianceName: " + str(e))
+
+    def updateCorporationName(self, char):
+
+        api = swagger_client.CorporationApi()
+        api = self.setApiDetails(api)
+
+        try:
+            response = api.get_alliances_alliance_id(char.corporation_id)
+            print(response)
+        except Exception as e:
+            print("Exception in UpdateHandler.updateCorporationName: " + str(e))
 
 
     def getCharacterNotifications(self, user):
@@ -228,7 +251,7 @@ class UpdateHandler():
             #self.dbHandler.saveCompletedSkills(skillList)
             self.dbHandler.saveCharacterSP(user.get_id(), response.total_sp, response.unallocated_sp)
         except Exception as e:
-            print(e)
+            print("Exception in updateHandler.getCharacterNotifications: %s\n" % e)
 
     def getStructureDetails(self, user):
         # Test Function for getting Corp Structures, specially remaining structure fuel/time
@@ -240,4 +263,4 @@ class UpdateHandler():
             print(response)
             print(response.data)
         except Exception as e:
-            print(e)
+            print("Exception in updateHandler.getStructureDetails: %s\n" % e)

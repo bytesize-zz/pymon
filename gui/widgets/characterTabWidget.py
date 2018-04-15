@@ -26,14 +26,14 @@ class CharacterTabWidget(QWidget):
         except Exception as e:
             print("Exception in CharacterTab: " + str(e))
 
-            if self.character is None:
-                print("Character Tab has a None Character")
+        if self.character is None:
+            print("Character Tab has a None Character")
+        else:
+            self.layout = self.createLayout()
+            self.layout.setSpacing(0)
+            self.setLayout(self.layout)
 
-        self.layout = self.createLayout()
-        self.layout.setSpacing(0)
-        self.setLayout(self.layout)
-
-        self.startUpdateTimer()
+            self.startUpdateTimer()
 
 
     def startUpdateTimer(self):
@@ -196,7 +196,7 @@ class CharacterTabWidget(QWidget):
             else:
                 print("No portrait URL for " + self.user.CharacterName + " in the Database")
         except Exception as e:
-            print(e)
+            print("Exception in CharacterTabWidget.getCharacterPortrait: " + str(e))
 
         return pixmap
 

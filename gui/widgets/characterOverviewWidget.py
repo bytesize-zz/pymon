@@ -134,7 +134,7 @@ class CharacterOverviewWidget(QWidget):
             self.pixmap.loadFromData(data)
             self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
         except Exception as e:
-            print(e)
+            print("Exception in CharacterOverview Widget: " + str(e))
 
 
     def eventFilter(self, object, event):

@@ -160,14 +160,30 @@ class Esi():
         user.CharacterName = cdata['CharacterName']
         user.update_token(auth_response)
 
-
-        if True:    # ToDO: Do we need to verify if user is valid?
+        '''
+        try:
             user.id = self.dbHandler.saveUser(user)
+        except Exception as e:
+            print("Exception in Esi.callback1: " + str(e))
+
+        try:
             if user.id is not None:     # We don't want DB Entrys without owner
                 self.updateHandler.updateUser(user)
                 self.writeToQueue()
+        except Exception as e:
+            print("Exception in Esi.callback2: " + str(e))
+        '''
+        try:
+            u = self.dbHandler.saveUser(user)
+            user = self.dbHandler.getUser(u.CharacterID)
 
-        # now the user is ready, so update/create it and log the user
+            if user is not None and user.id is not None:
+                print("")
+                self.updateHandler.updateUser(user)
+                self.writeToQueue()
+
+        except Exception as e:
+            print("Exception in Esi.callback: " + str(e))
 
     def writeToQueue(self):
         self.gui_queue.put("Reprint MainWindow")

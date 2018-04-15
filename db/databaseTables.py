@@ -63,7 +63,9 @@ class Character(Base):
     name = Column(String(37))
     description = Column(String(500))
     corporation_id = Column(Integer)
+    corporation_name = Column(String)
     alliance_id = Column(Integer)
+    alliance_name = Column(String)
     birthday = Column(DateTime)
     gender = Column(String(6))
     race_id = Column(Integer)
@@ -74,6 +76,7 @@ class Character(Base):
     total_sp = Column(Integer)
     unallocated_sp = Column(Integer)
     balance = Column(Integer)
+    jump_fatigue_expire_date = Column(DateTime)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
     def setCharacter(self, request_response, ownerID):
@@ -97,6 +100,15 @@ class Character(Base):
 
     def setBalance(self, balance):
         self.balance = balance
+
+    def setFatigue(self, fatigue):
+        self.jump_fatigue_expire_date = fatigue
+
+    def setAllianceName(self, name):
+        self.alliance_name = name
+
+    def setCorporationName(self, name):
+        self.corporation_name = name
 
     def updateCharacter(self, newCharacter):
         # ToDO: remove unchangeable elements

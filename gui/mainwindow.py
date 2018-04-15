@@ -158,6 +158,8 @@ class GeneralMainDesign(QMainWindow):
         font.setPointSize(9)
         self.statusbar.setFont(font)
 
+        self.statusbar.showMessage("Test")
+
     ################
     #
     # Menubar Action trigger Functions
@@ -212,7 +214,7 @@ class GeneralMainDesign(QMainWindow):
             self.createLayout()
             self.createTabwidget()
         except Exception as e:
-            print(e)
+            print("Exception in mainwindow.reprintUI: " + str(e))
 
     def hearAtQueue(self):
         if self.gui_queue.empty() is False:

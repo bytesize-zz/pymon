@@ -28,27 +28,27 @@ class DatabaseHandler():
 
     def saveUser(self, newUser):
         session = self.Session()
-        user_id = None
+        user = None
         try:
             dbUser = self.getUser(newUser.CharacterID)  # ask DB for User with this ID
             if dbUser is None:
                 session.add(newUser)
-                session.flush()        # We do this, so the DB can give us the autogenerating id to return
-                user_id = newUser.id
+                session.flush()  # We do this, so the DB can give us the autogenerating id to return
+                user = newUser
             elif dbUser.CharacterID == newUser.CharacterID:
                 dbUser.AccessToken = newUser.AccessToken
                 dbUser.RefreshToken = newUser.RefreshToken
                 dbUser.AccessTokenExpire = newUser.AccessTokenExpire
-                user_id = dbUser.id
+                user = dbUser
 
             session.commit()
         except Exception as e:
             print("Exception in DatabaseHandler.saveUser: " + str(e))
             session.rollback()
-        finally:
-            session.close()
+        #finally:
+            #session.close()
 
-        return user_id
+        return user
 
     def getUser(self, cID):
         session = self.Session()
@@ -57,7 +57,7 @@ class DatabaseHandler():
         try:  # Get User from DB if already existing
             user = session.query(User).filter_by(CharacterID=cID).first()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.getUser: " + str(e))
         finally:
             session.close()
 
@@ -67,9 +67,9 @@ class DatabaseHandler():
         session = self.Session()
         userList = None
         try:
-            userList = session.query(User).order_by(User.CharacterName).all()
+            userList = session.query(User).order_by(User.id).all()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.getAllUser: " + str(e))
         finally:
             session.close()
         return userList
@@ -88,7 +88,7 @@ class DatabaseHandler():
                 print("Something is wrong at databaseHandler.saveCharacter()")
             session.commit()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.saveCharacter: " + str(e))
         finally:
             session.close()
 
@@ -100,14 +100,14 @@ class DatabaseHandler():
         try:
             character = session.query(Character).filter_by(owner_id=ownerID).first()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.getCharacter: " + str(e))
         finally:
             session.close()
         return character  # Might be an empty character
 
     def saveCharacterAttributes(self, newAttributes):
         session = self.Session()
-        dbAttributes = None
+        #dbAttributes = None
         try:
             dbAttributes = session.query(CharacterAttributes).filter_by(owner_id=newAttributes.owner_id).first()
 
@@ -120,7 +120,7 @@ class DatabaseHandler():
                 print("Something is wrong at databaseHandler.saveCharacterSP()")
             session.commit()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.saveCharacterAttributes: " + str(e))
             session.rollback()
         finally:
             session.close()
@@ -148,9 +148,15 @@ class DatabaseHandler():
 
             session.commit()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.saveCharacterSP: %s\n" % e)
         finally:
             session.close()
+
+    def saveCharacterAlliance(self, name):
+        print("x")
+
+    def saveCharacterCorporation(self, name):
+        print("x")
 
 
     def saveCharacterBalance(self, balance, ownerID):
@@ -163,7 +169,7 @@ class DatabaseHandler():
                 dbCharacter.setBalance(balance)
             session.commit()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.saveCharacterBalance: " + str(e))
             session.rollback()
         finally:
             session.close()
@@ -177,7 +183,7 @@ class DatabaseHandler():
             for skill in newSkillQueue.items:               # Then add the new One
                 session.add(skill)
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.saveSkillQueue: " + str(e))
 
         session.commit()
         session.close()
@@ -339,9 +345,9 @@ class DatabaseHandler():
             skills = session.query(CompletedSkillItem).order_by(StaticSkillGroups.name).all()
             #session.expunge(skills)
         except Exception as e:
-            print(e)
-        #finally:
-            #session.close()
+            print("Exception in DatabaseHandler.getSkillsFromGroup: " + str(e))
+        finally:
+            session.close()
 
         return skills
 
@@ -351,7 +357,7 @@ class DatabaseHandler():
         try:
             dump = session.query(StaticSkills).first()
         except Exception as e:
-            print(e)
+            print("Exception in DatabaseHandler.staticDumpPresent: " + str(e))
 
         if dump is None:
             return False
