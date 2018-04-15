@@ -298,15 +298,14 @@ class DatabaseHandler():
     def getCharacterPortrait(self, ownerID):
         session = self.Session()
         # Get CharacterPortrait for this owner from DB if already existing
-        #print("Gettin characterPortrait with ownerID: " + str(ownerID))
+        characterPortrait = None
         try:
             characterPortrait = session.query(CharacterPortrait).filter_by(owner_id=ownerID).first()
-        except NoResultFound:      # ToDo: Find out, why this exception isn't triggering
-            print(NoResultFound)
-            characterPortrait = CharacterPortrait()
-            characterPortrait.owner_id = ownerID
+        except Exception as e:
+            print("Exception in DatabaseHandler.getCharacterPortrait: " + str(e))
+        finally:
+            session.close()
 
-        #print(characterPortrait)
         return characterPortrait  # Might be an empty CharacterPortrait
 
     def getStaticSkillData(self, skill_id):
@@ -316,6 +315,9 @@ class DatabaseHandler():
             staticSkill = session.query(StaticSkills).filter_by(skill_id=skill_id).first()
         except Exception as e:
             print("Exception in DatabaseHandler.getStaticSkillData: " + str(e))
+        finally:
+            session.close()
+
         return staticSkill
 
     def getStaticSkillGroups(self):
@@ -323,11 +325,10 @@ class DatabaseHandler():
         skillGroups = None
         try:
             skillGroups = session.query(StaticSkillGroups).order_by(StaticSkillGroups.name).all()
-            #session.expunge(skillGroups)
         except Exception as e:
-            print(e)
-        #finally:
-            #session.close()
+            print("Exception in DatabaseHandler.getStaticSkillGroups: " + str(e))
+        finally:
+            session.close()
 
         return skillGroups
 
@@ -357,8 +358,14 @@ class DatabaseHandler():
         else:
             return True
 
-    #def close(self):
-        #session.close()
+    def getAllianceData(self, alliID):
+        session = self.Session()
+        print("x")
 
-    #def __del__(self):
-        #session.close()
+        return ""
+
+    def getCorporationData(self, corpID):
+        session = self.Session()
+        print("x")
+
+        return ""

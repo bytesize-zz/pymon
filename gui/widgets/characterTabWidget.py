@@ -62,7 +62,7 @@ class CharacterTabWidget(QWidget):
         pixmap = QPixmap(self.getCharacterPortrait())
 
         if pixmap is None:
-            pixmap = QPixmap('image.png')
+            pixmap = QPixmap('portrait.png')
 
         characterImage.setPixmap(pixmap.scaled(150, 150))
         characterImage.resize(150, 150)

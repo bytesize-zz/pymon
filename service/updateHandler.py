@@ -115,13 +115,8 @@ class UpdateHandler():
 
     def updateCharacter(self, user):
 
-        # ToDo: Do this api creation different
-        #("Updating Character:" + user.CharacterName)
         api = swagger_client.CharacterApi()
         api = self.setApiDetails(api, user)
-        #api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
-        #api.api_client.host = config.ESI_ESI_URL
-        #api.api_client.configuration.access_token = user.AccessToken
 
         try:
             response = api.get_characters_character_id(user.CharacterID)
@@ -131,33 +126,26 @@ class UpdateHandler():
             print("Exception in updateHandler.updateCharacter(): %s\n" % e)
 
     def updateBalance(self, user):
-        #print("Updating Balance:" + user.CharacterName)
+
         api = swagger_client.WalletApi()
         api = self.setApiDetails(api, user)
-        #api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
-        #api.api_client.host = config.ESI_ESI_URL
-       #api.api_client.configuration.access_token = user.AccessToken
 
         try:
             response = api.get_characters_character_id_wallet(user.CharacterID)
-            #print(response)
             self.dbHandler.saveCharacterBalance(response, user.get_id())
         except Exception as e:
             print(e)
 
     def updatePortrait(self, user):
-        #print("Updating Portrait:" + user.CharacterName)
+
         api = swagger_client.CharacterApi()
         api = self.setApiDetails(api, user)
-        #api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
-        #api.api_client.host = config.ESI_ESI_URL
-        #api.api_client.configuration.access_token = user.AccessToken
 
         try:
             response = api.get_characters_character_id_portrait(user.CharacterID)
-            #print(user)
             portrait = CharacterPortrait().setCharacterPortrait(response, user.get_id())
             self.dbHandler.saveCharacterPortrait(portrait)
+
         except Exception as e:
             print("Exception in updateHandler.updatePortrait(): %s\n" % e)
 
@@ -167,12 +155,9 @@ class UpdateHandler():
         url = QUrl()
 
     def updateSkillQueue(self, user):
-        #print("Updating SkillQueue for :" + user.CharacterName)
+
         api = swagger_client.SkillsApi()
         api = self.setApiDetails(api, user)
-        #api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
-        #api.api_client.host = config.ESI_ESI_URL
-        #api.api_client.configuration.access_token = user.AccessToken
 
         try:
             response = api.get_characters_character_id_skillqueue(user.CharacterID)
@@ -194,12 +179,9 @@ class UpdateHandler():
 
         :param user: Stored User Class from Database
         """
-        #print("Updating completed Skills for " + user.CharacterName)
+
         api = swagger_client.SkillsApi()
         api = self.setApiDetails(api, user)
-        #api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
-        #api.api_client.host = config.ESI_ESI_URL
-        #api.api_client.configuration.access_token = user.AccessToken
 
         try:
             response = api.get_characters_character_id_skills(user.CharacterID)
@@ -221,6 +203,20 @@ class UpdateHandler():
         except Exception as e:
             print(e)
 
+    def updateAlliName(self, user):
+
+        api = swagger_client.AllianceApi()
+        api = self.setApiDetails(api)
+
+        char = self.dbHandler.getCharacter(user.id)
+
+        try:
+            response = api.get_alliances_alliance_id(char.alliance_id)
+            print(response.name)
+        except Exception as e:
+            print("Exception in UpdateHandler.updateAlliName: " + str(e))
+
+
     def getCharacterNotifications(self, user):
 
         api = swagger_client.CharacterApi()
@@ -238,9 +234,6 @@ class UpdateHandler():
         # Test Function for getting Corp Structures, specially remaining structure fuel/time
         api = swagger_client.CorporationApi()
         api = self.setApiDetails(api, user)
-        #api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
-        #api.api_client.host = config.ESI_ESI_URL
-        #api.api_client.configuration.access_token = user.AccessToken
 
         try:
             response = api.get_corporations_corporation_id_structures(573400667)

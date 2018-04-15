@@ -34,7 +34,7 @@ class CharacterOverviewWidget(QWidget):
 
         # Character Image
         self.characterImage = QLabel()
-        self.pixmap = QPixmap('image.png')
+        self.pixmap = QPixmap('portrait.png')
         self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
         self.characterImage.resize(120, 120)
 

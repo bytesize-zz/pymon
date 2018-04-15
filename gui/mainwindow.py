@@ -26,6 +26,8 @@ class GeneralMainDesign(QMainWindow):
         self.setBackgroundColor()
         self.createLayout()
 
+        self.setWindowIcon(QIcon('icon5.png'))
+
         # query frame
         # self.frame_query = QueryFrame()
         # self._set_frame()
