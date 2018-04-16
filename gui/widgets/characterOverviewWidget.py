@@ -126,13 +126,13 @@ class CharacterOverviewWidget(QWidget):
             portraitUrl = self.dbHandler.getCharacterPortrait(self.user.get_id())
             if portraitUrl is not None:
                 data = request.urlopen(portraitUrl.px128x128).read()
+                self.pixmap.loadFromData(data)
+                self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
             else:
                 print("No portrait URL for " + self.user.CharacterName + " in the Database")
-                # ToDo: Get a working filler Image on case of Connection Problems
-                data = request.urlopen("https://pixabay.com/de/pinguin-vogel-tier-tierwelt-k%C3%A4lte-42936/").read()
+                #data = request.urlopen("https://pixabay.com/de/pinguin-vogel-tier-tierwelt-k%C3%A4lte-42936/").read()
 
-            self.pixmap.loadFromData(data)
-            self.characterImage.setPixmap(self.pixmap.scaled(120, 120))
+
         except Exception as e:
             print("Exception in CharacterOverview Widget: " + str(e))
 
