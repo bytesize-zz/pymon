@@ -4,9 +4,11 @@ from PyQt5 import QtCore
 from PyQt5.QtGui import QPalette, QPixmap, QFont
 
 import sys
+import datetime
+
 from db.databaseHandler import DatabaseHandler
 from db.databaseTables import CompletedSkillList, CompletedSkillItem, User, StaticSkills, StaticSkillGroups
-from service.tools import getSkillTrainingTime
+from service.tools import getSkillTrainingTime, getSkillTrainingProgress
 
 
 # ToDo Mouse Over and click Event/Action
@@ -59,10 +61,13 @@ class SkillQueueWidget(QWidget):
     def createSkillQueue(self):
         skillQueue = self.dbHandler.getSkillQueue(self.user.get_id())
 
+        now = datetime.datetime.utcnow()
+
         if skillQueue is not None:
             for skill in skillQueue:
-                widget = QueueItem(skill)
-                self.scrollLayout.addWidget(widget)
+                if (skill.finish_date is None) or (skill.finish_date > now):  # Skip completed Skills
+                    widget = QueueItem(skill)
+                    self.scrollLayout.addWidget(widget)
 
         self.scrollArea.setWidget(self.scrollContent)  # Never forget this!
 
@@ -136,9 +141,12 @@ class QueueItem(QWidget):
         pos = str(self.skill.queue_position + 1)  # Is mostly wrong, queue position doesn't get updated after skills are completed
         name = self.staticData.name
         self.titleLabel.setText(pos + ". " + name)
+        self.rankLabel.setText("Rank " + str(self.staticData.rank))
         self.levelLabel.setText("Level: " + str(self.skill.finished_level))
         if self.skill.finish_date is not None:
             self.trainingTimeLabel.setText("Training Time: " + getSkillTrainingTime(self.skill))
+
+        self.progressLabel.setText(str(getSkillTrainingProgress(self.skill)))
         self.layout.update()
 
     def setBackgroundColor(self):

@@ -6,6 +6,7 @@ from db.databaseTables import Character, SkillQueueItem, SkillQueue
 import datetime
 import config
 
+import builtins
 
 def getSkillRemainingTime(skill):
     # Calculate the timedelta between now and skill end, then return formatted string
@@ -26,6 +27,24 @@ def getSkillTrainingTime(skill):
     diff = skill.finish_date - start
 
     return formatTimeDelta(diff)
+
+def getSkillTrainingProgress(SkillQueueItem):
+    '''
+        Calculates the Skill Progress of the actual Level
+
+    :param SkillQueueItem:
+    :return: Percentage as int
+    '''
+
+    all = SkillQueueItem.level_end_sp - SkillQueueItem.level_start_sp  # ToDo: better Name for "all"
+    progress = SkillQueueItem.training_start_sp - SkillQueueItem.level_start_sp
+    result = int((progress/all) * 100)
+
+    #print(str(all))
+    #print(str(progress))
+    #print(str(result))
+
+    return result
 
 
 def offset(x):
@@ -62,3 +81,9 @@ def formatTimeDelta(td):
     seconds = s - (minutes * 60)
 
     return "%sd %sh %sm %ss" % (days, hours, minutes, seconds)
+
+def format(data):
+    #TODo: switch commata and points
+    result = builtins.format(data, ",")
+
+    return result

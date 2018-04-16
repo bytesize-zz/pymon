@@ -6,20 +6,28 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 from service.esi import Esi
+from service import tools
 import config
+import datetime
+import pytz
 from Lib import queue
 
 # Import of neccessary Widgets
 from gui.widgets.mainTabWidget import MainTabWidget
 from gui.charManagerWindow import CharManagerWindow
 
+from service.updateHandler import UpdateHandler
+
 class GeneralMainDesign(QMainWindow):
     """General design of the main window"""
     def __init__(self):
         super().__init__()
-        self.init_MainWindow()
 
+        self.updateHandler = UpdateHandler()
+        self.init_MainWindow()
         self.gui_queue = queue.Queue()
+
+        self.startUpdateTimer()
 
     def init_MainWindow(self):
         self.set_main_window()
@@ -158,7 +166,23 @@ class GeneralMainDesign(QMainWindow):
         font.setPointSize(9)
         self.statusbar.setFont(font)
 
-        self.statusbar.showMessage("Test")
+        self.updateStatusbar()
+
+    def updateStatusbar(self):
+
+        #now = datetime.datetime.utcnow()
+        #now = pytz.UTC
+        time = datetime.datetime.utcnow().strftime("%H:%M")
+        data = self.updateHandler.getServerStatus()
+        if data is None:
+            self.statusbar.showMessage("Server Status unknown")
+        elif data.start_time is None:
+            self.statusbar.showMessage("EVE Time " + time + "  |  Tranquility Server Offline")
+        else:
+            playerCount = data.players
+            self.statusbar.showMessage("EVE Time " + time + "  |  Tranquility Server Online (" +
+                                       tools.format(playerCount) + " Pilots)")
+
 
     ################
     #
@@ -171,7 +195,7 @@ class GeneralMainDesign(QMainWindow):
          self.close()
 
     def addCharacterTriggered(self):
-        self.startUpdateTimer()  # ToDo: Configure Timer for a maximum run time
+        # self.startUpdateTimer()
         Esi(self.gui_queue)
 
     def manageCharacterTriggered(self):
@@ -217,11 +241,15 @@ class GeneralMainDesign(QMainWindow):
             print("Exception in mainwindow.reprintUI: " + str(e))
 
     def hearAtQueue(self):
+        now = datetime.datetime.utcnow()
+        if (now.second % 60) == 0:
+            self.updateStatusbar()
+
         if self.gui_queue.empty() is False:
             msg = self.gui_queue.get()
             if msg == "Reprint MainWindow":
                 self.reprintUI()
-                self.timer.stop()
+                #self.timer.stop()
 
     def startUpdateTimer(self):
         self.timer = QTimer()

@@ -112,10 +112,11 @@ class UpdateHandler():
         except Exception as e:
             print("Exception in updateHandler.refreshUserAuth: %s\n" % e)
 
-    def getServerStatus(self, user):
+    def getServerStatus(self):
 
         api = swagger_client.StatusApi()
-        api = self.setApiDetails(api, user)
+        api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
+        api.api_client.host = config.ESI_ESI_URL
         response = None
 
         try:

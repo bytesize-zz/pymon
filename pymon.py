@@ -17,7 +17,7 @@ if __name__ == "__main__":
     updateHandler = UpdateHandler()
     # updateHandler.updateAll()
     mainwindow = GeneralMainDesign()
-    mainwindow.startUpdateTimer()
+    #mainwindow.startUpdateTimer()
 
     updateThread = threading.Thread(target=updateHandler.updateAll, args=(mainwindow.gui_queue,))
     updateThread.name = "UpdateHandler"

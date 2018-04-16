@@ -62,6 +62,7 @@ class SkillDump():
                 print(response.data)
 
                 if response.data['published'] == True:
+
                     skill = StaticSkills().setData(response.data)
                     self.session.add(skill)
 

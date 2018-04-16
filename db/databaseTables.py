@@ -357,6 +357,7 @@ class StaticSkills(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     skill_id = Column(Integer)
+    rank = Column(Integer)
     description = Column(String)
     icon_id = Column(Integer)
     market_group_id = Column(Integer)
@@ -371,6 +372,12 @@ class StaticSkills(Base):
         self.market_group_id = data['market_group_id']
         #self.basePrice = Column['base_price']
         self.group_id = data['group_id']
+
+        # The Skillrank hides in data['dogma_attributes'][x]{'attribute_id': 275, 'value': 7.0}
+        for attribute in data['dogma_attributes']:
+            if attribute['attribute_id'] == 275:
+                self.rank = attribute['value']
+
         return self
 
 
