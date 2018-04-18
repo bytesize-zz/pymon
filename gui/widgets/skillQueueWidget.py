@@ -9,7 +9,7 @@ import datetime
 from db.databaseHandler import DatabaseHandler
 from db.databaseTables import CompletedSkillList, CompletedSkillItem, User, StaticSkills, StaticSkillGroups
 from service.tools import getSkillTrainingTime, getSkillTrainingProgress
-
+from service import tools
 
 # ToDo Mouse Over and click Event/Action
 class SkillQueueWidget(QWidget):
@@ -66,16 +66,17 @@ class SkillQueueWidget(QWidget):
         if skillQueue is not None:
             for skill in skillQueue:
                 if (skill.finish_date is None) or (skill.finish_date > now):  # Skip completed Skills
-                    widget = QueueItem(skill)
+                    widget = QueueItem(self.user, skill)
                     self.scrollLayout.addWidget(widget)
 
         self.scrollArea.setWidget(self.scrollContent)  # Never forget this!
 
 
 class QueueItem(QWidget):
-    def __init__(self, skill, parent=None):
+    def __init__(self, user,  skill, parent=None):
         QWidget.__init__(self, parent=parent)
         self.skill = skill
+        self.user = user
 
         self.setBackgroundColor()
         self.dbHandler = DatabaseHandler()
@@ -87,6 +88,12 @@ class QueueItem(QWidget):
         if self.staticData is None:
             print("Queue Item Widget got a None Skill Static Data")
         else:
+            # Int Values of the Characters primary and secondary Attributes, used for calculation
+            charAttributes = self.dbHandler.getCharacterAttributes(self.user.id)
+            charPrimaryAtt = tools.getCharPrimaryValue(charAttributes, self.staticData)
+            charSecondaryAtt = tools.getCharSecondaryValue(charAttributes, self.staticData)
+            self.spPerMinute = tools.spPerMinute(charPrimaryAtt, charSecondaryAtt)
+
             self.updateLabels()
             self.startUpdateTimer()
 
@@ -138,15 +145,26 @@ class QueueItem(QWidget):
         return hbox
 
     def updateLabels(self):
+        #First Line
         pos = str(self.skill.queue_position + 1)  # Is mostly wrong, queue position doesn't get updated after skills are completed
         name = self.staticData.name
         self.titleLabel.setText(pos + ". " + name)
         self.rankLabel.setText("Rank " + str(self.staticData.rank))
-        self.levelLabel.setText("Level: " + str(self.skill.finished_level))
+        self.levelLabel.setText("Level " + str(self.skill.finished_level))
         if self.skill.finish_date is not None:
             self.trainingTimeLabel.setText("Training Time: " + getSkillTrainingTime(self.skill))
 
-        self.progressLabel.setText(str(getSkillTrainingProgress(self.skill)))
+        # Second Line
+        # Strings of the primary and secondary Attribute, used for Gui Output
+        primaryAtt = tools.getAttribute(self.staticData.primary_attribute)
+        secondaryAtt = tools.getAttribute(self.staticData.secondary_attribute)
+
+        skillTrainingProgress = tools.getSkillTrainingProgress(self.skill, self.spPerMinute)
+
+        self.spLabel.setText("SP: " + str(skillTrainingProgress) + "/" + str(self.skill.level_end_sp))
+        self.spPerHourLabel.setText("SP/Hour: " + str(int(60*self.spPerMinute)))
+
+        self.progressLabel.setText(str(int(skillTrainingProgress / self.skill.level_end_sp * 100)) + "% Done")
         self.layout.update()
 
     def setBackgroundColor(self):

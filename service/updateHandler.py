@@ -13,7 +13,8 @@ import threading
 import skilldump
 
 from db.databaseHandler import DatabaseHandler
-from db.databaseTables import User, Character, CharacterPortrait, SkillQueue, CompletedSkillList, CharacterAttributes
+from db.databaseTables import User, Character, CharacterPortrait, SkillQueue, CompletedSkillList, CharacterAttributes, \
+    CharacterNotifications
 
 from service.esipy.app import App
 from service.esipy.security import EsiSecurity
@@ -86,6 +87,7 @@ class UpdateHandler():
             self.updateSkillQueue(user)
             self.updateCompletedSkills(user)
             self.updateCharacterAttributes(user)
+            self.getCharacterNotifications(user)
         except Exception as e:
             print("Exception in UpdateHandler.updateUser" + str(e))
 
@@ -248,9 +250,11 @@ class UpdateHandler():
 
         try:
             response = api.get_characters_character_id_notifications(user.CharacterID)
-            #notifications = Charac().createCSL(response, user.get_id())
-            #self.dbHandler.saveCompletedSkills(skillList)
-            self.dbHandler.saveCharacterSP(user.get_id(), response.total_sp, response.unallocated_sp)
+            notifications = []
+            for item in response:
+                new = CharacterNotifications().create(item, user.id)
+                notifications.append(new)
+                self.dbHandler.saveCharacterNotification(new)
         except Exception as e:
             print("Exception in updateHandler.getCharacterNotifications: %s\n" % e)
 

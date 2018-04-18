@@ -200,7 +200,7 @@ class CharacterAttributes(Base):
         return self
 
 
-class  CharacterNotifications(Base):
+class CharacterNotifications(Base):
     __tablename__ = 'CharacterNotifications'
     id = Column(Integer, primary_key=True)
     notification_id = Column(Integer)
@@ -211,6 +211,18 @@ class  CharacterNotifications(Base):
     text = Column(String)
     type = Column(String)
     owner_id = Column(Integer, ForeignKey('User.id'))
+
+    def create(self, response, ownerID):
+        self.notification_id = response.notification_id
+        self.sender_id = response.sender_id
+        self.sender_type = response.sender_type
+        self.timestamp = response.timestamp
+        self.is_read = response.is_read
+        self.text = response.text
+        self.type = response.type
+        self.owner_id = ownerID
+
+        return self
 
 class Implants(Base):
     __tablename__ = 'Implants'
@@ -359,6 +371,8 @@ class StaticSkills(Base):
     skill_id = Column(Integer)
     rank = Column(Integer)
     description = Column(String)
+    primary_attribute = Column(Integer)
+    secondary_attribute = Column(Integer)
     icon_id = Column(Integer)
     market_group_id = Column(Integer)
     basePrice = Column(Integer)
@@ -377,6 +391,10 @@ class StaticSkills(Base):
         for attribute in data['dogma_attributes']:
             if attribute['attribute_id'] == 275:
                 self.rank = attribute['value']
+            elif attribute['attribute_id'] == 180:
+                self.primary_attribute = attribute['value']
+            elif attribute['attribute_id'] == 181:
+                self.secondary_attribute = attribute['value']
 
         return self
 

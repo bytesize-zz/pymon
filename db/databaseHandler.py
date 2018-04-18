@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
 from db.databaseTables import User, Character, SkillQueue, SkillQueueItem, CharacterPortrait, CompletedSkillItem, \
-    CompletedSkillList, StaticSkills, CharacterAttributes, StaticSkillGroups
+    CompletedSkillList, StaticSkills, CharacterAttributes, StaticSkillGroups, CharacterNotifications
 
 import datetime
 import config
@@ -313,6 +313,25 @@ class DatabaseHandler():
             session.close()
 
         return characterPortrait  # Might be an empty CharacterPortrait
+
+    def saveCharacterNotification(self, newNotification):
+        session = self.Session()
+
+        try:
+            # First Check if this Notification is already stored
+            dbNotification = session.query(CharacterNotifications).filter_by(
+                owner_id=newNotification.owner_id, notification_id=newNotification.notification_id).first()
+            if dbNotification is None:
+                session.add(newNotification)
+            else:
+                dbNotification.is_read = newNotification.is_read
+            session.commit()
+        except Exception as e:
+            print("Exception in databaseHandler.saveCharacterNotification: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
+
 
     def getStaticSkillData(self, skill_id):
         session = self.Session()

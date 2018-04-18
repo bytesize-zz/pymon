@@ -28,23 +28,73 @@ def getSkillTrainingTime(skill):
 
     return formatTimeDelta(diff)
 
-def getSkillTrainingProgress(SkillQueueItem):
+def getSkillTrainingProgress(SkillQueueItem, spPerMinute):
     '''
         Calculates the Skill Progress of the actual Level
 
     :param SkillQueueItem:
     :return: Percentage as int
     '''
+    result = 0
+    try:
+        if SkillQueueItem.start_date is not None:
+            now = datetime.datetime.utcnow()
+            timePassed = now - SkillQueueItem.start_date
+            if timePassed is not None and timePassed > datetime.timedelta(0):
+                all = SkillQueueItem.level_end_sp - SkillQueueItem.level_start_sp  # ToDo: better Name for "all"
+                progress = SkillQueueItem.training_start_sp + timePassed.total_seconds() * spPerMinute / 60
+                result = int(progress)
 
-    all = SkillQueueItem.level_end_sp - SkillQueueItem.level_start_sp  # ToDo: better Name for "all"
-    progress = SkillQueueItem.training_start_sp - SkillQueueItem.level_start_sp
-    result = int((progress/all) * 100)
-
-    #print(str(all))
-    #print(str(progress))
-    #print(str(result))
-
+    except Exception as e:
+        print("Exception in tools.getSkillTrainingProgress: " + str(e))
     return result
+
+def spPerMinute(primary, secondary):
+    # Return the skillpoints per second for this attributes
+
+    return primary + secondary/2
+
+def getAttribute(attr_id):
+    # returns a string of the character attribute name, for the dogma attribute value of a static skill data
+    attr = None
+    if attr_id == 164:
+        return "Charisma"
+    elif attr_id == 165:
+        return "Intelligence"
+    elif attr_id == 166:
+        return "Memory"
+    elif attr_id == 167:
+        return "Perception"
+    elif attr_id == 168:
+        return "Willpower"
+
+
+def getCharPrimaryValue(user_attribute, staticSkill):
+    # returns the character attribute value for the skills primary attribute
+    if staticSkill.primary_attribute == 164:
+        return user_attribute.charisma
+    elif staticSkill.primary_attribute == 165:
+        return  user_attribute.intelligence
+    elif staticSkill.primary_attribute == 166:
+        return  user_attribute.memory
+    elif staticSkill.primary_attribute == 167:
+        return  user_attribute.perception
+    elif staticSkill.primary_attribute == 168:
+        return  user_attribute.willpower
+
+
+def getCharSecondaryValue(user_attribute, staticSkill):
+    # returns the character attribute value for the skills secondary attribute
+    if staticSkill.secondary_attribute == 164:
+        return user_attribute.charisma
+    elif staticSkill.secondary_attribute == 165:
+        return  user_attribute.intelligence
+    elif staticSkill.secondary_attribute == 166:
+        return  user_attribute.memory
+    elif staticSkill.secondary_attribute == 167:
+        return  user_attribute.perception
+    elif staticSkill.secondary_attribute == 168:
+        return  user_attribute.willpower
 
 
 def offset(x):
