@@ -64,19 +64,22 @@ class SkillQueueWidget(QWidget):
         now = datetime.datetime.utcnow()
 
         if skillQueue is not None:
+            queue_position = 1
             for skill in skillQueue:
                 if (skill.finish_date is None) or (skill.finish_date > now):  # Skip completed Skills
-                    widget = QueueItem(self.user, skill)
+                    widget = QueueItem(self.user.id, skill, queue_position)
                     self.scrollLayout.addWidget(widget)
+                    queue_position += 1
 
         self.scrollArea.setWidget(self.scrollContent)  # Never forget this!
 
 
 class QueueItem(QWidget):
-    def __init__(self, user,  skill, parent=None):
+    def __init__(self, user_id,  skill, queue_position, parent=None):
         QWidget.__init__(self, parent=parent)
         self.skill = skill
-        self.user = user
+        self.user_id = user_id
+        self.queue_position = queue_position
 
         self.setBackgroundColor()
         self.dbHandler = DatabaseHandler()
@@ -89,7 +92,7 @@ class QueueItem(QWidget):
             print("Queue Item Widget got a None Skill Static Data")
         else:
             # Int Values of the Characters primary and secondary Attributes, used for calculation
-            charAttributes = self.dbHandler.getCharacterAttributes(self.user.id)
+            charAttributes = self.dbHandler.getCharacterAttributes(self.user_id)
             charPrimaryAtt = tools.getCharPrimaryValue(charAttributes, self.staticData)
             charSecondaryAtt = tools.getCharSecondaryValue(charAttributes, self.staticData)
             self.spPerMinute = tools.spPerMinute(charPrimaryAtt, charSecondaryAtt)
@@ -145,8 +148,8 @@ class QueueItem(QWidget):
         return hbox
 
     def updateLabels(self):
-        #First Line
-        pos = str(self.skill.queue_position + 1)  # Is mostly wrong, queue position doesn't get updated after skills are completed
+        #First Line ToDo: Optimize
+        pos = str(self.queue_position)
         name = self.staticData.name
         self.titleLabel.setText(pos + ". " + name)
         self.rankLabel.setText("Rank " + str(self.staticData.rank))

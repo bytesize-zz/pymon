@@ -113,13 +113,13 @@ class CharacterTabWidget(QWidget):
         # Account Subscription Status
         vBox1 = QVBoxLayout()
         vBox1.setAlignment(QtCore.Qt.AlignTop)
-        subscriptionStatusLabel = QLabel("AccountStatus: " + "Omega")
-        subsriptionTimeLabel = QLabel("Remaining Time")
+        subscriptionStatusLabel = QLabel("AccountStatus: " + "Unknown")
+        #subsriptionTimeLabel = QLabel("Remaining Time")
 
         subscriptionStatusLabel.setFixedWidth(155)  # To indent the Middle hBox. size: pixmap + spacing
 
         vBox1.addWidget(subscriptionStatusLabel)
-        vBox1.addWidget(subsriptionTimeLabel)
+        #vBox1.addWidget(subsriptionTimeLabel)
         #vBox1.addStretch(1)
 
         # Character Stats
