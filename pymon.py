@@ -14,9 +14,10 @@ if __name__ == "__main__":
     config.TIME_DIFFERENCE = datetime.datetime.now() - datetime.datetime.utcnow()
 
     app = QApplication(sys.argv)
-    updateHandler = UpdateHandler()
-    # updateHandler.updateAll()
     mainwindow = GeneralMainDesign()
+    updateHandler = UpdateHandler()
+    #updateHandler.updateAll(mainwindow.gui_queue)
+
     #mainwindow.startUpdateTimer()
 
     updateThread = threading.Thread(target=updateHandler.updateAll, args=(mainwindow.gui_queue,))

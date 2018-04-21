@@ -34,7 +34,7 @@ class GeneralMainDesign(QMainWindow):
         self.setBackgroundColor()
         self.createLayout()
 
-        self.setWindowIcon(QIcon('icon5.png'))
+        self.setWindowIcon(QIcon(config.APP_ICON))
 
         # query frame
         # self.frame_query = QueryFrame()
@@ -169,13 +169,12 @@ class GeneralMainDesign(QMainWindow):
         self.updateStatusbar()
 
     def updateStatusbar(self):
-
         #now = datetime.datetime.utcnow()
         #now = pytz.UTC
         time = datetime.datetime.utcnow().strftime("%H:%M")
         data = self.updateHandler.getServerStatus()
         if data is None:
-            self.statusbar.showMessage("Server Status unknown")
+            self.statusbar.showMessage("EVE Time " + time + "  |  Tranquility Server Offline")
         elif data.start_time is None:
             self.statusbar.showMessage("EVE Time " + time + "  |  Tranquility Server Offline")
         else:
@@ -200,7 +199,7 @@ class GeneralMainDesign(QMainWindow):
 
     def manageCharacterTriggered(self):
         # Open New Window Character Manager
-        self.charManager = CharManagerWindow(self)
+        self.charManager = CharManagerWindow(self.gui_queue, self)
         self.charManager.show()
 
     def deleteLayout(self):

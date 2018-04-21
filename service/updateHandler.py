@@ -11,6 +11,7 @@ from PyQt5.QtCore import QUrl
 import config
 import threading
 import skilldump
+import datetime
 
 from db.databaseHandler import DatabaseHandler
 from db.databaseTables import User, Character, CharacterPortrait, SkillQueue, CompletedSkillList, CharacterAttributes, \
@@ -79,18 +80,15 @@ class UpdateHandler():
             1. refresh the Authentication
             2. ask EvE API for new Data
         """
-        try:
-            self.refreshUserAuth(user)
-            self.updateCharacter(user)
-            self.updateBalance(user)
-            self.updatePortrait(user)
-            self.updateSkillQueue(user)
-            self.updateCompletedSkills(user)
-            self.updateCharacterAttributes(user)
-            self.getCharacterNotifications(user)
-        except Exception as e:
-            print("Exception in UpdateHandler.updateUser" + str(e))
-
+        #if self.getServerStatus() is not None:
+        self.refreshUserAuth(user)
+        self.updateCharacter(user)
+        self.updateBalance(user)
+        self.updatePortrait(user)
+        self.updateSkillQueue(user)
+        self.updateCompletedSkills(user)
+        self.updateCharacterAttributes(user)
+        self.getCharacterNotifications(user)
 
         #self.getStructureDetails(user)
 
@@ -106,13 +104,15 @@ class UpdateHandler():
         try:
             self.esisecurity.set_token(user.AccessToken, user.RefreshToken, user.AccessTokenExpire)
 
-            if self.esisecurity.is_token_expired() == True:
+            if self.esisecurity.is_token_expired() is True:
                 user.update_token(self.esisecurity.refresh())
                 self.dbHandler.saveUser(user)
             else:
                 print("Access Token valid, nothing to do")
         except Exception as e:
             print("Exception in updateHandler.refreshUserAuth: %s\n" % e)
+
+
 
     def getServerStatus(self):
 
@@ -123,7 +123,9 @@ class UpdateHandler():
 
         try:
             response = api.get_status()
+            # ToDo: Handle 502 Exception differently as is only means that server is offline
         except Exception as e:
+            print(datetime.datetime.now().strftime("%H:%M:%S"))
             print("Exception in updateHandler.getServerStatus: %s\n" % e)
 
         return response

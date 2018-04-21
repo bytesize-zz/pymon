@@ -8,7 +8,7 @@ from db.databaseHandler import DatabaseHandler
 from gui.widgets.functionTabWidget import FunctionTabWidget
 
 from urllib import request
-from service.tools import offset, remapTime
+from service.tools import offset, remapTime, format
 
 import datetime
 import config
@@ -82,7 +82,7 @@ class CharacterTabWidget(QWidget):
         nameLabel = QLabel(self.character.name)
         nameLabel.setFont(QFont("Arial", 14, QFont.Bold))
 
-        balanceLabel = QLabel("Balance: " + format(self.character.balance, ",") + " ISK")
+        balanceLabel = QLabel("Balance: " + format(self.character.balance) + " ISK")
         corpLabel = QLabel("Corporation: ")
         allyLabel = QLabel("Alliance: ")
         secLabel = QLabel("Security Status: " + str(round(self.character.security_status, 2)))
@@ -113,7 +113,7 @@ class CharacterTabWidget(QWidget):
         # Account Subscription Status
         vBox1 = QVBoxLayout()
         vBox1.setAlignment(QtCore.Qt.AlignTop)
-        subscriptionStatusLabel = QLabel("AccountStatus: " + "Unknown")
+        subscriptionStatusLabel = QLabel("Account Status: " + "Unknown")
         #subsriptionTimeLabel = QLabel("Remaining Time")
 
         subscriptionStatusLabel.setFixedWidth(155)  # To indent the Middle hBox. size: pixmap + spacing
@@ -155,15 +155,15 @@ class CharacterTabWidget(QWidget):
 
         # Skills Statistics
         vBox4 = QVBoxLayout()
-        vBox4.setAlignment(QtCore.Qt.AlignTop)
-        knownSkillsLabel = QLabel("Known Skills: ")
-        skillsAt5Label = QLabel("Skills at Level V: ")
-        totalSPLabel = QLabel("Total SP: " + format(self.character.total_sp, ","))
+        vBox4.setAlignment(QtCore.Qt.AlignTop)  # ToDo: Include the completed Skills in SkillQueue
+        knownSkillsLabel = QLabel("Known Skills: " + str(self.dbHandler.getKnownSkills(self.user)))
+        skillsAt5Label = QLabel("Skills at Level V: " + str(self.dbHandler.getSkillsAtV(self.user)))
+        totalSPLabel = QLabel("Total SP: " + format(self.character.total_sp))
         if self.character.unallocated_sp is None:
             tmp = 0
         else:
             tmp = self.character.unallocated_sp
-        unallocatedSP = QLabel("Unallocated SP: " + format(tmp, ","))
+        unallocatedSP = QLabel("Unallocated SP: " + format(tmp))
 
         vBox4.addWidget(knownSkillsLabel)
         vBox4.addWidget(skillsAt5Label)
@@ -183,6 +183,7 @@ class CharacterTabWidget(QWidget):
         hBox.addLayout(vBox4)
 
         return hBox
+
 
     def getCharacterPortrait(self):
         # Gets url to the character Portrait from db and sets the shown image to it

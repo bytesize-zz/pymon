@@ -30,7 +30,7 @@ class DatabaseHandler():
         session = self.Session()
         user = None
         try:
-            dbUser = self.getUser(newUser.CharacterID)  # ask DB for User with this ID
+            dbUser = session.query(User).filter_by(CharacterID=newUser.CharacterID).first()  # ask DB for User with this ID
             if dbUser is None:
                 session.add(newUser)
                 session.flush()  # We do this, so the DB can give us the autogenerating id to return
@@ -63,6 +63,28 @@ class DatabaseHandler():
 
         return user  # Might be an empty user. user is detached from Session
 
+    def deleteUser(self, user_id):
+        session = self.Session()
+
+        try:
+            self.deleteSkillQueue(user_id)
+            self.deleteCompletedSkills(user_id)
+            self.deleteCharacterAttributes(user_id)
+            self.deleteCharacterNotification(user_id)
+            self.deleteCharacterPortrait(user_id)
+            self.deleteCharacter(user_id)
+            #self.deleteCorporateHistory(user_id)
+            #self.deleteWallet(user_id)
+            #self.deleteImplanets(user_id)
+
+        except Exception as e:
+            print("Exception in DatabaseHandler.deleteUser: " + str(e))
+            session.rollback()
+        finally:
+            session.query(User).filter_by(id=user_id).delete(synchronize_session=False)
+            session.commit()
+            session.close()
+
     def getAllUser(self):
         session = self.Session()
         userList = None
@@ -74,6 +96,16 @@ class DatabaseHandler():
             session.close()
         return userList
 
+    def deleteCharacter(self, owner_id):
+        session = self.Session()
+
+        try:
+            session.query(Character).filter_by(owner_id=owner_id).delete(synchronize_session=False)
+            session.commit()
+        except Exception as e:
+            print("Exception in DatabaseHandler.deleteCharacter: " + str(e))
+        finally:
+            session.close()
 
     def saveCharacter(self, newCharacter):
         session = self.Session()
@@ -137,6 +169,18 @@ class DatabaseHandler():
 
         return dbAttributes
 
+    def deleteCharacterAttributes(self, ownerID):
+        session = self.Session()
+
+        try:  # Deleting old SkillQueueItems
+            session.query(CharacterAttributes).filter_by(owner_id=ownerID).delete(synchronize_session=False)
+            session.commit()
+        except Exception as e:
+            print("Exception in DatabaseHandler.deleteCharacterAttributes: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
+
     def saveCharacterSP(self, ownerID, total_sp, unallocated_sp):
         session = self.Session()
         try:
@@ -174,7 +218,6 @@ class DatabaseHandler():
         finally:
             session.close()
 
-
     def saveSkillQueue(self, newSkillQueue):
         session = self.Session()
         # Add or update the received skillqueue
@@ -182,12 +225,11 @@ class DatabaseHandler():
             self.deleteSkillQueue(newSkillQueue.owner_id)   # First delete old SkillQueue
             for skill in newSkillQueue.items:               # Then add the new One
                 session.add(skill)
+            session.commit()
         except Exception as e:
             print("Exception in DatabaseHandler.saveSkillQueue: " + str(e))
-
-        session.commit()
-        session.close()
-
+        finally:
+            session.close()
 
     def getSkillQueue(self, ownerID):
         session = self.Session()
@@ -201,6 +243,18 @@ class DatabaseHandler():
             session.close()
 
         return skillQueue  # Might be an empty skillqueue
+
+    def deleteSkillQueue(self, ownerID):
+        session = self.Session()
+
+        try:  # Deleting old SkillQueueItems
+            session.query(SkillQueueItem).filter_by(owner_id=ownerID).delete(synchronize_session=False)
+            session.commit()
+        except Exception as e:
+            print("Exception in DatabaseHandler.getSkillQueueLast: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
 
     def getQueueFirst(self, ownerID):
         '''
@@ -232,17 +286,30 @@ class DatabaseHandler():
 
         return skill
 
-    def deleteSkillQueue(self, ownerID):
+    def getSkillsAtV(self, user):
         session = self.Session()
-        #print("Deleting old Skill Queue from owner " + str(ownerID))
-        try:  # Deleting old SkillQueueItems
-            session.query(SkillQueueItem).filter_by(owner_id=ownerID).delete(synchronize_session=False)
-            session.commit()
+        count = 0
+        try:
+            count = session.query(CompletedSkillItem).filter_by(owner_id=user.id, trained_skill_level=5).count()
         except Exception as e:
-            print("Exception in DatabaseHandler.getSkillQueueLast: " + str(e))
-            session.rollback()
+            print("Exception in DatabaseHandler.getSkillsAtV: " + str(e))
         finally:
             session.close()
+
+        return count
+
+    def getKnownSkills(self, user):
+        session = self.Session()
+        count = 0
+        try:
+            count = session.query(CompletedSkillItem).filter_by(owner_id=user.id).count()
+        except Exception as e:
+            print("Exception in DatabaseHandler.getKnownSkills: " + str(e))
+        finally:
+            session.close()
+
+        return count
+
 
     def saveCompletedSkills(self, newSkillList):
         session = self.Session()
@@ -281,8 +348,6 @@ class DatabaseHandler():
         finally:
             session.close()
 
-
-
     def saveCharacterPortrait(self, newCharPortrait):
         # Add or update the received CharacterPortrait
         session = self.Session()
@@ -300,7 +365,6 @@ class DatabaseHandler():
         finally:
             session.close()
 
-
     def getCharacterPortrait(self, ownerID):
         session = self.Session()
         # Get CharacterPortrait for this owner from DB if already existing
@@ -313,6 +377,18 @@ class DatabaseHandler():
             session.close()
 
         return characterPortrait  # Might be an empty CharacterPortrait
+
+    def deleteCharacterPortrait(self, owner_id):
+        session = self.Session()
+
+        try:
+            session.query(CharacterPortrait).filter_by(owner_id=owner_id).delete(synchronize_session=False)
+            session.commit()
+        except Exception as e:
+            print("Exception in databaseHandler.deleteCharacterPortrait: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
 
     def saveCharacterNotification(self, newNotification):
         session = self.Session()
@@ -332,6 +408,17 @@ class DatabaseHandler():
         finally:
             session.close()
 
+    def deleteCharacterNotification(self, owner_id):
+        session = self.Session()
+
+        try:
+            session.query(CharacterNotifications).filter_by(owner_id=owner_id).delete(synchronize_session=False)
+            session.commit()
+        except Exception as e:
+            print("Exception in databaseHandler.deleteCharacterNotification: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
 
     def getStaticSkillData(self, skill_id):
         session = self.Session()

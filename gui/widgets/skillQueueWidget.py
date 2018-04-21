@@ -97,8 +97,10 @@ class QueueItem(QWidget):
             charSecondaryAtt = tools.getCharSecondaryValue(charAttributes, self.staticData)
             self.spPerMinute = tools.spPerMinute(charPrimaryAtt, charSecondaryAtt)
 
+            # Fill the Labels with Data, and update it every second for the 1st Skill in the Queue
             self.updateLabels()
-            self.startUpdateTimer()
+            if self.queue_position == 1:
+                self.startUpdateTimer()
 
 
     def createLayout(self):
@@ -155,19 +157,18 @@ class QueueItem(QWidget):
         self.rankLabel.setText("Rank " + str(self.staticData.rank))
         self.levelLabel.setText("Level " + str(self.skill.finished_level))
         if self.skill.finish_date is not None:
-            self.trainingTimeLabel.setText("Training Time: " + getSkillTrainingTime(self.skill))
+            self.trainingTimeLabel.setText("Training Time: " + getSkillTrainingTime(self.skill))     # -
 
         # Second Line
-        # Strings of the primary and secondary Attribute, used for Gui Output
-        primaryAtt = tools.getAttribute(self.staticData.primary_attribute)
-        secondaryAtt = tools.getAttribute(self.staticData.secondary_attribute)
+        skillTrainingProgress = tools.getSkillTrainingProgress(self.skill, self.spPerMinute)    # +
 
-        skillTrainingProgress = tools.getSkillTrainingProgress(self.skill, self.spPerMinute)
+        self.spLabel.setText("SP: " + str(self.skill.level_start_sp + skillTrainingProgress) + "/"      # +
+                             + str(self.skill.level_end_sp))
+        self.spPerHourLabel.setText("SP/Hour: " + str(int(60*self.spPerMinute)))        # -
 
-        self.spLabel.setText("SP: " + str(skillTrainingProgress) + "/" + str(self.skill.level_end_sp))
-        self.spPerHourLabel.setText("SP/Hour: " + str(int(60*self.spPerMinute)))
-
-        self.progressLabel.setText(str(int(skillTrainingProgress / self.skill.level_end_sp * 100)) + "% Done")
+        self.progressLabel.setText(str(round(skillTrainingProgress /
+                                             (self.skill.level_end_sp - self.skill.level_start_sp)
+                                             * 100, 1)) + " % Done")  # +
         self.layout.update()
 
     def setBackgroundColor(self):

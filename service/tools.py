@@ -37,12 +37,12 @@ def getSkillTrainingProgress(SkillQueueItem, spPerMinute):
     '''
     result = 0
     try:
+        # Get the startdate of the skill training and compare it with the actual time
         if SkillQueueItem.start_date is not None:
             now = datetime.datetime.utcnow()
             timePassed = now - SkillQueueItem.start_date
             if timePassed is not None and timePassed > datetime.timedelta(0):
-                all = SkillQueueItem.level_end_sp - SkillQueueItem.level_start_sp  # ToDo: better Name for "all"
-                progress = SkillQueueItem.training_start_sp + timePassed.total_seconds() * spPerMinute / 60
+                progress = timePassed.total_seconds() * spPerMinute / 60
                 result = int(progress)
 
     except Exception as e:
@@ -74,13 +74,13 @@ def getCharPrimaryValue(user_attribute, staticSkill):
     if staticSkill.primary_attribute == 164:
         return user_attribute.charisma
     elif staticSkill.primary_attribute == 165:
-        return  user_attribute.intelligence
+        return user_attribute.intelligence
     elif staticSkill.primary_attribute == 166:
-        return  user_attribute.memory
+        return user_attribute.memory
     elif staticSkill.primary_attribute == 167:
-        return  user_attribute.perception
+        return user_attribute.perception
     elif staticSkill.primary_attribute == 168:
-        return  user_attribute.willpower
+        return user_attribute.willpower
 
 
 def getCharSecondaryValue(user_attribute, staticSkill):
@@ -88,13 +88,13 @@ def getCharSecondaryValue(user_attribute, staticSkill):
     if staticSkill.secondary_attribute == 164:
         return user_attribute.charisma
     elif staticSkill.secondary_attribute == 165:
-        return  user_attribute.intelligence
+        return user_attribute.intelligence
     elif staticSkill.secondary_attribute == 166:
-        return  user_attribute.memory
+        return user_attribute.memory
     elif staticSkill.secondary_attribute == 167:
-        return  user_attribute.perception
+        return user_attribute.perception
     elif staticSkill.secondary_attribute == 168:
-        return  user_attribute.willpower
+        return user_attribute.willpower
 
 
 def offset(x):

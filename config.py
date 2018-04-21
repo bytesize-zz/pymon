@@ -9,6 +9,9 @@ SECRET_KEY = 'YouNeedToChangeThisToBeSecure!'
 PORT = 5015
 HOST = 'localhost'
 APP_NAME = "PyMon"
+APP_ICON = "icon5.png"
+
+
 
 TIME_DIFFERENCE = 0  # Time difference between user timezone and eve time
 

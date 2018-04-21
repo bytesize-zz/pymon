@@ -1,9 +1,10 @@
 from PyQt5.QtWidgets import QWidget, QSizePolicy, QLabel, QVBoxLayout, QHBoxLayout, QTableWidget, QMainWindow,\
-    QTableWidgetItem, QCheckBox, QAbstractItemView, QHeaderView, QTableView
+    QTableWidgetItem, QCheckBox, QAbstractItemView, QHeaderView, QTableView, QPushButton
 from PyQt5.QtCore import QSize, QAbstractTableModel, Qt, QVariant
 from PyQt5.QtGui import QPalette, QPixmap, QFont, QIcon
 import config
 import sys
+import datetime
 
 from db.databaseHandler import DatabaseHandler
 
@@ -32,59 +33,41 @@ class MyTable(QTableWidget):
             self.setItem(self.rowCount()-1, pos, QTableWidgetItem(data[pos]))
 
 
-class MyTableModel(QAbstractTableModel):
-    def __init__(self, datain, headerdata, parent=None):
-        """
-        Args:
-            datain: a list of lists\n
-            headerdata: a list of strings
-        """
-        QAbstractTableModel.__init__(self, parent)
-        self.arraydata = datain
-        self.headerdata = headerdata
-
-    def rowCount(self, parent):
-        return len(self.arraydata)
-
-    def columnCount(self, parent):
-        if len(self.arraydata) > 0:
-            return len(self.arraydata[0])
-        return 0
-
-    def data(self, index, role):
-        if not index.isValid():
-            return QVariant()
-        elif role != Qt.DisplayRole:
-            return QVariant()
-        return QVariant(self.arraydata[index.row()][index.column()])
-
-    def setData(self, index, value, role):
-        pass         # not sure what to put here
-
-    def headerData(self, col, orientation, role):
-        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
-            return QVariant(self.headerdata[col])
-        return QVariant()
-
 class CharManagerWindow(QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, gui_queue, parent=None):
         super(CharManagerWindow, self).__init__(parent)
 
         self.dbHandler = DatabaseHandler()
+        self.gui_queue = gui_queue
 
         self.set_main_window()
 
         self.centralwidget = QWidget(self)
         self.layout = QVBoxLayout(self.centralwidget)
-        self.layout.setContentsMargins(0, 0, 5, 0)
+        self.layout.setContentsMargins(20, 20, 20, 20)
         self.layout.setSpacing(0)
         self.setCentralWidget(self.centralwidget)
 
         #Heading Label
         self.headingLabel = QLabel("Characters")
-        self.headingLabel.setFont(QFont("Arial", 20, QFont.Bold))
+        self.headingLabel.setFont(QFont("Arial", 18, QFont.Bold))
         self.layout.addWidget(self.headingLabel)
         self.layout.addSpacing(10)
+
+        #Buttons
+        hBox = QHBoxLayout()
+        deleteButton = QPushButton("Delete")
+        importButton = QPushButton("Import")
+        exportButton = QPushButton("Export")
+        deleteButton.clicked.connect(self.deleteTriggered)
+        importButton.clicked.connect(self.importTriggered)
+        exportButton.clicked.connect(self.exportTriggered)
+
+        hBox.addWidget(deleteButton)
+        hBox.addWidget(importButton)
+        hBox.addWidget(exportButton)
+
+        self.layout.addLayout(hBox)
 
         self.createTable()
         self.show()
@@ -98,7 +81,7 @@ class CharManagerWindow(QMainWindow):
         self.setTableContent()
 
     def setTableHeader(self):
-        header = ("ID", "Name", "Account", "Authentication Status")
+        header = ("", "ID", "Name", "Authentication Status")
         self.characterTable.setHorizontalHeaderLabels(header)
         self.characterTable.verticalHeader().setVisible(False)
 
@@ -117,10 +100,10 @@ class CharManagerWindow(QMainWindow):
         # If there are any users saved get the needed elements for our table
         for user in userList:
             data=[]
+            data.append(str(user.id))
             data.append(str(user.CharacterID))
             data.append(user.CharacterName)
-            data.append("Account Name ?")  # ToDo: Add Account Name here or remowe column entirely
-            data.append("OK")       # ToDo: Add Auth check here
+            data.append(self.getUserAuthStatus(user))
             self.characterTable.add_row(data)
 
     def set_main_window(self):
@@ -143,6 +126,102 @@ class CharManagerWindow(QMainWindow):
         self.setWindowIcon(QIcon(""))
         self.setWindowTitle(config.APP_NAME + " Character Manager")
 
+    def getSelectedUser(self):
+
+        #print(self.characterTable.selectedItems())
+        selection = self.characterTable.selectedItems()
+        if selection is None or len(selection) == 0:
+            return None
+        else:
+            return int(self.characterTable.selectedItems()[1].text())
+
+    def getUserAuthStatus(self, user):
+        status = ""
+        now = datetime.datetime.utcnow()
+
+        if user.RefreshToken is None or user.AccessToken is None:
+            status = "No Authentication"
+        elif now < user.AccessTokenExpire:
+            status = "Valid Access Token"
+        elif now > user.AccessTokenExpire:
+            status = "Valid Refresh Token"
+
+        return status
+
+    def deleteTriggered(self):
+        character_id = self.getSelectedUser()
+        #print(str(character_id))
+        self.deleteWindow = DeleteWindow(character_id, self.gui_queue, self)
+        self.deleteWindow.show()
 
 
+    def importTriggered(self):
+        print("import")
 
+    def exportTriggered(self):
+        print("export")
+
+class DeleteWindow(QMainWindow):
+    def __init__(self, character_id, gui_queue, parent=None):
+        super(DeleteWindow, self).__init__(parent)
+        self.dbHandler = DatabaseHandler()
+        self.user = self.dbHandler.getUser(character_id)
+        self.gui_queue = gui_queue
+
+        self.set_main_window()
+
+        self.centralwidget = QWidget(self)
+        self.layout = QVBoxLayout(self.centralwidget)
+
+        if self.user.id is None:
+            self.layout.addWidget(QLabel("No User selected"))
+            self.layout.addStretch(1)
+            hBox = QHBoxLayout()
+            hBox.addStretch(1)
+            button = QPushButton("OK")
+            button.clicked.connect(self.close)
+            hBox.addWidget(button)
+
+            self.layout.addLayout(hBox)
+        else:
+            self.layout.addWidget(QLabel("You are about to delete the Character: " + self.user.CharacterName))
+            self.layout.addWidget(QLabel("All Data will be lost! Are you sure?"))
+            self.layout.addStretch(1)
+
+            hBox = QHBoxLayout()
+            deleteButton = QPushButton("Delete")
+            deleteButton.clicked.connect(self.deleteUser)
+            cancelButton = QPushButton("Cancel")
+            cancelButton.clicked.connect(self.close)
+            hBox.addStretch(1)
+            hBox.addWidget(deleteButton)
+            hBox.addWidget(cancelButton)
+
+            self.layout.addLayout(hBox)
+
+        self.setCentralWidget(self.centralwidget)
+        self.show()
+
+    def deleteUser(self):
+        self.dbHandler.deleteUser(self.user.id)
+        self.gui_queue.put("Reprint MainWindow")
+        self.close()
+
+    def set_main_window(self):
+        # Standard Values for this Window
+        standard_width = 400
+        standard_height = 180
+
+        """Sets the size policies of the main window"""
+        self.resize(standard_width, standard_height)
+        size_policy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
+        self.setSizePolicy(size_policy)
+        self.setMinimumSize(QSize(standard_width, standard_height))
+        self.setMaximumSize(QSize(standard_width, standard_height))
+
+        # main window icon
+        self.setWindowIcon(QIcon(config.APP_ICON))
+        self.setWindowTitle("Delete Character")
