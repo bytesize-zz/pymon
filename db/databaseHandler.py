@@ -461,13 +461,14 @@ class DatabaseHandler():
         session = self.Session()
         dump = None
         try:
-            dump = session.query(StaticSkills).first()
+            dump = session.query(StaticSkills).count()
         except Exception as e:
             print("Exception in DatabaseHandler.staticDumpPresent: " + str(e))
 
-        if dump is None:
+        #print(dump)
+        if dump is None or dump < 433:
             return False
-        else:
+        elif dump >= 433:  # 433 is the actual count. ToDo: Check for client update and get a new dump
             return True
 
     def getAllianceData(self, alliID):
