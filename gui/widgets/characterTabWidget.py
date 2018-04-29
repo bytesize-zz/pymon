@@ -36,6 +36,10 @@ class CharacterTabWidget(QWidget):
             self.startUpdateTimer()
 
 
+    def getUser(self):
+        # returns the user_id for this character_tab
+        return self.user.id
+
     def startUpdateTimer(self):
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.updateLabels)
@@ -105,7 +109,7 @@ class CharacterTabWidget(QWidget):
         hBox.addLayout(vBox)
         hBox.addStretch(1)
 
-        #ToDo: Update Timer + Force update button
+        #ToDo: Update Timer + Force update button (When will the next update occur)
 
         return hBox
 

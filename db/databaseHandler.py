@@ -9,7 +9,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
 from db.databaseTables import User, Character, SkillQueue, SkillQueueItem, CharacterPortrait, CompletedSkillItem, \
-    CompletedSkillList, StaticSkills, CharacterAttributes, StaticSkillGroups, CharacterNotifications
+    CompletedSkillList, StaticSkills, CharacterAttributes, StaticSkillGroups, CharacterNotifications, ServerStatus, \
+    SkillPlan
 
 import datetime
 import config
@@ -115,7 +116,7 @@ class DatabaseHandler():
                 session.add(newCharacter)
             elif dbCharacter.owner_id == newCharacter.owner_id:
                 #print("Character already present, lets update him.")
-                dbCharacter.updateCharacter(newCharacter)
+                dbCharacter.setCharacter(newCharacter)
             else:
                 print("Something is wrong at databaseHandler.saveCharacter()")
             session.commit()
@@ -470,6 +471,103 @@ class DatabaseHandler():
             return False
         elif dump >= 433:  # 433 is the actual count. ToDo: Check for client update and get a new dump
             return True
+
+    def saveServerStatus(self, newStatus):
+        session = self.Session()
+
+        try:
+            dbStatus = session.query(ServerStatus).first()
+            if dbStatus is None:
+                session.add(newStatus)
+            else:
+                dbStatus.setStatus(newStatus)
+            session.commit()
+        except Exception as e:
+            print("Exception in DatabaseHandler.saveServerStatus: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
+
+    def getServerStatus(self):
+        session = self.Session()
+        status = None
+
+        try:
+            status = session.query(ServerStatus).first()
+        except Exception as e:
+            print("Exception in DatabaseHandler.getServerStatus: " + str(e))
+
+        finally:
+            session.close()
+
+        return status
+
+    def addPlan(self, newPlan):
+        session = self.Session()
+        try:
+            session.add(newPlan)
+            session.commit()
+        except Exception as e:
+            print("Exception in DatabaseHandler.addPlan: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
+
+    def getPlan(self, plan_id):
+        session = self.Session()
+        plan = None
+
+        try:
+            plan = session.query(SkillPlan).filter_by(id=plan_id).first()
+        except Exception as e:
+            print("Exception in DatabaseHandler.getPlan: " + str(e))
+        finally:
+            session.close()
+
+        return plan
+
+    def updatePlan(self, newPlan):
+        session = self.Session()
+
+        try:
+            dbPlan = session.query(SkillPlan).filter_by(id=newPlan.id).first()
+
+            dbPlan.name = newPlan.name
+            dbPlan.description = newPlan.description
+            dbPlan.skill_list = newPlan.skill_list
+
+            session.commit()
+        except Exception as e:
+            print("Exception in DatabaseHandler.updatePlan: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
+
+    def deletePlan(self, plan):
+        session = self.Session()
+
+        try:
+            session.query(SkillPlan).filter_by(id=plan.id).delete(synchronize_session=False)
+            session.commit()
+        except Exception as e:
+            print("Exception in DatabaseHandler.deletePlan: " + str(e))
+            session.rollback()
+        finally:
+            session.close()
+
+    def getCharacterPlans(self, owner_id):
+        session = self.Session()
+        plans = None
+
+        try:
+            plans = session.query(SkillPlan).filter_by(owner_id=owner_id).all()
+        except Exception as e:
+            print("Exception in DatabaseHandler.getPlan: " + str(e))
+        finally:
+            session.close()
+
+        return plans
+
 
     def getAllianceData(self, alliID):
         session = self.Session()

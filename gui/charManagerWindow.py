@@ -111,7 +111,7 @@ class CharManagerWindow(QMainWindow):
         standard_width = 544
         standard_height = 480
         minimum_width = 544
-        minimum_height = 480
+        minimum_height = 300
 
         """Sets the size policies of the main window"""
         self.resize(standard_width, standard_height)
@@ -123,7 +123,7 @@ class CharManagerWindow(QMainWindow):
         self.setMinimumSize(QSize(minimum_width, minimum_height))
 
         # main window icon
-        self.setWindowIcon(QIcon(""))
+        self.setWindowIcon(QIcon(config.APP_ICON))
         self.setWindowTitle(config.APP_NAME + " Character Manager")
 
     def getSelectedUser(self):

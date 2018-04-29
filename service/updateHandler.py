@@ -6,16 +6,17 @@
 """
 import swagger_client
 from PyQt5.QtNetwork import QNetworkAccessManager
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import QUrl, QTimer
 
 import config
 import threading
 import skilldump
 import datetime
+import time
 
 from db.databaseHandler import DatabaseHandler
 from db.databaseTables import User, Character, CharacterPortrait, SkillQueue, CompletedSkillList, CharacterAttributes, \
-    CharacterNotifications
+    CharacterNotifications, ServerStatus
 
 from service.esipy.app import App
 from service.esipy.security import EsiSecurity
@@ -25,6 +26,8 @@ class UpdateHandler():
         super(UpdateHandler, self).__init__()
 
         esiapp = App.create(config.ESI_SWAGGER_JSON)
+
+        self.clientStartTime = datetime.datetime.now()
 
         # init the security object
         self.esisecurity = EsiSecurity(
@@ -54,13 +57,15 @@ class UpdateHandler():
 
         """
 
+        self.getServerStatus()
+
         # If we have'nt yet, we get the Static Informations for Skills/Ships etc from Eve
         # ToDo: Get Ship Dump and implement a real update function
         if self.dbHandler.staticDumpPresent() == False:
-            #print("No Skill Dump present, lets get it ... ")
-            dumpThread = threading.Thread(target=self.getSkilldump)
-            dumpThread.daemon = True
-            dumpThread.start()
+            print("No Skill Dump present ... ")
+            #dumpThread = threading.Thread(target=self.getSkilldump)
+            #dumpThread.daemon = True
+            #dumpThread.start()
 
         try:
             userList = self.dbHandler.getAllUser()
@@ -71,8 +76,31 @@ class UpdateHandler():
         finally:
             gui_queue.put("Reprint MainWindow")
 
+        self.updateLoop()
+
+
+    def updateLoop(self):
+        while True:
+            self.frequentlyUpdate()
+            time.sleep(1)
+
+    def frequentlyUpdate(self):
+        # Get a new Server Status every Minute
+
+        now = datetime.datetime.now()
+        clientRunTime = int((now - self.clientStartTime).total_seconds())
+
+        if (clientRunTime % 60) == 0:
+            print("1 Min Update now")
+            self.getServerStatus()
+        if (clientRunTime % 300) == 0:
+            print("5 Min Update now")
+        if (clientRunTime % 3600) == 0:
+            print("60 Min Update now")
+
     def getSkilldump(self):
-        skilldump.SkillDump()
+        #skilldump.SkillDump()
+        skilldump.ShipDump()
 
     def updateUser(self, user):
         """ Method to update Data for one stored User.
@@ -119,16 +147,21 @@ class UpdateHandler():
         api = swagger_client.StatusApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
         api.api_client.host = config.ESI_ESI_URL
-        response = None
+        status = None
 
         try:
             response = api.get_status()
+            now = datetime.datetime.utcnow()
+            status = ServerStatus().setStatus(response, now)
             # ToDo: Handle 502 Exception differently as is only means that server is offline
         except Exception as e:
             print(datetime.datetime.now().strftime("%H:%M:%S"))
             print("Exception in updateHandler.getServerStatus: %s\n" % e)
 
-        return response
+            status = ServerStatus().setStatus(None, None)
+        finally:
+
+            self.dbHandler.saveServerStatus(status)
 
     def updateCharacter(self, user):
 

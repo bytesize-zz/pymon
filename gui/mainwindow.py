@@ -9,21 +9,30 @@ from service.esi import Esi
 from service import tools
 import config
 import datetime
+import functools
 import pytz
 from Lib import queue
 
 # Import of neccessary Widgets
 from gui.widgets.mainTabWidget import MainTabWidget
+from gui.widgets.characterTabWidget import CharacterTabWidget
 from gui.charManagerWindow import CharManagerWindow
+from gui.newplan import NewPlanWindow
+from gui.skillplanwindow import SkillPlannerWindow
 
 from service.updateHandler import UpdateHandler
+from db.databaseHandler import DatabaseHandler
 
 class GeneralMainDesign(QMainWindow):
     """General design of the main window"""
     def __init__(self):
         super().__init__()
 
-        self.updateHandler = UpdateHandler()
+        #self.updateHandler = UpdateHandler()
+        self.dbHandler = DatabaseHandler()
+        self.selected_character = None
+
+
         self.init_MainWindow()
         self.gui_queue = queue.Queue()
 
@@ -103,6 +112,7 @@ class GeneralMainDesign(QMainWindow):
     def set_main_menubar(self):
         # Create Menu Bar with Actions
         # .menubar.setGeometry(QRect(0, 0, 908, 21))
+        self.menubar.clear()  # delete all actions
         self.menubar.setObjectName("menubar")
 
         # File Menu
@@ -121,19 +131,32 @@ class GeneralMainDesign(QMainWindow):
         self.fileMenu.addSeparator()
         self.fileMenu.addAction(exitAction)
 
-        # Plans Menu
+        # Plans Menu -------------------------------------------------------------------
         self.plansMenu = self.menubar.addMenu('&Plans')
-        addPlanAction = QAction("&Add Plan", self)
-        createSkillQueuePlanAction = QAction("&Create Plan from Skillqueue", self)
-        importPlanfromFileAction = QAction("&Import Plan from File", self)
-        managePlanPlanAction = QAction("&Manage Plans", self)
+        self.addPlanAction = QAction("&Add Plan", self)
+        self.createSkillQueuePlanAction = QAction("&Create Plan from Skillqueue", self)
+        self.importPlanfromFileAction = QAction("&Import Plan from File", self)
+        self.managePlanPlanAction = QAction("&Manage Plans", self)
 
-        self.plansMenu.addAction(addPlanAction)
-        self.plansMenu.addAction(createSkillQueuePlanAction)
-        self.plansMenu.addAction(importPlanfromFileAction)
-        self.plansMenu.addAction(managePlanPlanAction)
 
-        # Tools Menu
+        self.addPlanAction.triggered.connect(self.addPlan)
+
+        self.plansMenu.addAction(self.addPlanAction)
+        self.plansMenu.addAction(self.createSkillQueuePlanAction)
+        self.plansMenu.addAction(self.importPlanfromFileAction)
+        self.plansMenu.addAction(self.managePlanPlanAction)
+        self.plansMenu.addSeparator()
+
+        # Initially disable Plan Buttons
+        self.addPlanAction.setDisabled(True)
+        self.createSkillQueuePlanAction.setDisabled(True)
+        self.importPlanfromFileAction.setDisabled(True)
+        self.managePlanPlanAction.setDisabled(True)
+
+        if self.selected_character is not None:
+            self.addCharacterPlansToMenu()
+
+        # Tools Menu --------------------------------------------------------------------
         self.toolsMenu = self.menubar.addMenu('&Tools')
         manageNotificationsAction = QAction("&Manage Notifications", self)
         #reloadUI = QAction("&Reload UI", self)
@@ -172,7 +195,7 @@ class GeneralMainDesign(QMainWindow):
         #now = datetime.datetime.utcnow()
         #now = pytz.UTC
         time = datetime.datetime.utcnow().strftime("%H:%M")
-        data = self.updateHandler.getServerStatus()
+        data = self.dbHandler.getServerStatus()
         if data is None:
             self.statusbar.showMessage("EVE Time " + time + "  |  Tranquility Server Offline")
         elif data.start_time is None:
@@ -188,6 +211,18 @@ class GeneralMainDesign(QMainWindow):
     # Menubar Action trigger Functions
     #
     ################
+    def addCharacterPlansToMenu(self):
+
+        plan_list = self.dbHandler.getCharacterPlans(self.selected_character)
+
+        actions = []
+        for plan in plan_list:
+            #actions.append(QAction(plan.name, self))
+            action = QAction(plan.name, self)
+            action.triggered.connect(functools.partial(self.openSkillPlanner, plan.id))
+
+            #self.plansMenu.addAction(actions[plan.id-1])
+            self.plansMenu.addAction(action)
 
     def exitTriggered(self):
         # Close the Application
@@ -197,10 +232,15 @@ class GeneralMainDesign(QMainWindow):
         # self.startUpdateTimer()
         Esi(self.gui_queue)
 
+    def addPlan(self):
+        self.newPlanWindow = NewPlanWindow(self.gui_queue, self.selected_character, self)
+        self.newPlanWindow.show()
+
     def manageCharacterTriggered(self):
         # Open New Window Character Manager
         self.charManager = CharManagerWindow(self.gui_queue, self)
         self.charManager.show()
+
 
     def deleteLayout(self):
         print("Deleting Layout..")
@@ -226,8 +266,32 @@ class GeneralMainDesign(QMainWindow):
     def createTabwidget(self):
         print("creating Tabwidget ...")
         self.tab_widget = MainTabWidget(self)
+        self.tab_widget.currentChanged.connect(self.updateSelection)
         self.layout.addWidget(self.tab_widget)
         print("Tabwidget created.")
+
+    def updateSelection(self):
+        # we wan't to know wich tab is selected
+        # selected_character = None for Overview, user_id for every characterTab
+        # then update Button Activation and menubar
+        self.selected_character = self.tab_widget.getSelection()
+
+        self.set_main_menubar()
+        self.updateButtonActivation()
+
+    def updateButtonActivation(self):
+        if self.selected_character is None:
+            # Plans Menu
+            self.addPlanAction.setDisabled(True)
+            self.createSkillQueuePlanAction.setDisabled(True)
+            self.importPlanfromFileAction.setDisabled(True)
+            self.managePlanPlanAction.setDisabled(True)
+        else:
+            # Plans Menu
+            self.addPlanAction.setDisabled(False)
+            self.createSkillQueuePlanAction.setDisabled(False)
+            self.importPlanfromFileAction.setDisabled(False)
+            self.managePlanPlanAction.setDisabled(False)
 
     def reprintUI(self):
         # repaint Function: delete old layout and children, then paint a new one
@@ -249,6 +313,11 @@ class GeneralMainDesign(QMainWindow):
             if msg == "Reprint MainWindow":
                 self.reprintUI()
                 #self.timer.stop()
+
+    def openSkillPlanner(self, plan_id):
+        print(str(plan_id))
+        self.skillPlanner = SkillPlannerWindow(plan_id, self)
+        self.skillPlanner.show()
 
     def startUpdateTimer(self):
         self.timer = QTimer()

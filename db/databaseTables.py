@@ -79,7 +79,7 @@ class Character(Base):
     jump_fatigue_expire_date = Column(DateTime)
     owner_id = Column(Integer, ForeignKey('User.id'))
 
-    def setCharacter(self, request_response, ownerID):
+    def setCharacter(self, request_response, ownerID=None):
         self.name = request_response.name
         self.description = request_response.description
         self.corporation_id = request_response.corporation_id
@@ -91,7 +91,8 @@ class Character(Base):
         self.ancestry_id = request_response.ancestry_id
         self.security_status = request_response.security_status
         self.faction_id = request_response.faction_id
-        self.owner_id = ownerID
+        if ownerID is not None:
+            self.owner_id = ownerID
         return self
 
     def setSkillpoints(self,  total_sp, unallocated_sp):
@@ -109,21 +110,6 @@ class Character(Base):
 
     def setCorporationName(self, name):
         self.corporation_name = name
-
-    def updateCharacter(self, newCharacter):
-        # ToDO: remove unchangeable elements
-        self.name = newCharacter.name
-        self.description = newCharacter.description
-        self.corporation_id = newCharacter.corporation_id
-        self.alliance_id = newCharacter.alliance_id
-        self.birthday = newCharacter.birthday
-        self.gender = newCharacter.gender
-        self.race_id = newCharacter.race_id
-        self.bloodline_id = newCharacter.bloodline_id
-        self.ancestry_id = newCharacter.ancestry_id
-        self.security_status = newCharacter.security_status
-        self.faction_id = newCharacter.faction_id
-        return self
 
     def __repr__(self):
         return "<Character(name='%s', description='%s', corporation_id='%s', alliance_id='%s', birthday='%s', gender='%s', " \
@@ -229,6 +215,24 @@ class Implants(Base):
     id = Column(Integer, primary_key=True)
     # List of Integer (implant_type_id) max. 11      # ToDo: Find Informations for this
     owner_id = Column(Integer, ForeignKey('User.id'))
+
+class SkillPlan(Base):
+    __tablename__ = 'SkillPlan'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    skill_list = Column(String)  # String with Skill ID's
+    owner_id = Column(Integer, ForeignKey('User.id'))
+
+    def create(self, name, description, ownerID):
+        self.name = name
+        self.description = description
+        self.owner_id = ownerID
+        return self
+
+    def saveSkillList(self, skill_list):
+        self.skill_list = skill_list
+
 
 class SkillQueueItem(Base):
     __tablename__ = 'SkillQueueItem'
@@ -377,6 +381,18 @@ class StaticSkills(Base):
     market_group_id = Column(Integer)
     basePrice = Column(Integer)
     group_id = Column(Integer, ForeignKey('StaticSkillGroups.id'))
+    requiredSkill1 = Column(Integer)
+    requiredSkill2 = Column(Integer)
+    requiredSkill3 = Column(Integer)
+    requiredSkill4 = Column(Integer)
+    requiredSkill5 = Column(Integer)
+    requiredSkill6 = Column(Integer)
+    requiredSkill1Level = Column(Integer)
+    requiredSkill2Level = Column(Integer)
+    requiredSkill3Level = Column(Integer)
+    requiredSkill4Level = Column(Integer)
+    requiredSkill5Level = Column(Integer)
+    requiredSkill6Level = Column(Integer)
 
     def setData(self, data):
         self.name = data['name']
@@ -384,7 +400,10 @@ class StaticSkills(Base):
         self.description = data['description']
         self.icon_id = data['icon_id']
         self.market_group_id = data['market_group_id']
-        #self.basePrice = Column['base_price']
+        try:
+            self.basePrice = Column['base_price']
+        except Exception as e:
+            print(e)
         self.group_id = data['group_id']
 
         # The Skillrank hides in data['dogma_attributes'][x]{'attribute_id': 275, 'value': 7.0}
@@ -395,6 +414,226 @@ class StaticSkills(Base):
                 self.primary_attribute = attribute['value']
             elif attribute['attribute_id'] == 181:
                 self.secondary_attribute = attribute['value']
+            elif attribute['attribute_id'] == 182:
+                self.requiredSkill1 = attribute['value']
+            elif attribute['attribute_id'] == 183:
+                self.requiredSkill2 = attribute['value']
+            elif attribute['attribute_id'] == 184:
+                self.requiredSkill3 = attribute['value']
+            elif attribute['attribute_id'] == 1285:
+                self.requiredSkill4 = attribute['value']
+            elif attribute['attribute_id'] == 1289:
+                self.requiredSkill5 = attribute['value']
+            elif attribute['attribute_id'] == 1290:
+                self.requiredSkill6 = attribute['value']
+            elif attribute['attribute_id'] == 277:
+                self.requiredSkill1Level = attribute['value']
+            elif attribute['attribute_id'] == 278:
+                self.requiredSkill2Level = attribute['value']
+            elif attribute['attribute_id'] == 279:
+                self.requiredSkill3Level = attribute['value']
+            elif attribute['attribute_id'] == 1286:
+                self.requiredSkill4Level = attribute['value']
+            elif attribute['attribute_id'] == 1287:
+                self.requiredSkill5Level = attribute['value']
+            elif attribute['attribute_id'] == 1288:
+                self.requiredSkill6Level = attribute['value']
+
+        return self
+
+class StaticShipGroups(Base):
+    __tablename__ = 'StaticShipGroups'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    group_id = Column(Integer)
+
+    def setData(self, name, group_id):
+        self.name = name
+        self.group_id = group_id
+        return self
+
+    def __repr__(self):
+        return"<Static Ship Group(id='%s', name='%s', group_id='%s')>" % (self.id, self.name, self.group_id)
+
+class StaticShips(Base):
+    __tablename__ = 'StaticShips'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    ship_id = Column(Integer)
+    description = Column(String)
+    icon_id = Column(Integer)
+    market_group_id = Column(Integer)
+    basePrice = Column(Integer)
+    group_id = Column(Integer, ForeignKey('StaticShipGroups.id'))
+    requiredSkill1 = Column(Integer)
+    requiredSkill2 = Column(Integer)
+    requiredSkill3 = Column(Integer)
+    requiredSkill4 = Column(Integer)
+    requiredSkill5 = Column(Integer)
+    requiredSkill6 = Column(Integer)
+    requiredSkill1Level = Column(Integer)
+    requiredSkill2Level = Column(Integer)
+    requiredSkill3Level = Column(Integer)
+    requiredSkill4Level = Column(Integer)
+    requiredSkill5Level = Column(Integer)
+    requiredSkill6Level = Column(Integer)
+
+    def setData(self, data):
+        self.name = data['name']
+        self.ship_id = data['type_id']
+        self.description = data['description']
+        try:
+            self.icon_id = data['icon_id']
+        except Exception as e:
+            print(e)
+        try:
+            self.market_group_id = data['market_group_id']
+        except Exception as e:
+            print(e)
+        try:
+            self.basePrice = Column['base_price']
+        except Exception as e:
+            print(e)
+        self.group_id = data['group_id']
+
+        for attribute in data['dogma_attributes']:
+            if attribute['attribute_id'] == 182:
+                self.requiredSkill1 = attribute['value']
+            elif attribute['attribute_id'] == 183:
+                self.requiredSkill2 = attribute['value']
+            elif attribute['attribute_id'] == 184:
+                self.requiredSkill3 = attribute['value']
+            elif attribute['attribute_id'] == 1285:
+                self.requiredSkill4 = attribute['value']
+            elif attribute['attribute_id'] == 1289:
+                self.requiredSkill5 = attribute['value']
+            elif attribute['attribute_id'] == 1290:
+                self.requiredSkill6 = attribute['value']
+            elif attribute['attribute_id'] == 277:
+                self.requiredSkill1Level = attribute['value']
+            elif attribute['attribute_id'] == 278:
+                self.requiredSkill2Level = attribute['value']
+            elif attribute['attribute_id'] == 279:
+                self.requiredSkill3Level = attribute['value']
+            elif attribute['attribute_id'] == 1286:
+                self.requiredSkill4Level = attribute['value']
+            elif attribute['attribute_id'] == 1287:
+                self.requiredSkill5Level = attribute['value']
+            elif attribute['attribute_id'] == 1288:
+                self.requiredSkill6Level = attribute['value']
+
+        return self
+
+class StaticModuleGroups(Base):
+    __tablename__ = 'StaticModuleGroups'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    group_id = Column(Integer)
+
+    def setData(self, name, group_id):
+        self.name = name
+        self.group_id = group_id
+        return self
+
+    def __repr__(self):
+        return"<Static Module Group(id='%s', name='%s', group_id='%s')>" % (self.id, self.name, self.group_id)
+
+class StaticModules(Base):
+    __tablename__ = 'StaticModules'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    module_id = Column(Integer)
+    description = Column(String)
+    icon_id = Column(Integer)
+    market_group_id = Column(Integer)
+    basePrice = Column(Integer)
+    group_id = Column(Integer, ForeignKey('StaticModuleGroups.id'))
+    requiredSkill1 = Column(Integer)
+    requiredSkill2 = Column(Integer)
+    requiredSkill3 = Column(Integer)
+    requiredSkill4 = Column(Integer)
+    requiredSkill5 = Column(Integer)
+    requiredSkill6 = Column(Integer)
+    requiredSkill1Level = Column(Integer)
+    requiredSkill2Level = Column(Integer)
+    requiredSkill3Level = Column(Integer)
+    requiredSkill4Level = Column(Integer)
+    requiredSkill5Level = Column(Integer)
+    requiredSkill6Level = Column(Integer)
+
+    def setData(self, data):
+        self.name = data['name']
+        self.ship_id = data['type_id']
+        self.description = data['description']
+        try:
+            self.icon_id = data['icon_id']
+        except Exception as e:
+            print(e)
+        try:
+            self.market_group_id = data['market_group_id']
+        except Exception as e:
+            print(e)
+        try:
+            self.basePrice = Column['base_price']
+        except Exception as e:
+            print(e)
+
+        self.group_id = data['group_id']
+
+        for attribute in data['dogma_attributes']:
+            if attribute['attribute_id'] == 182:
+                self.requiredSkill1 = attribute['value']
+            elif attribute['attribute_id'] == 183:
+                self.requiredSkill2 = attribute['value']
+            elif attribute['attribute_id'] == 184:
+                self.requiredSkill3 = attribute['value']
+            elif attribute['attribute_id'] == 1285:
+                self.requiredSkill4 = attribute['value']
+            elif attribute['attribute_id'] == 1289:
+                self.requiredSkill5 = attribute['value']
+            elif attribute['attribute_id'] == 1290:
+                self.requiredSkill6 = attribute['value']
+            elif attribute['attribute_id'] == 277:
+                self.requiredSkill1Level = attribute['value']
+            elif attribute['attribute_id'] == 278:
+                self.requiredSkill2Level = attribute['value']
+            elif attribute['attribute_id'] == 279:
+                self.requiredSkill3Level = attribute['value']
+            elif attribute['attribute_id'] == 1286:
+                self.requiredSkill4Level = attribute['value']
+            elif attribute['attribute_id'] == 1287:
+                self.requiredSkill5Level = attribute['value']
+            elif attribute['attribute_id'] == 1288:
+                self.requiredSkill6Level = attribute['value']
+
+        return self
+
+
+class ServerStatus(Base):
+    __tablename__ = 'ServerStatus'
+    id = Column(Integer, primary_key=True)
+    start_time = Column(DateTime)
+    players = Column(Integer)
+    server_version = Column(String)
+    vip = Column(String)
+    last_seen = Column(DateTime)
+
+    def setStatus(self, status=None, now=None):
+        if status is None:
+            self.start_time = None
+            self.players = 0
+            self.server_version = "unknown"
+            self.vip = "unknown"
+        else:
+            self.start_time = status.start_time
+            self.players = status.players
+            self.server_version = status.server_version
+            self.vip = status.vip
+
+            if now is None:
+                self.last_seen = status.last_seen
+            else:
+                self.last_seen = now
 
         return self
 

@@ -54,6 +54,7 @@ class MainTabWidget(QTabWidget):
 
         self.overviewTab = QWidget()
 
+
         x = 0
         y = 0
         self.widgetList = []
@@ -78,6 +79,15 @@ class MainTabWidget(QTabWidget):
     def repaintOverviewTab(self):
         self.createOverviewTab()
 
+
+    def getSelection(self):
+        # Returns the selected User, if any
+        if self.currentWidget() == self.overviewTab:
+            return None
+        elif self.currentWidget() == self.scrollArea:
+            return None
+        else:
+            return self.currentWidget().getUser()
 
     def createCharacterTabs(self, userList):
 
