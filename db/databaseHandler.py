@@ -245,6 +245,20 @@ class DatabaseHandler():
 
         return skillQueue  # Might be an empty skillqueue
 
+    def getSkillQueueItem(self, owner_id, skill_id):
+        # We want a specific skill queue item for this user, if it is there
+        session = self.Session()
+        skillQueueItem = None
+        try:
+            skillQueueItem = session.query(SkillQueueItem).filter_by(owner_id=owner_id, skill_id=skill_id).first()
+        except Exception as e:
+            print("Exception in DatabaseHandler.getSkillQueueItem: " + str(e))
+        finally:
+            session.close()
+
+        return skillQueueItem  # Might be an empty skillqueueitem
+
+
     def deleteSkillQueue(self, ownerID):
         session = self.Session()
 
@@ -310,7 +324,6 @@ class DatabaseHandler():
             session.close()
 
         return count
-
 
     def saveCompletedSkills(self, newSkillList):
         session = self.Session()
@@ -445,14 +458,18 @@ class DatabaseHandler():
 
         return skillGroups
 
-    def getSkillsFromGroup(self, group):
+    def getGroupSkills(self, user_id, group_id):
         session = self.Session()
-        skills = None
+        skills = []
         try:
-            skills = session.query(CompletedSkillItem).order_by(StaticSkillGroups.name).all()
-            #session.expunge(skills)
+            for staticSkill in session.query(StaticSkills, StaticSkills.skill_id).filter_by(group_id=group_id).\
+                    order_by(StaticSkills.name).all():
+                skill = session.query(CompletedSkillItem).filter_by(owner_id=user_id, skill_id=staticSkill.skill_id).first()
+                if skill is not None:
+                    skills.append(skill)
+
         except Exception as e:
-            print("Exception in DatabaseHandler.getSkillsFromGroup: " + str(e))
+            print("Exception in DatabaseHandler.getGroupSkills: " + str(e))
         finally:
             session.close()
 

@@ -100,13 +100,12 @@ class UpdateHandler():
             # Balance
             # Notifications
             for user in self.userList:
+                self.refreshUserAuth(user)
                 self.updateBalance(user)
                 self.updateCharacterNotifications(user)
         if (clientRunTime % 900) == 0:  # 15 minutely Update
             print("15 Min Update now")
-            # refresh user Auth
-            for user in self.userList:
-                self.refreshUserAuth(user)
+
         if (clientRunTime % 1800) == 0:  # 30 minutely Update
             print("30 Min Update now")
             # Skill Queue

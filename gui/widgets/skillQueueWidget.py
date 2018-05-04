@@ -8,8 +8,8 @@ import datetime
 
 from db.databaseHandler import DatabaseHandler
 from db.databaseTables import CompletedSkillList, CompletedSkillItem, User, StaticSkills, StaticSkillGroups
-from service.tools import getSkillTrainingTime, getSkillTrainingProgress
 from service import tools
+from service.tools import format
 
 # ToDo Mouse Over and click Event/Action
 class SkillQueueWidget(QWidget):
@@ -63,6 +63,7 @@ class SkillQueueWidget(QWidget):
 
         now = datetime.datetime.utcnow()
 
+        # ToDo: Optimize with pythontricks
         if skillQueue is not None:
             queue_position = 1
             for skill in skillQueue:
@@ -154,16 +155,16 @@ class QueueItem(QWidget):
         pos = str(self.queue_position)
         name = self.staticData.name
         self.titleLabel.setText(pos + ". " + name)
-        self.rankLabel.setText("Rank " + str(self.staticData.rank))
+        self.rankLabel.setText("(Rank " + str(self.staticData.rank) + ")")
         self.levelLabel.setText("Level " + str(self.skill.finished_level))
         if self.skill.finish_date is not None:
-            self.trainingTimeLabel.setText("Training Time: " + getSkillTrainingTime(self.skill))     # -
+            self.trainingTimeLabel.setText("Training Time: " + tools.getSkillTrainingTime(self.skill))     # -
 
         # Second Line
         skillTrainingProgress = tools.getSkillTrainingProgress(self.skill, self.spPerMinute)    # +
 
-        self.spLabel.setText("SP: " + str(self.skill.level_start_sp + skillTrainingProgress) + "/"      # +
-                             + str(self.skill.level_end_sp))
+        self.spLabel.setText("SP: " + format(self.skill.level_start_sp + skillTrainingProgress) + "/"      # +
+                             + format(self.skill.level_end_sp))
         self.spPerHourLabel.setText("SP/Hour: " + str(int(60*self.spPerMinute)))        # -
 
         self.progressLabel.setText(str(round(skillTrainingProgress /

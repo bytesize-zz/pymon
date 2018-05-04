@@ -44,7 +44,7 @@ class CharacterOverviewWidget(QWidget):
         self.characterSkillpointsLabel = QLabel("Skillpoints")
         self.characterSkillRemainingTimeLabel = QLabel("Skill Remaining Time")
         self.characterSkillNameLabel = QLabel("Skillname")
-        self.characterSkillEndDateLabel = QLabel("Queue End Date")
+        self.characterSkillEndDateLabel = QLabel("Skill End Date")
         self.characterQueueRemainingTimeLabel = QLabel("Queue Remaining Time")
 
         self.setLabels()
