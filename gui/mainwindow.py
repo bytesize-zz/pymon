@@ -62,6 +62,8 @@ class GeneralMainDesign(QMainWindow):
         # Tab Widget
         self.createTabwidget()
 
+        #self.resizeEvent.
+
         self.show()
         # self.progress_bar = ProgressBar(self)
         # self.statusbar.addPermanentWidget(self.progress_bar)
@@ -205,6 +207,9 @@ class GeneralMainDesign(QMainWindow):
             self.statusbar.showMessage("EVE Time " + time + "  |  Tranquility Server Online (" +
                                        tools.format(playerCount) + " Pilots)")
 
+    def windowResized(self):
+        print("X")
+
 
     ################
     #
@@ -315,7 +320,6 @@ class GeneralMainDesign(QMainWindow):
                 #self.timer.stop()
 
     def openSkillPlanner(self, plan_id):
-        print(str(plan_id))
         self.skillPlanner = SkillPlannerWindow(plan_id, self)
         self.skillPlanner.show()
 

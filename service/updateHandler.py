@@ -57,7 +57,7 @@ class UpdateHandler():
 
         """
 
-        self.getServerStatus()
+        self.updateServerStatus()
 
         # If we have'nt yet, we get the Static Informations for Skills/Ships etc from Eve
         # ToDo: Get Ship Dump and implement a real update function
@@ -68,8 +68,8 @@ class UpdateHandler():
             #dumpThread.start()
 
         try:
-            userList = self.dbHandler.getAllUser()
-            for user in userList:
+            self.userList = self.dbHandler.getAllUser()
+            for user in self.userList:
                 self.updateUser(user)
         except Exception as e:
             print("Exception in updateHandler.updateAll: %s\n" % e)
@@ -90,13 +90,37 @@ class UpdateHandler():
         now = datetime.datetime.now()
         clientRunTime = int((now - self.clientStartTime).total_seconds())
 
-        if (clientRunTime % 60) == 0:
-            print("1 Min Update now")
-            self.getServerStatus()
-        if (clientRunTime % 300) == 0:
+
+        if (clientRunTime % 60) == 0:   # minutely Update
+            # Server Status
+            self.updateServerStatus()
+        if (clientRunTime % 300) == 0:  # 5 minutely Update
             print("5 Min Update now")
-        if (clientRunTime % 3600) == 0:
+            # Jump Fatigue
+            # Balance
+            # Notifications
+            for user in self.userList:
+                self.updateBalance(user)
+                self.updateCharacterNotifications(user)
+        if (clientRunTime % 900) == 0:  # 15 minutely Update
+            print("15 Min Update now")
+            # refresh user Auth
+            for user in self.userList:
+                self.refreshUserAuth(user)
+        if (clientRunTime % 1800) == 0:  # 30 minutely Update
+            print("30 Min Update now")
+            # Skill Queue
+            # Completed Skills
+            # Attributes
+            for user in self.userList:
+                self.updateSkillQueue(user)
+                self.updateCompletedSkills(user)
+                self.updateCharacterAttributes(user)
+        if (clientRunTime % 3600) == 0:  # 60 minutely Update
             print("60 Min Update now")
+            # Skill Points
+            # Corp History
+
 
     def getSkilldump(self):
         #skilldump.SkillDump()
@@ -116,7 +140,7 @@ class UpdateHandler():
         self.updateSkillQueue(user)
         self.updateCompletedSkills(user)
         self.updateCharacterAttributes(user)
-        self.getCharacterNotifications(user)
+        self.updateCharacterNotifications(user)
 
         #self.getStructureDetails(user)
 
@@ -142,7 +166,7 @@ class UpdateHandler():
 
 
 
-    def getServerStatus(self):
+    def updateServerStatus(self):
 
         api = swagger_client.StatusApi()
         api.api_client.set_default_header(config.ESI_USER_AGENT, config.ESI_AGENT_DESCRIPTION)
@@ -278,7 +302,7 @@ class UpdateHandler():
             print("Exception in UpdateHandler.updateCorporationName: " + str(e))
 
 
-    def getCharacterNotifications(self, user):
+    def updateCharacterNotifications(self, user):
 
         api = swagger_client.CharacterApi()
         api = self.setApiDetails(api, user)

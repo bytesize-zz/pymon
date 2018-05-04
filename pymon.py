@@ -23,7 +23,7 @@ if __name__ == "__main__":
     updateThread = threading.Thread(target=updateHandler.updateAll, args=(mainwindow.gui_queue,))
     updateThread.name = "UpdateHandler"
     updateThread.daemon = True
-    #updateThread.start()
+    updateThread.start()
 
     # mainwindow.show()
     sys.exit(app.exec_())
