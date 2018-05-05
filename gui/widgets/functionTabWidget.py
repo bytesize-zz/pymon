@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QTabWidget, QWidget, QLabel, QVBoxLayout, QScrollAre
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPalette, QPixmap, QFont
 
-from gui.widgets.completedSkillsWidget import CompletedSkillsWidget, SkillGroupWidget
+from gui.widgets.knownSkillsWidget import KnownSkillsWidget, SkillGroupWidget
 from gui.widgets.skillQueueWidget import SkillQueueWidget, QueueItem
 
 # Database Imports
@@ -21,7 +21,7 @@ class FunctionTabWidget(QTabWidget):
         self.createSkillQueue(user)
 
     def createCompletedSkills(self, user):
-        completedSkillsTab = CompletedSkillsWidget(user)
+        completedSkillsTab = KnownSkillsWidget(user)
         self.addTab(completedSkillsTab, "Skills")
 
     def createSkillQueue(self, user):

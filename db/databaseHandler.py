@@ -69,7 +69,7 @@ class DatabaseHandler():
 
         try:
             self.deleteSkillQueue(user_id)
-            self.deleteCompletedSkills(user_id)
+            self.deleteKnownSkills(user_id)
             self.deleteCharacterAttributes(user_id)
             self.deleteCharacterNotification(user_id)
             self.deleteCharacterPortrait(user_id)
@@ -313,7 +313,8 @@ class DatabaseHandler():
 
         return count
 
-    def getKnownSkills(self, user):
+
+    def getKnownSkillsCount(self, user):
         session = self.Session()
         count = 0
         try:
@@ -325,11 +326,11 @@ class DatabaseHandler():
 
         return count
 
-    def saveCompletedSkills(self, newSkillList):
+    def saveKnownSkills(self, newSkillList):
         session = self.Session()
         # Add or update the received CompletedSkills
         try:
-            self.deleteCompletedSkills(newSkillList.owner_id)   # First delete old SkillList
+            self.deleteKnownSkills(newSkillList.owner_id)   # First delete old SkillList
             for skill in newSkillList.items:               # Then add the new One
                 session.add(skill)
             session.commit()
@@ -338,20 +339,19 @@ class DatabaseHandler():
         finally:
             session.close()
 
-    def getCompletedSkills(self, ownerID):
-        # Get CompletedSkillList for this owner from DB if already existing
+    def getKnownSkills(self, ownerID):
         session = self.Session()
         skillList = None
         try:
             skillList = CompletedSkillList().createCSL(session.query(CompletedSkillItem).filter_by(owner_id=ownerID).all(), ownerID)
         except Exception as e:
-            print("Exception in DatabaseHandler.getCompletedSkills: " + str(e))
+            print("Exception in DatabaseHandler.getKnownSkills: " + str(e))
         finally:
             session.close()
 
         return skillList  # Might be an empty skillqueue
 
-    def deleteCompletedSkills(self, ownerID):
+    def deleteKnownSkills(self, ownerID):
         session = self.Session()
         #print("Deleting old List of Completed Skills from owner " + str(ownerID))
         try:  # Deleting old CompletedSkillItem's
@@ -474,6 +474,25 @@ class DatabaseHandler():
             session.close()
 
         return skills
+
+    def getGroupSkillsCount(self, user_id, group_id):
+        #ToDo: Make it less ugly
+        session = self.Session()
+        total = 0
+        known = 0
+        try:
+            for staticSkill in session.query(StaticSkills, StaticSkills.skill_id).filter_by(group_id=group_id).all():
+                skill = session.query(CompletedSkillItem).filter_by(owner_id=user_id, skill_id=staticSkill.skill_id).first()
+                total = total +1
+                if skill is not None:
+                    known = known +1
+
+        except Exception as e:
+            print("Exception in DatabaseHandler.getGroupSkillsCount: " + str(e))
+        finally:
+            session.close()
+
+        return total, known
 
     def staticDumpPresent(self):
         session = self.Session()

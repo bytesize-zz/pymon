@@ -160,7 +160,7 @@ class CharacterTabWidget(QWidget):
         # Skills Statistics
         vBox4 = QVBoxLayout()
         vBox4.setAlignment(QtCore.Qt.AlignTop)  # ToDo: Include the completed Skills in SkillQueue
-        knownSkillsLabel = QLabel("Known Skills: " + str(self.dbHandler.getKnownSkills(self.user)))
+        knownSkillsLabel = QLabel("Known Skills: " + str(self.dbHandler.getKnownSkillsCount(self.user)))
         skillsAt5Label = QLabel("Skills at Level V: " + str(self.dbHandler.getSkillsAtV(self.user)))
         totalSPLabel = QLabel("Total SP: " + format(self.character.total_sp))
         if self.character.unallocated_sp is None:

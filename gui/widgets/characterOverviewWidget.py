@@ -8,6 +8,7 @@ from db.databaseHandler import DatabaseHandler
 import urllib, io
 from urllib import request
 import service.tools
+import config
 import threading
 
 # ToDo Mouse Over and click Event/Action
@@ -109,7 +110,7 @@ class CharacterOverviewWidget(QWidget):
             #print(self.character.name + " has an active SkillQueue")
             SkillRemainingTime = service.tools.getSkillRemainingTime(firstSkill)
             SkillName = self.dbHandler.getStaticSkillData(firstSkill.skill_id).name + " " + str(firstSkill.finished_level)
-            SkillEndDate = service.tools.formatDateTime(firstSkill.finish_date)
+            SkillEndDate = service.tools.formatDateTime(firstSkill.finish_date + config.TIME_DIFFERENCE)
             QueueRemainingTime = "Queue ends in " + service.tools.getSkillRemainingTime(lastSkill)
 
 

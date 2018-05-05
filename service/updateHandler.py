@@ -112,6 +112,7 @@ class UpdateHandler():
             # Completed Skills
             # Attributes
             for user in self.userList:
+                self.refreshUserAuth(user)
                 self.updateSkillQueue(user)
                 self.updateCompletedSkills(user)
                 self.updateCharacterAttributes(user)
@@ -261,7 +262,7 @@ class UpdateHandler():
         try:
             response = api.get_characters_character_id_skills(user.CharacterID)
             skillList = CompletedSkillList().createCSL(response, user.get_id())
-            self.dbHandler.saveCompletedSkills(skillList)
+            self.dbHandler.saveKnownSkills(skillList)
             self.dbHandler.saveCharacterSP(user.get_id(), response.total_sp, response.unallocated_sp)
         except Exception as e:
             print("Exception in updateHandler.updateCompletedSkills: %s\n" % e)

@@ -14,7 +14,7 @@ from service.tools import format
 dbHandler = DatabaseHandler()
 
 # ToDo Mouse Over and click Event/Action
-class CompletedSkillsWidget(QWidget):
+class KnownSkillsWidget(QWidget):
     def __init__(self, user, parent=None):
         QWidget.__init__(self, parent=parent)
 
@@ -49,7 +49,7 @@ class CompletedSkillsWidget(QWidget):
         self.scrollContent = QWidget(self.scrollArea)
         self.scrollLayout = QVBoxLayout(self.scrollContent)
         self.scrollLayout.setContentsMargins(0,0,0,0)
-        self.scrollLayout.setSpacing(0)
+        self.scrollLayout.setSpacing(1)
         self.scrollLayout.setAlignment(QtCore.Qt.AlignTop)
         self.scrollContent.setLayout(self.scrollLayout)
 
@@ -59,6 +59,8 @@ class CompletedSkillsWidget(QWidget):
 
         if groups is not None:
             for grp in groups:
+                if grp.name == "Fake Skills":
+                    continue
                 grpWidget = SkillGroupWidget(self.user.id, grp)
                 self.scrollLayout.addWidget(grpWidget)
                 for skillWidget in grpWidget.getChildWidgets():
@@ -80,15 +82,21 @@ class SkillGroupWidget(QWidget):
         self.collapse = False  # un/visible status of self.skills
         self.group = group  # This group
         self.user_id = user_id
-        self.skills = []  # List of Skills belonging to this group
-        self.skillWidgets = []
 
+        self.skills = dbHandler.getGroupSkills(self.user_id, self.group.group_id)  # List of Skills belonging to this group
+
+        self.skillWidgets = []
+        self.total_sp = 0
+
+
+        self.sumSkillpoints()
         self.createSkillWidgets()
 
         self.setBackgroundColor()
         self.layout = QHBoxLayout()
         #self.layout.setAlignment(QtCore.Qt.AlignTop)
         self.layout.setContentsMargins(1, 1, 1, 1)
+        self.layout.setSpacing(5)
         #self.layout.setSpacing(0)
 
         self.nameLabel = QLabel("Name")
@@ -110,14 +118,15 @@ class SkillGroupWidget(QWidget):
 
     def updateLabels(self):
         self.nameLabel.setText(self.group.name)
-        #self.countLabel.setText("x")
-        #self.spLabel.setText("x")
+        total, known = dbHandler.getGroupSkillsCount(self.user_id, self.group.group_id)
+        self.countLabel.setText(f'{known} of {total} skills')
+        self.spLabel.setText(f'{tools.format(self.total_sp)} Points')
         self.layout.update()
 
     def setLabelStyle(self):
         self.nameLabel.setStyleSheet('QLabel { font-size: 12px; color: white; font-weight: bold}')
-        self.countLabel.setStyleSheet('QLabel { font-size: 12px; color: white}')
-        self.spLabel.setStyleSheet('QLabel { font-size: 12px; color: white}')
+        self.countLabel.setStyleSheet('QLabel { color: white}')
+        self.spLabel.setStyleSheet('QLabel { color: white}')
 
     def setBackgroundColor(self):
         self.setAutoFillBackground(True)
@@ -144,20 +153,25 @@ class SkillGroupWidget(QWidget):
 
 
     def createSkillWidgets(self):
-        self.skills = dbHandler.getGroupSkills(self.user_id, self.group.group_id)
 
         for i, skill in enumerate(self.skills):
-            widget = CompletedSkillsItem(self.user_id, skill, i)
+            widget = KnownSkillsItem(self.user_id, skill, i)
             widget.setVisible(False)
             #widget.setHidden(True)
             #widget.hide()
             self.skillWidgets.append(widget)
 
+    def sumSkillpoints(self):
+        self.total_sp = 0
+        for skill in self.skills:
+            self.total_sp = self.total_sp + skill.skillpoints_in_skill
+
+
     def getChildWidgets(self):
         return self.skillWidgets
 
 
-class CompletedSkillsItem(QWidget):
+class KnownSkillsItem(QWidget):
     def __init__(self, user_id,  skill, position, parent=None):
         QWidget.__init__(self, parent=parent)
         self.skill = skill
