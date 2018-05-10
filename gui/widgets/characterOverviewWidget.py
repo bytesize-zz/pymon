@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QSizePolicy, QLabel, QGridLayout, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QWidget, QSizePolicy, QLabel, QGridLayout, QVBoxLayout, QHBoxLayout, QPushButton
 from PyQt5 import QtCore
 from PyQt5.QtGui import QPalette, QPixmap, QFont
 
@@ -12,9 +12,9 @@ import config
 import threading
 
 # ToDo Mouse Over and click Event/Action
-class CharacterOverviewWidget(QWidget):
+class CharacterOverviewWidget(QPushButton):
     def __init__(self, user, parent=None):
-        QWidget.__init__(self, parent=parent)
+        super(CharacterOverviewWidget, self).__init__(parent)
         self.setAutoFillBackground(True)
         # self.installEventFilter()
         self.user = user
@@ -76,6 +76,9 @@ class CharacterOverviewWidget(QWidget):
         self.set_size_policy()
 
         self.startUpdateTimer()
+
+    def initLayout(self):
+        print("")
 
     def setLabels(self):
         if self.character is not None:
@@ -166,3 +169,11 @@ class CharacterOverviewWidget(QWidget):
         self.characterSkillNameLabel.update()
         self.characterSkillEndDateLabel.update()
         self.characterQueueRemainingTimeLabel.update()
+
+    def enterEvent(self, QEvent):
+        # here the code for mouse hover
+        pass
+
+    def leaveEvent(self, QEvent):
+        # here the code for mouse leave
+        pass

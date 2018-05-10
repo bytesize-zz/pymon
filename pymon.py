@@ -16,9 +16,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     mainwindow = GeneralMainDesign()
     updateHandler = UpdateHandler()
-    #updateHandler.updateAll(mainwindow.gui_queue)
-
-    #mainwindow.startUpdateTimer()
 
     updateThread = threading.Thread(target=updateHandler.updateAll, args=(mainwindow.gui_queue,))
     updateThread.name = "UpdateHandler"
@@ -27,4 +24,3 @@ if __name__ == "__main__":
 
     # mainwindow.show()
     sys.exit(app.exec_())
-

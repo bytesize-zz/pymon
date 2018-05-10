@@ -74,7 +74,7 @@ class NewPlanWindow(QMainWindow):
         newPlan = SkillPlan().create(name, description, self.user_id)
 
         self.dbHandler.addPlan(newPlan)
-        #self.openSkillPlanner(newPlan.id)
+        self.openSkillPlanner(newPlan.id)
         self.close()
 
     def openSkillPlanner(self, plan_id):

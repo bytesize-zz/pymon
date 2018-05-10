@@ -10,17 +10,14 @@ from service import tools
 import config
 import datetime
 import functools
-import pytz
 from Lib import queue
 
 # Import of neccessary Widgets
 from gui.widgets.mainTabWidget import MainTabWidget
-from gui.widgets.characterTabWidget import CharacterTabWidget
 from gui.charManagerWindow import CharManagerWindow
 from gui.newplan import NewPlanWindow
 from gui.skillplanwindow import SkillPlannerWindow
 
-from service.updateHandler import UpdateHandler
 from db.databaseHandler import DatabaseHandler
 
 class GeneralMainDesign(QMainWindow):
@@ -28,10 +25,8 @@ class GeneralMainDesign(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        #self.updateHandler = UpdateHandler()
         self.dbHandler = DatabaseHandler()
         self.selected_character = None
-
 
         self.init_MainWindow()
         self.gui_queue = queue.Queue()
@@ -217,16 +212,12 @@ class GeneralMainDesign(QMainWindow):
     #
     ################
     def addCharacterPlansToMenu(self):
-
         plan_list = self.dbHandler.getCharacterPlans(self.selected_character)
 
-        actions = []
         for plan in plan_list:
-            #actions.append(QAction(plan.name, self))
             action = QAction(plan.name, self)
             action.triggered.connect(functools.partial(self.openSkillPlanner, plan.id))
 
-            #self.plansMenu.addAction(actions[plan.id-1])
             self.plansMenu.addAction(action)
 
     def exitTriggered(self):

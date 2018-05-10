@@ -552,7 +552,6 @@ class DatabaseHandler():
     def getPlan(self, plan_id):
         session = self.Session()
         plan = None
-
         try:
             plan = session.query(SkillPlan).filter_by(id=plan_id).first()
         except Exception as e:
