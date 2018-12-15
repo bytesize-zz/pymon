@@ -2,7 +2,9 @@
 EveMon clone written in Python
 
 For some time, the continuation of the EveMon Client was unsure so i started my own Project.<br>
-Since somebody new was found to continue the work, i stopped my work for now.
+Project is paused, since EvEMon got a new Developer.
+
+
 
 This PyMon client is based thoroughly on new code in Python.<br>
 However i used some other peoples code as input, so credits goes to:
