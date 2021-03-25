@@ -9,7 +9,7 @@ PyQt5Designer==5.10.1
 PyQt5Singleton==0.1
 pyswagger==0.8.37
 python-dateutil==2.7.2
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.4
 sip==4.19.8
 six==1.11.0
